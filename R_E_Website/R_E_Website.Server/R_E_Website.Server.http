@@ -1,0 +1,6 @@
+@R_E_Website.Server_HostAddress = http://localhost:5170
+
+GET {{R_E_Website.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
