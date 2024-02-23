@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\R_E_Website.Server.props" />
+</Project>

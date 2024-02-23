@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Philosopher', Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+header
+{
+    position:fixed;
+    right:50px;
+    left:50px;
+    top:0;
+    z-index:1000;
+    width:100%;
+    display:flex;
+    align-items:center;
+    padding:2% 0;
+    background:transparent;
+}
+
+.logo
+{
+    cursor:pointer;
+}
+
+.logo > img
+{
+   
+}
+
+.navlist
+{
+    display:flex;
+    margin-left:20px;
+}
+
+.navlist > li{
+    display:flex;
+}
+
+.navlist a
+{
+    color:black;
+    margin-left:40px;
+    font-size:17px;
+    font-weight:600;
+    border-bottom:2px solid transparent;
+    transition:all .55s ease;
+}
+
+.navlist a:hover
+{
+    border-bottom:2px solid red;
+}
+
+.navlist i{
+    font-size:15px;
+}
+
+.social-media{
+    margin-left:7%;
+}
+
+.social-media i{
+    margin-left:10px;
+    font-size:22px;
+}
+
+.phone {
+    margin-left: 1.5%;
+    font-size: 14px;
+}
+
+.langs {
+    margin-left: 1%;
+    display: flex;
+}
+
+.langs a{
+    cursor:pointer;
+    margin-left:15px;
+    color:orange;
+    font-size:14px;
+}
+
+.request {
+    margin-left: 2%;
+    border-radius: 10px;
+    background: black;
+    padding: 12px 17px;
+    color: white;
+    font-size: 12px;
+    transition: all .55s ease;
+}
+
+.request:hover{
+    background:#c71010;
+}
