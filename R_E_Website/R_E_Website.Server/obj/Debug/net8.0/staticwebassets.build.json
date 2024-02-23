@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "jCeJ3m2jsyg8wGMgO4c0e9AyuLh7A8VxQg6o7/jmfMg=",
+  "Source": "R_E_Website.Server",
+  "BasePath": "_content/R_E_Website.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "D:\\FullstackDevelopment\\Real Estate Website\\R_E_Website\\r_e_website.client\\r_e_website.client.esproj",
+      "Version": 2,
+      "Source": "r_e_website.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
