@@ -1,9 +1,12 @@
-﻿
+﻿import '../style/SlideShow.css';
+import 'remixicon/fonts/remixicon.css';
 
 function SlideShow() {
     return (
-        <div>
-            <div className="item" style={{backgroundImage: 'url(https://profirealt.com.ua/wp-content/uploads/2021/01/prodazh_neruhomosti-scaled.jpg)'}}>
+        <div className="outer">
+            <div className="item" style={{
+                backgroundImage: 'url(https://profirealt.com.ua/wp-content/uploads/2021/01/prodazh_neruhomosti-scaled.jpg)',
+                }}>
                 <div>
                     Продаж нерухомості
                 </div>
