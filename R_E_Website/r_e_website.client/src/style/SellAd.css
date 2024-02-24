@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Philosopher', Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.ad-container {
+    padding: 2% 0;
+    background: #525252;
+    position: absolute;
+    right: 50px;
+    left: 50px;
+}
+
+.ad-container h2, p{
+    color:white;
+}
+
+.ad-container-head p {
+    text-align: center;
+}
+
+.p-head {
+    font-size: 55px;
+}
+
+.p-body{
+    margin-top:10px;
+}
+
+.p-body p{
+    font-size:19px;
+}
+
+.p-footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.ad-container-body{
+    display:flex;
+    margin-top:50px;
+}
+
+.ad-container-body img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+}
+
+.text-inner {
+    padding: 14% 15%;
+    font-size:14px;
+}
+
+.ad-container-footer{
+    text-align:center;
+    margin-top:30px;
+    margin-bottom:70px;
+}
+
+.ad-container-footer a {
+    margin-top: 1.24vw;
+    padding: 19px 29px;
+    color: #21232a;
+    box-shadow: 0px 3px 16px #B3179229;
+    background-color: white;
+    border-radius: 10px;
+    transition: all .2s ease-out;
+    font-size: 16px;
+    font-weight:700;
+}
+
+.ad-container-footer a:hover{
+     color: #fff;
+     background:#a52822;
+}
