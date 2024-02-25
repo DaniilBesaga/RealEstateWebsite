@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Philosopher', Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.reviews-section{
+    margin-top:50px;
+    width:100%;
+}
+
+.reviews-logo-back {
+    position: absolute;
+    color: #21232a;
+    opacity: .1;
+    font-size: 8.85vw;
+    line-height: 1.02;
+    font-style: italic;
+    left: -2%;
+    top:40%;
+}
+
+.reviews-logo {
+
+}
+
+.reviews-logo p{
+    font-size:4vw;
+    font-style:italic;
+    font-weight:600;
+    line-height: .86;
+    margin-left:100px;
+}
+
+.reviews-slides {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left:30px;
+    margin-right:50px;
+    gap:20px;
+    z-index:1000;
+}
+
+.review {
+    padding: 9.8% 11% 12%;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    max-width: 250px;
+}
+
+.review > div{
+    margin:20px 0 0 10px;
+    font-weight:600;
+}
+
+.comment {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    font-size:15.5px;
+    line-height:1.8;
+}
+
+.comment-author {
+    font-size: 14px;
+}
+
+.comment-date {
+    font-size: 12px;
+}
+
+
+.reviews-button-slides {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviews-button-slides li{
+    margin-left:5px;
+    margin-top:20px;
+    display:inline-block;
+}
+
+.reviews-button-slides button{
+    background-color: gray;
+    border-radius:0px;
+    display:inline-block;
+    padding:5px 5px;
+}
+
+.active-button {
+    outline: 2px solid #aa3530;
+    background-color: #aa3530 !important;
+}
