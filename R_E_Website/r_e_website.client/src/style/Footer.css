@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Philosopher', Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.footer{
+    position:absolute;
+    top:150px;
+    left:0;
+    right:0;
+}
+
+.section-subsc {
+    background-image: url('https://profirealt.com.ua/wp-content/uploads/2020/07/kiev2-e1593687520263.png');
+    padding: 3.5vw 0 9.85vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    text-align: center;
+}
+
+.section-subsc > span{
+    font-size: 3.64vw;
+    font-weight:600;
+
+}
+
+.subsc-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin:10vh 20vw;
+}
+
+.part_form_inner {
+    background:white;
+}
+
+.part_form_inner {
+    box-shadow: 0px 3px 16px #1A5AA93D;
+    border: 0;
+    border-radius: 15px;
+    padding:5px;
+}
+
+.part_form_inner input[type=email] {
+    font-size: 1rem;
+    line-height: 1.842;
+    padding: 0.741em 1.6em;
+    border:0;
+    margin-right:5vw;
+}
+
+.part_form_inner input[type=email]:active{
+    border:0;
+}
+
+.part_form_inner button{
+    padding:15px 30px;
+    font-size:.90rem;
+    color:white;
+    background:#a52822;
+    border-radius: 10px;
+}
+
+.part_form_checkboxes{
+    margin-top:20px;
+    
+}
+
+.part_form_checkboxes span{
+    margin-left:20px;
+}
+
+.part_form_checkboxes label{
+    vertical-align:middle;
+}
+
+.part_form_checkboxes input[type=checkbox]{
+    width:20px;
+    height:20px;
+    border:2px solid gray;
+    -webkit-appearance: none;
+    border-radius:5px;
+    margin-right:10px;
+    cursor:pointer;
+    vertical-align:middle;
+}
+
+.part_form_checkboxes input[type=checkbox]:checked{
+    border:2px solid gold;
+}
+
+.part_form_checkboxes input[type=checkbox]:checked::before {
+    content: "\25AA";
+    display: block;
+    text-align: center;
+    font-size: 35px;
+    width: 10px;
+    height: 10px;
+    color:gold; 
+    transform:translate(0, -90%)
+}
+
+.add-params{
+    margin-top:20px;
+}
+
+.add-params > span{
+    padding:5px;
+    display:flex;
+    background:rgb(255, 255, 255, 0.5);
+    border-radius:15px;
+    width:45%;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.add-params > span > p{
+    margin-right:7px;
+}
+
+.add-params > span > i{
+    font-size:20px;
+    position:relative;
+    top:3px;
+}
+
+.add-params-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:20px;
+    
+}
+
+.add-params-grid span{
+    
+}
+
+.add-params-grid label, .add-params-grid input[type=number]{
+    display:block;
+}
+
+.add-params-grid label{
+    text-align: left;
+    position:relative;
+    right:-5px;
+}
+
+.add-params-grid input{
+    box-shadow: 0px 3px 16px #1A5AA93D;
+    border: 0;
+    border-radius: 5px;
+    padding:15px;
+    width:120px;
+    margin-top:10px;
+}
+
+.footer-info-links {
+    background: #474747;
+    padding:100px 200px;
+}
+
+.footer-info-part-1{
+
+}
