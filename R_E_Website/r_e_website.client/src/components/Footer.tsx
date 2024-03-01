@@ -1,7 +1,11 @@
-﻿import '../style/Footer.css';
+﻿import { useState } from 'react';
+import '../style/Footer.css';
 import 'remixicon/fonts/remixicon.css';
 
 function Footer() {
+
+    const [showAdd, setShowAdd] = useState(false);
+
     return (
         <footer className="footer">
             <div className="section-subsc">
@@ -32,11 +36,11 @@ function Footer() {
                             </span>
                         </div>
                         <div className="add-params">
-                            <span>
+                            <span onClick={() => setShowAdd(!showAdd)}>
                                 <p>Додаткові параметри</p>
                                 <i className="ri-arrow-down-s-line"></i>
                             </span>
-                            <div className="add-params-grid">
+                            <div className={showAdd ? "add-params-grid show" : "add-params-grid hide"}>
                                 <span>
                                     <label>Кіл-сть кімнат:</label>
                                     <input type="number" placeholder="0"></input>
