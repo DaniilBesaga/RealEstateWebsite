@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Philosopher', Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.qs-container{
+    position:absolute;
+    left:100px;
+    right:100px;
+    padding:2%;
+}
+
+.qs-container form{
+    display:flex;
+    justify-content:space-between;
+}
+
+.select-container{
+    display:flex;
+    justify-content:space-between;
+}
+
+.qs-part-1 {
+    display:inline-block;
+}
+
+.qs-part-1 > p {
+    font-size: 1.1em;
+}
+
+.div-select {
+    border:1px solid gray;
+    border-radius:10px;
+    padding: 5px 10px;
+    align-content:center;
+    cursor:pointer;
+}
+
+.div-select i{
+    display:inline-block;
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.drop-down-select-arrow {
+    margin-left: 10%;
+}
+
+#area {
+    font-size: 13px;
+    opacity: .8;
+}
+
+.district-select{
+    font-size:18px;
+}
+
+.qs-part-2 {
+    display: inline-block;
+}
+
+.rooms-selection-header{
+    display:flex;
+}
+
+.rooms-selection-header i{
+    font-size:28px;
+}
+
+.rooms-selection-header p{
+    font-size:23px;
+}
+
+.rooms-selection{
+    display:flex;
+    gap:10px;
+}
+
+.rooms-selection div {
+    width:50px;
+    cursor:pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    text-align:center;
+    vertical-align:middle;
+    padding:10px 0;
+}
+
+.sq-part-3 {
+    display: inline-block;
+}
+
+.pricing-container-header {
+    display:flex;
+    justify-content:space-between;
+}
+
+.pricing-container-header span{
+    display:flex;
+}
+
+.pricing-container-header i{
+    font-size:25px;
+}
+
+.pricing-container-header p{
+    font-size:23px;
+}
+
+button{
+    display:inline-block;
+}
