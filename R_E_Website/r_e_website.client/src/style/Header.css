@@ -8,11 +8,28 @@
     text-decoration: none;
 }
 
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #fcfcfc
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f1f1f0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a52822;
+}
+
 header
 {
-    position:fixed;
-    right:50px;
-    left:50px;
+    
+    margin-right:50px;
+    margin-left:50px;
     top:0;
     z-index:1000;
     width:100%;
@@ -39,14 +56,29 @@ header
 }
 
 .navlist > li{
+    /*display:flex;
+    align-items:center;*/
+    
+    
+    padding-right:20px;
+}
+
+.navlist > li:not(:first-child){
+    margin-left:10px;
+}
+
+.navlist div{
+    background: white;
+    padding: 15px 0px;
     display:flex;
+    align-items:center;
 }
 
 .navlist a
 {
     color:black;
-    margin-left:40px;
-    font-size:17px;
+    margin-left:20px;
+    font-size:15px;
     font-weight:600;
     border-bottom:2px solid transparent;
     transition:all .55s ease;
@@ -54,30 +86,71 @@ header
 
 .navlist a:hover
 {
-    border-bottom:2px solid red;
+    border-bottom:2px solid #a52822;
 }
 
 .navlist i{
-    font-size:15px;
+    font-size:20px;  
+    margin-left:10px;
+    transition: all .3s ease;
 }
 
-.social-media{
-    margin-left:7%;
+.rotated{
+    transform:rotate(180deg);
+}
+
+.sub-menu {
+    display: none;
+    background: #f1f1f0;
+    border-radius: 10px;
+    white-space: pre;
+    position: absolute;
+    padding: 15px 0px;
+    padding-right:20px;
+   
+}
+
+.sub-menu li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.sub-menu a{
+    border-bottom: 0 !important;
+}
+
+.sub-menu a:hover{
+    color: #a52822;
+    cursor:pointer;
+    border-bottom: 0 !important;
+}
+
+.social-media {
+    margin-left: 5%;
+    margin-top:-10px;
 }
 
 .social-media i{
     margin-left:10px;
-    font-size:22px;
+    font-size:26px;
+    transition: all .3s ease;
+    cursor:pointer;
+}
+
+.social-media i:hover{
+    color: #a52822;
 }
 
 .phone {
     margin-left: 1.5%;
     font-size: 14px;
+    color: black !important;
+    margin-top: -10px;
 }
 
 .langs {
     margin-left: 1%;
     display: flex;
+    margin-top: -10px;
 }
 
 .langs a{
@@ -95,6 +168,7 @@ header
     color: white;
     font-size: 12px;
     transition: all .55s ease;
+    margin-top: -10px;
 }
 
 .request:hover{

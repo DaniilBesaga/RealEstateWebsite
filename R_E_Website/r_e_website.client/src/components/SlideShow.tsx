@@ -1,5 +1,6 @@
 ﻿import '../style/SlideShow.css';
 import 'remixicon/fonts/remixicon.css';
+import QuickSearch from './QuickSearch';
 
 function SlideShow() {
     return (
@@ -11,6 +12,7 @@ function SlideShow() {
                     Продаж нерухомості
                 </div>
             </div>
+            <QuickSearch></QuickSearch>
         </div>
     )
 }

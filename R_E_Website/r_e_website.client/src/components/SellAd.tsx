@@ -38,7 +38,7 @@ function SellAd() {
                 </div>
             </div>
             <div className="ad-container-footer">
-                <a href="#">РОЗМІСТИТИ СВОЄ ОГОЛОШЕННЯ</a>
+                <a href="#" className="button-action">РОЗМІСТИТИ СВОЄ ОГОЛОШЕННЯ</a>
             </div>
         </div>
     )

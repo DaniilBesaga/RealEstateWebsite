@@ -13,7 +13,7 @@ body {
 }
 
 .outer{
-    margin-top:100px;
+    margin-top:20px;
 }
 
 .item {
@@ -21,7 +21,7 @@ body {
     padding-top: 742px;
     background-position: -100px, 0;
     background-repeat: no-repeat;
-    position: relative;
+    
     width:200vh;
 }
 

@@ -1,5 +1,6 @@
 ﻿import '../style/QuickSearch.css';
 import 'remixicon/fonts/remixicon.css';
+import RealState from './RealEstate';
 
 function QuickSearch() {
     return (
@@ -10,7 +11,7 @@ function QuickSearch() {
                     <p>Знайди оселю своєї мрії</p>
                     <div className="div-select">
                         <i className="ri-map-pin-line" style={{ opacity: 0.5 }}></i>
-                        <div style={{ display: 'inline-block' }}>
+                        <div className="district-section">
                             <p id="area">Район</p>
                             <p className="district-select">Будь-який район</p>
                         </div>
@@ -32,28 +33,32 @@ function QuickSearch() {
                     </div>
                 </div>
 
-                <div className="pricing-container-header">
-                    <div>
-                        <span>
+                <div className="qs-part-3">
+                    <div className="pricing-container-header">
+                        <span className="price-title">
                             <i className="ri-money-dollar-circle-line"></i>
                             <p>Ціна</p>
                         </span>
-                    </div>
-                    <div>
-                        <span>
-                            <i></i>
+                        <span className="cur-uah">
+                            <i className="currency-icon"></i>
                             <p>грн</p>
                         </span>
-                        <span>
-                            <i></i>
+                        <span className="cur-usd">
+                            <i className="currency-icon"></i>
                             <p>$</p>
                         </span>
+
+                    </div>
+
+                    <div className="pricing-filter">
+                        <input type="number" placeholder="від"></input>
+                        <input type="number" placeholder="до"></input>
                     </div>
                 </div>
-
-                <button>знайти</button>
+                <button className="search-b">знайти</button>
             </form>
-            <h1>Цікаві пропозиції</h1>
+            
+            
         </div>
     )
 }
