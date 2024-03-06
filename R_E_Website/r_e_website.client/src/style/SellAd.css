@@ -12,9 +12,10 @@
 .ad-container {
     padding: 2% 0;
     background: #525252;
-    position: absolute;
+    /*position: absolute;*/
     right: 50px;
     left: 50px;
+    margin-top:50px;
 }
 
 .ad-container h2, p{
@@ -65,7 +66,7 @@
     margin-bottom:70px;
 }
 
-.ad-container-footer a {
+.button-action {
     margin-top: 1.24vw;
     padding: 19px 29px;
     color: #21232a;
@@ -75,9 +76,10 @@
     transition: all .2s ease-out;
     font-size: 16px;
     font-weight:700;
+    cursor:pointer;
 }
 
-.ad-container-footer a:hover{
+.button-action:hover{
      color: #fff;
      background:#a52822;
 }

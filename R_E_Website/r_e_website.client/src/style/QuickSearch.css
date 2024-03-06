@@ -9,11 +9,21 @@
     text-decoration: none;
 }
 
-.qs-container{
-    position:absolute;
-    left:100px;
-    right:100px;
-    padding:2%;
+.qs-container {
+    background: #f1f1f0;
+    margin-top: -200px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 2%;
+    z-index: 1000;
+}
+
+.qs-container form{
+    
+}
+
+.qs-container p{
+    color:black !important;
 }
 
 .qs-container form{
@@ -32,24 +42,32 @@
 
 .qs-part-1 > p {
     font-size: 1.1em;
+    margin-bottom:10px;
+    font-size:20px;
 }
 
 .div-select {
-    border:1px solid gray;
-    border-radius:10px;
-    padding: 5px 10px;
-    align-content:center;
-    cursor:pointer;
+    border: 2px solid #d5d5d5;
+    border-radius: 10px;
+    padding: 0px 10px;
+    align-content: center;
+    cursor: pointer;
+    display: flex;
 }
 
 .div-select i{
-    display:inline-block;
+    margin-top:10px;
     font-size:20px;
     margin-bottom:5px;
 }
 
 .drop-down-select-arrow {
-    margin-left: 10%;
+    
+}
+
+.district-section{
+    width:300px;
+    padding:0 10px;
 }
 
 #area {
@@ -58,7 +76,7 @@
 }
 
 .district-select{
-    font-size:18px;
+    font-size:17px;
 }
 
 .qs-part-2 {
@@ -67,19 +85,25 @@
 
 .rooms-selection-header{
     display:flex;
+    margin-bottom:9px;
+    align-items:flex-start;
 }
 
 .rooms-selection-header i{
-    font-size:28px;
+    font-size:23px;
+    position:absolute;
 }
 
 .rooms-selection-header p{
-    font-size:23px;
+    font-size:20px;
+    margin-left:25px;
 }
 
-.rooms-selection{
-    display:flex;
-    gap:10px;
+.rooms-selection {
+    display: flex;
+    gap: 10px;
+    border-right: 1px solid black;
+    padding-right:50px;
 }
 
 .rooms-selection div {
@@ -87,10 +111,11 @@
     cursor:pointer;
     font-size: 16px;
     border-radius: 10px;
-    border: 1px solid gray;
+    border: 2px solid #d5d5d5;
     text-align:center;
     vertical-align:middle;
-    padding:10px 0;
+    padding:11px 0;
+    position:relative;
 }
 
 .sq-part-3 {
@@ -98,22 +123,131 @@
 }
 
 .pricing-container-header {
-    display:flex;
-    justify-content:space-between;
+    display:block;
+    
 }
 
-.pricing-container-header span{
+.pricing-container-header div{
     display:flex;
 }
 
-.pricing-container-header i{
-    font-size:25px;
+.currency-icon{
+    display:inline-block;
+    width:23px;
+    height:23px;
+    border-radius:11px;
+    border: 1px solid #d5d5d5;
+    vertical-align:middle;
+    transition: all .2s ease;
+    position:relative;
+    margin-right:2px;
+}
+
+.currency-icon::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    background-color: #a52722;
+    opacity: 1;
+    transition: all .2s ease-out 0s;
+}
+
+.active-price {
+    border: 1px solid #a52722 !important;
 }
 
 .pricing-container-header p{
-    font-size:23px;
+    display:inline-block;
+    font-size:22px;
 }
 
-button{
-    display:inline-block;
+.pricing-container-header{
+    margin-bottom:5px;
+    
+}
+
+.price-title{
+}
+
+.price-title i {
+    font-size: 25px;
+    
+    position:absolute;
+}
+
+.price-title p {
+    margin-left: 30px;
+}
+
+.cur-uah{
+    float:right;
+    margin-top:5px;
+    margin-left:10px;
+}
+
+.cur-usd {
+    float: right;
+    margin-top: 5px;
+}
+
+.cur-usd p, .cur-uah p{
+    font-size:17px;
+    margin-left:5px;
+}
+
+.pricing-filter input {
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #d5d5d5;
+    margin-left: 10px;
+    font-size: 17px;
+    padding-left: 10px;
+}
+
+.search-b {
+    display: inline-block;
+    text-transform: uppercase;
+    color: white;
+    transition: all .7s ease;
+    background: #a52722;
+    width: 180px;
+    height:45px;
+    margin:40px 0;
+    
+}
+
+.search-b:hover{
+    opacity: .7;
+}
+
+.qs-container h2{
+    margin-top:50px;
+    text-align:center;
+    margin-bottom:100px;
+}
+
+.button-action {
+    margin-top: 1.24vw;
+    padding: 19px 29px;
+    color: #21232a;
+    box-shadow: 0px 3px 16px #B3179229;
+    background-color: white;
+    border-radius: 10px;
+    transition: all .2s ease-out;
+    font-size: 16px;
+    font-weight:700;
+    cursor:pointer;
+    text-transform: uppercase;
+    background: #404040 !important;
+    color: white !important;
+}
+
+.button-action:hover{
+     background:#a52822 !important;
 }

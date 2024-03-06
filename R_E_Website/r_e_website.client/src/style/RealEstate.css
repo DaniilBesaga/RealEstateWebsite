@@ -1,2 +1,110 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Philosopher', Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.promo-item {
+    text-decoration: none;
+    transition: all .2s ease-out 0s;
+    color: black;
+    /*#a52722*/
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    margin-left:6%;
+    margin-right:5%;
+    cursor:pointer;
+}
+
+.promo-item:hover{
+    transform:scale(1.1);
+}
+
+.box-img {
+    background-image: url("https://db.profirealt.com.ua/data/i/Flat/71214/scale_500x500_80_a9ca28188285b16d04ad639d3678dac9image_0.jpg");
+    padding-top: 92.1875%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all .3s ease;
+    position:relative;
+    overflow: hidden;
+}
+
+.box-img:hover{
+}
+
+.info {
+    font-size: .9em;
+    color: #222;
+    padding: 13.6% 0 13% 13.6%;
+    position: relative;
+    transition: all .3s ease;
+}
+
+.info:hover{
+    background: white;
+}
+
+.info i{
+    margin-right: 15px;
+    font-size:1.8em !important;
+}
+
+.info1{
+
+}
+
+.info2{
+
+}
+
+.sq{
+
+}
+
+.fl{
+    margin-left:15px;
+}
+
+.info3{
+
+}
+
+.label {
+    position: absolute;
+    top: 20px;
+    right: -25px;
+    height: 22px;
+    overflow: hidden;
+    transform: rotate(45deg);
+    display: block;
+    z-index: 2;
+    white-space: pre;
+    line-height: 1.23em;
+}
+
+.label span{
+    color: #fff;
+    font-size:14px;
+    text-align:center;
+    padding: 3px 30px;
+}
+
+.label-exclusive {
+    background-color: #3d2867;
+}
+
+.sep {
+    margin: 0 3.5% 0 2.4%;
+}
+
+.info1, .info2, .info3, .sq, .fl {
+    display: flex;
+    align-items: center;
 }

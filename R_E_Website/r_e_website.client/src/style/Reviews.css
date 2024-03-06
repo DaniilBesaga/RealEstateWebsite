@@ -10,8 +10,12 @@
 }
 
 .reviews-section{
-    margin-top:50px;
+    margin-top:100px;
     width:100%;
+}
+
+.reviews-section p{
+    color:black !important;
 }
 
 .reviews-logo-back {
@@ -21,8 +25,7 @@
     font-size: 8.85vw;
     line-height: 1.02;
     font-style: italic;
-    left: -2%;
-    top:40%;
+    
 }
 
 .reviews-logo {

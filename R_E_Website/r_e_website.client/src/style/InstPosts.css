@@ -10,7 +10,7 @@
 }
 
 .inst-container {
-    position:absolute;
+    /*position:absolute;*/
     top:150px;
     left: 50px;
     right:50px;

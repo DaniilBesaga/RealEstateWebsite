@@ -8,10 +8,17 @@ import Reviews from './components/Reviews.tsx'
 import InstPosts from './components/InstPosts.tsx'
 import Footer from './components/Footer.tsx'
 import QuickSearch from './components/QuickSearch.tsx'
+import RealState from './components/RealEstate.tsx'
+import RealEstateGrid from './components/RealEstateGrid.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <div>
         <Header></Header>
-        <QuickSearch></QuickSearch>
+        <SlideShow></SlideShow>
+        <RealEstateGrid></RealEstateGrid>
+        <SellAd></SellAd>
+        <Reviews></Reviews>
+        <InstPosts></InstPosts>
+        <Footer></Footer>
     </div>
 )
