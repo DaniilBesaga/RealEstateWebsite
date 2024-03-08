@@ -278,6 +278,11 @@
 .soc-media i{
     font-size:33px;
     border-radius:5px;
+    transition: all .5s ease;
+}
+
+.soc-media i:hover{
+    color: #a52822;
 }
 
 .partners {
