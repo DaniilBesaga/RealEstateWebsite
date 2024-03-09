@@ -1,24 +1,37 @@
 ﻿import '../style/QuickSearch.css';
 import 'remixicon/fonts/remixicon.css';
 import RealState from './RealEstate';
+import { useState } from 'react';
 
 function QuickSearch() {
+
+    const [districtsList, setDisctrictsList] = useState(false);
+
     return (
         <div className="qs-container">
             <form>
-                
-                <div className="qs-part-1">
-                    <p>Знайди оселю своєї мрії</p>
-                    <div className="div-select">
+
+                <div className="qs-part-1" onClick={() => setDisctrictsList(!districtsList)}>
+                    <p style={{ display: districtsList ? "none" : "" }}>Знайди оселю своєї мрії</p>
+                    <div className="districts-list" style={{ display: districtsList? "block" : "none" }}>
+                        {
+                            districtsArray.map((item, index) => (
+                                <span key={index}>
+                                    {item}
+                                </span>
+                            ))
+                        }
+                    </div>
+                    <div className={districtsList ? "div-select active" : "div-select"}>
                         <i className="ri-map-pin-line" style={{ opacity: 0.5 }}></i>
-                        <div className="district-section">
+                        <div className={districtsList ? "district-section active" : "district-section"}>
                             <p id="area">Район</p>
                             <p className="district-select">Будь-який район</p>
                         </div>
                         <i className="ri-arrow-down-s-line drop-down-select-arrow"></i>
                     </div>
                 </div>
-
+                
                 <div className="qs-part-2">
                     <div className="rooms-selection-header">
                         <i className="ri-layout-line"></i>
@@ -62,5 +75,8 @@ function QuickSearch() {
         </div>
     )
 }
+
+const districtsArray = ['Голосіївський', 'Дарницький', 'Деснянський', 'Дніпровський', 'Оболонський',
+    'Печерський', 'Подільський', 'Святошинський', 'Солом`янський', 'Шевченківський'];
 
 export default QuickSearch;
