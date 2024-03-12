@@ -49,7 +49,11 @@ export default defineConfig({
             '^/weatherforecast': {
                 target: 'https://localhost:7074/',
                 secure: false
-            }
+            },
+            //'^/pokupka-neruhomosti': {
+            //    target: 'https://localhost:7074/',
+            //    secure: false
+            //}
         },
         port: 5173,
         https: {

@@ -8,3 +8,217 @@
     list-style: none;
     text-decoration: none;
 }
+
+.buy-estate-container {
+    
+}
+
+.page-nav {
+    display: flex;
+    font-size: 20px;
+    padding: 0 40px 50px 40px;
+    
+}
+
+.page-nav div{
+    cursor:pointer;
+}
+
+.page-nav a{
+    color:black;
+    margin-left:40px;
+}
+
+.page-nav i{
+    margin-right:0px;
+    margin-top:-7px;
+    font-size:1.5em;
+    position:absolute;
+}
+
+.page-nav span{
+    color:gray;
+    margin: 0 10px 0 10px;
+}
+
+.page-nav p{
+    opacity: .8;
+    color:gray;
+}
+
+.buy-estate-grid{
+    padding: 0 50px 0 50px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);  
+}
+
+.right{
+    margin-left:50px !important;
+    margin-bottom:80px !important;
+}
+
+.left {
+    margin-right: 50px;
+}
+
+.left h3{
+    margin-top:80px !important;
+}
+
+.buy-estate-grid-item img{
+    width:100%;
+    height:auto;
+}
+
+.buy-estate-grid-item {
+    margin-top: 0px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 0px;
+}
+
+.buy-estate-grid-item p{
+    margin: 25px 0 50px 0;
+    font-size:1.1em;
+}
+
+.buy-estate-grid-item h3{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+.buy-estate-grid-item h2{
+    margin-top:50px;
+}
+
+.inner-title-ul{
+    font-weight:600;
+    font-size:20px !important;
+    margin-top:20px !important;
+    margin-bottom:15px;
+}
+
+.ul-buy-for{
+    margin-top:10px;
+    margin-bottom:50px;
+    padding-left:15px;
+}
+
+.ul-buy-for p{
+    margin: 0 !important;
+}
+
+.ul-buy-for li{
+    display:flex;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
+.ul-buy-for i{
+    display:inline-block;
+    font-size:10px;
+    margin-right:15px;
+    margin-top:5px;
+}
+
+.grid-4-container{
+    padding:0 50px 0 50px;
+    margin-top:50px;
+}
+
+.grid-4{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:30px;
+}
+
+.grid-4 p:first-child{
+    color: #a52822;
+    margin-bottom:15px;
+    font-size:1.15em;
+}
+
+.grid-4 p:nth-child(2){
+    font-size:1.1em;
+}
+
+.grid-4 svg{
+    width: 100px;
+    height:50px;
+    fill: #a52822 !important;
+}
+
+.grid-4 > div > div {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    color: #a52822;
+}
+
+.grid-4 > div > div > p{
+    font-size:18px;
+    margin-left:20px;
+}
+
+.grid-4 > div > p{
+    font-size:17px;
+    text-align:left;
+}
+
+.buy-estate-add-info{
+    text-align:center;
+}
+
+.buy-estate-add-info h2{
+    margin-top:50px;
+    margin-bottom:20px;
+}
+
+.buy-estate-add-info p{
+    font-size:1.1em;
+}
+
+.order-service-container {
+    box-shadow: 0px 3px 6px #00000029;
+    position:absolute;
+    left:50%;
+    transform:translate(-50%, 50%);
+    text-align:center;
+    padding:40px 35px;
+    border-radius:10px;
+}
+
+.order-service-container form{
+    margin-top:20px;
+    display:flex;
+    gap:30px;
+}
+
+.order-service-container input{
+    font-size:20px;
+    padding:20px 10px;
+    border: 1px solid #d5d5d5;
+    outline: none; 
+}
+
+input:focus {
+    outline: none;
+}
+
+.order-service-container input, .order-service-container button {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.order-service-container button {
+    background: #a52822;
+    color: white;
+    text-transform: uppercase;
+    font-size: 17px;
+    transition: opacity .3s ease;
+}
+
+.order-service-container button:hover{
+    opacity:.8;
+}
