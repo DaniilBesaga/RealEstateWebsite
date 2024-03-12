@@ -1,8 +1,12 @@
 import BuyEstateInfo from '../components/BuyEstateInfo';
+import Header from '../components/Header';
 
 function BuyEstate() {
     return(
-        <BuyEstateInfo></BuyEstateInfo>
+        <div>
+            <Header></Header>
+            <BuyEstateInfo></BuyEstateInfo>
+        </div>
     )
 }
 
