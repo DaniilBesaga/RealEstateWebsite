@@ -1,2 +1,18 @@
-body {
+.help-container, .credit-container, .consult-container, .invest-container, .exhcange-container {
+    animation: appearing 1s forwards;
+    opacity: 0;
+}
+
+@keyframes appearing {
+    20% {
+        opacity: .2;
+    }
+
+    60% {
+        opacity: .6;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
