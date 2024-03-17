@@ -1,2 +1,22 @@
-body {
+
+ul li{
+    font-size: 17px !important;
+}
+
+.ul-buy-for ul p{
+    display:block;
+}
+
+.ul-buy-for i, .ul-buy-for p{
+    display:inline-block;
+}
+
+.invest-container li {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    display: block !important;
+}
+
+.invest-container ul {
+    padding-left: 25px;
 }

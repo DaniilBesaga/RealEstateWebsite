@@ -9,6 +9,7 @@
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist</PublishAssetsDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\components\Новая папка\" />
+    <Folder Include="src\components\services_components\" />
+    <Folder Include="src\style\services_style\" />
   </ItemGroup>
 </Project>
