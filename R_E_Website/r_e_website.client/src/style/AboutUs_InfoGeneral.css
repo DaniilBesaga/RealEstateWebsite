@@ -1,0 +1,86 @@
+.aboutus_info {
+    
+}
+
+.aboutus_info > div:first-child{
+    padding-left: 50px;
+    padding-right: 30px;
+}
+
+.aboutus_info img{
+    float:left;
+    height: auto;
+}
+
+.aboutus_info p{
+    font-size:1.1em;
+    line-height: 1.4em;
+    position:relative;
+}
+
+.text-1{
+    top:50px;
+    margin-bottom:50px;
+}
+
+.text-3{
+    margin-top:30px;
+}
+
+.text-4 {
+    margin-top: 30px;
+}
+
+.text-5 {
+    margin-top: 30px;
+}
+
+.text-6 {
+    margin-top: 30px;
+}
+
+.image_1 {
+    margin-right: 4.45%;
+    width: 33.28%;
+}
+
+.image_2 {
+    margin-left: -8.9%;
+    margin-right: 6.1%;
+    margin-bottom: 5.25%;
+    width: 43.5%;
+}
+
+.image_3 {
+    margin-top: -16.5%;
+    margin-left: 5.35%;
+    width: 32.35%;
+    margin-right: 6.7%;
+    margin-bottom: 5.25%;
+}
+
+.awards-container {
+    background: #d5d5d5;
+    padding: 40px 5%;
+    margin-top:50px;
+}
+
+.awards-container h2{
+    text-align:center;
+    margin-bottom:50px;
+    margin-top:10px;
+}
+
+.awards-container img{
+    height:auto;
+    width: 100%;
+    object-fit: contain;
+}
+
+.awards-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    gap:50px;
+    row-gap:50px;
+}
