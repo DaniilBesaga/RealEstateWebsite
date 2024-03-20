@@ -1,0 +1,72 @@
+.welcome_info_container {
+    background: #f1f1f0;
+    padding: 20px 50px 130px 0px;
+}
+
+.welcome_info_content{
+    display:flex;
+    padding-left:50px;
+}
+
+.inpage-nav {
+    display:inline-block;
+    width:50%;
+    padding:10px 30px;
+}
+
+.inpage-nav a{
+    text-decoration: none;
+    color:black;
+    text-transform: uppercase;
+    font-size:19px;
+    display:block !important;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.inpage-nav a:last-child{
+    margin-top:40px;
+}
+
+.welcome-hello {
+    background: white;
+    border-radius: 10px;
+    padding: 50px 60px;
+    display: inline-block;
+}
+
+.welcome-hello p{
+    margin-top:40px;
+    font-size:1.1em;
+}
+
+.welcome-sub-menu {
+    position: absolute;
+    background: #f1f1f0;
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin-top:-49px !important;
+    visibility: hidden;
+    transition: all .3s ease-out;
+    opacity:0;
+}
+
+.welcome-sub-menu ul{
+    display:inline-block;
+    flex-wrap:wrap;
+}
+
+.welcome-sub-menu li{
+    text-align:left !important;
+}
+
+.welcome-sub-menu ul:not(:first-child){
+    margin-left:130px;
+}
+
+.welcome-sub-menu a{
+    color:black;
+    cursor:pointer;
+    font-size:18px;
+    text-align:right;
+}
