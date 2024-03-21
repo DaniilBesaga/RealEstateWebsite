@@ -39,11 +39,13 @@
 .page-nav span{
     color:gray;
     margin: 0 10px 0 10px;
+    display:inline-block;
 }
 
 .page-nav p{
     opacity: .8;
     color:gray;
+    display:inline-block;
 }
 
 .buy-estate-grid{
