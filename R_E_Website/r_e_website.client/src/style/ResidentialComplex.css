@@ -1,0 +1,16 @@
+.list-container {
+    background: #f1f1f0;
+    padding-top:30px;
+}
+
+.page-nav p:first-child {
+    color: black !important;
+}
+
+.page-nav a:nth-of-type(2) {
+    margin-left: 0 !important;
+}
+
+.page-nav p:last-child {
+    color: #a52822;
+}
