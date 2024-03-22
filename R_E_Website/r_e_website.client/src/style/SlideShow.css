@@ -36,10 +36,10 @@ body {
     margin-right:100px;
 }
 
-.item > div{
-    font-size:55px;
-    margin-top:-650px;
-    margin-left:80px;
+.item-div {
+    font-size: 55px;
+    margin-top: -650px;
+    margin-left: 80px;
 }
 
 .prev-arrow, .next-arrow{

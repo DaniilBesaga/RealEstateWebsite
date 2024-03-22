@@ -19,7 +19,7 @@ function SlideShow() {
                 backgroundImage: `url(${imgArray[slideImage]})`,
             }}>
 
-                <div className={slideImage == 2 ? "changed-align" : ""}>
+                <div className={slideImage == 2 ? "item-div changed-align" : "item-div"}>
                     {titleArray[slideImage].split("\n").map((item, index) => (
                         <span key={index }>
                             {item}

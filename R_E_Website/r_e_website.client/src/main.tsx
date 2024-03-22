@@ -9,7 +9,8 @@ import Contacts from './pages/Contacts'
 import AboutUs_Info from './pages/AboutUs_Info'
 import Helfpful_Info from './pages/Helpful_Info'
 import ResidentialComplexesList from './pages/ResidentialComplexesList'
+import ResidentialComplex from './pages/ResidentialComplex'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <ResidentialComplexesList/>
+    <ResidentialComplex />
 )
