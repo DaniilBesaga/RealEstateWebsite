@@ -1,47 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Philosopher', Helvetica, sans-serif;
-    list-style: none;
-    text-decoration: none;
-}
-
-.districts-list {
-    margin-top: -427px;
-    display: block;
-    background: #f1f1f0;
-    padding: 50px 0px;
-    text-align: center;
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid #d5d5d5;
-}
-
-.districts-list span{
-    display:block;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.districts-list span:not(:last-child){
-    margin-bottom:10px;
-}
-
-.qs-container {
-    margin-top: 100px;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 50px;
-}
-
-.qs-container form{
+.search-container{
+    margin-top:100px;
     display:flex;
+    justify-content:flex-start;
+    padding-left:50px;
 }
 
-.qs-container > div{
+.search-container > div{
     padding-left:10px;
     padding-right:10px;
     border-right: 1px solid black;
@@ -59,7 +23,7 @@
 }
 
 .search-item-header p{
-    font-size:20px;
+    font-size:14px;
     margin-left:10px;
 }
 
@@ -79,12 +43,7 @@
 
 .search-item-body span{
     margin-right:auto;
-    padding: 10px 300px 10px 21px;
-}
-
-.search-item-body svg{
-    display:inline-block;
-    margin-left:20px;
+    padding: 10px 100px 10px 21px;
 }
 
 .search-item-body i{
@@ -92,8 +51,8 @@
 }
 
 .search-item-body input{
-    width:150px;
-    height: 50px;
+    width:100px;
+    height: 46px;
     border-radius: 10px;
     border: 1px solid #d5d5d5;
     
@@ -103,19 +62,19 @@
 
 .rooms-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     border: 0;
     background: #f1f1f0;
     gap:1px;
-    padding:0 40px 0 0;
+    padding:0 30px 0 0;
 }
 
 .rooms-container div {
     border: 2px solid #d5d5d5;
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 8px 13px;
     background:white;
-    font-size:19px;
+    font-size:17px;
     text-align:center;
 }
 
@@ -123,25 +82,33 @@
     font-size: 20px;
 }
 
-.pricing-inputs {
-    background: #f1f1f0;
-    border: 0;
-    gap: 10px;
-    border-left: 2px solid black;
-    padding-left: 30px;
-    border-radius:0;
+.svg-container{
+    display:flex;
+    gap:10px;
+    text-align:center;
+    align-items:center;
 }
 
-.currency-icon {
-    display: inline-block;
-    width: 23px;
-    height: 23px;
-    border-radius: 11px;
+.svg-container div{
+    padding: 7px;
+    font-size:1px;
+}
+
+.svg-container svg{
+    width:30px;
+    height:30px;
+}
+
+.currency-icon{
+    display:inline-block;
+    width:23px;
+    height:23px;
+    border-radius:11px;
     border: 1px solid #d5d5d5;
-    vertical-align: middle;
+    vertical-align:middle;
     transition: all .2s ease;
-    position: relative;
-    margin-right: 2px;
+    position:relative;
+    margin-right:2px;
 }
 
 .currency-icon::before{
@@ -160,11 +127,12 @@
 
 
 .search-b {
+    
     text-transform: uppercase;
     color: white;
     transition: all .7s ease;
     background: #a52722;
-    width: 200px;
-    height: 50px;
-    margin-left:30px;
+    width: 170px;
+    height: 46px;
+    
 }
