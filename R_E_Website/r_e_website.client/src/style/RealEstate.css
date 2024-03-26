@@ -108,3 +108,80 @@
     display: flex;
     align-items: center;
 }
+
+.block-container {
+    display:flex;
+    padding:50px;
+    gap:30px;
+}
+
+.block-container div{
+   
+}
+
+.block-box-img {
+    width: 33%;
+    float: left;
+    padding-top: 10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://db.profirealt.com.ua/data/i/Flat/75631/scale_500x400_70_90588afa41fef0067bee6f27e5e6be64image_8.jpg");
+    background-position: center;
+}
+
+.block-box-img img{
+    height:auto;
+    
+}
+
+.ul-block{
+    
+    width:90%;
+    /*flex-grow:3;*/
+}
+
+.ul-block .info1{
+    margin-left:10px;
+    gap:10px;
+    padding-bottom:10px;
+    font-size:18px;
+}
+
+.action-block{
+    /*flex-grow:2;*/
+    width:30%;
+    float:right;
+}
+
+.uls-container li:nth-child(even) {
+    background: #f1f1f0 !important;
+}
+
+.uls-container li:nth-child(odd) {
+    background: white !important;
+}
+
+.action-block .info3{
+    font-size:18px;
+}
+
+.action-block .info3 i{
+    font-size:30px;
+    margin-right:10px;
+}
+
+.action-block button {
+    background: #a52722;
+    color:white;
+    text-transform:uppercase;
+    font-size:13px;
+    font-weight:600;
+    padding:10px 25px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+.action-block button i{
+    font-size:20px;
+    margin-right:10px;
+}

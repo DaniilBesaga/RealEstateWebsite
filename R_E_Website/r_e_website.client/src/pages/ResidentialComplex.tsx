@@ -21,7 +21,7 @@ function ResidentialComplex() {
                     </div>
 
                 </div>
-                <ResidentialComplexItem/>
+                <ResidentialComplexItem itemType={'estate'} shortDisplay />
             </div>
             <div style={{ marginTop: -100 }}>
                 <Footer />
