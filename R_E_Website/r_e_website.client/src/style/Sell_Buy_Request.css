@@ -1,0 +1,215 @@
+.form-container{
+    padding:50px;
+    background:white;
+    border-radius:10px;
+    height:0;
+    opacity: 0;
+}
+
+.open {
+    height: 100%;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.form-container form span{
+    font-weight:600;
+    font-size:22px;
+}
+
+.form-container form{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+}
+
+.form-container p{
+    font-size:16px !important;
+}
+
+.sec-col svg:not(div:first-of-type){
+    margin-left:10px;
+}
+
+.svg-container svg{
+    margin-left:0 !important;
+}
+
+.first-col {
+    display: inline-block;
+}
+
+.form-container input, .form-container textarea, .form-container button {
+    width: 100%;
+}
+
+.inputs{
+    margin-top:30px;
+}
+
+.inputs input{
+    display:block;
+    font-size:1.1em;
+    border-radius:10px;
+    border:1px solid #d5d5d5;
+    
+}
+
+.bigger-input {
+    padding: 20px 15px;
+    margin-top:15px;
+}
+
+.smaller-input{
+    padding:15px 10px;
+}
+
+.location-div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 5px solid rgba(213, 213, 213, 0.7);
+    border-bottom: 5px solid rgba(213, 213, 213, 0.7);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.location-div .inputs{
+    margin-top:0px;
+}
+
+.location-div input:not(input:first-of-type){
+    margin-top:10px;
+}
+
+.sec-col{
+    display:inline-block;
+}
+
+.svg-container{
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:10px;
+    gap: 20px !important;
+}
+
+.svg-container > div > div {
+    padding-left:10px;
+    padding-right:10px;
+    margin-bottom:5px;
+}
+
+.svg-container svg{
+    width:33px !important;
+    height:33px !important;
+}
+
+.svg-container span{
+    font-weight:500 !important;
+    font-size:13px !important;
+}
+
+.rooms-container {
+    grid-template-columns: repeat(5, 1fr) !important;
+    background: white !important;
+    gap: 15px !important;
+    padding: 0 !important;
+}
+
+.rooms-container div{
+    padding: 10px 15px !important;
+}
+
+.add-info > div:first-of-type {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-info > div:first-of-type span{
+    font-size:16px;
+}
+
+.add-info > div:first-of-type i{
+    font-size:22px;
+}
+
+.add-info .search-item-header {
+    padding-top:10px;
+    padding-bottom:0;
+}
+
+.add-info .inputs {
+    margin-top: 0px;
+}
+
+.add-info input {
+    margin-top: 10px;
+}
+
+.add-info-window {
+    overflow: hidden;
+    height: 0px;
+    transition: height 0.5s;
+}
+
+.visible {
+    height: 230px;
+    transition: height 0.5s;
+}
+
+.pricing {
+    border-top: 5px solid rgba(213, 213, 213, 0.7);
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.third-col textarea {
+    display: block;
+    padding: 15px;
+    font-size: 19px;
+    border-radius: 10px;
+    height: 550px;
+    width: 100%;
+}
+
+.send-button {
+    margin-top: 30px;
+    background: #a52722;
+    text-transform:uppercase;
+    color:white;
+    padding:15px 10px;
+    font-size:14px;
+}
+
+@keyframes expandAnimation {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+
+    100% {
+        height: 565px;
+        opacity: 1;
+    }
+}
+
+.opened {
+    animation: expandAnimation .8s ease forwards;
+}
+
+@keyframes expandAnimation-i {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+
+    100% {
+        height: auto;
+        opacity: 1;
+    }
+}
+
+.opened-i {
+    animation: expandAnimation-i .8s ease forwards;
+}
+

@@ -27,7 +27,7 @@
     margin-left:10px;
 }
 
-.search-item-body, .svg-container div {
+.search-item-body, .svg-container > div > div {
     background: white;
     font-size: 18px;
     border: 1px solid #d5d5d5;
@@ -90,7 +90,7 @@
 }
 
 .svg-container div{
-    padding: 7px;
+    padding: 7px 3px;
     font-size:1px;
 }
 

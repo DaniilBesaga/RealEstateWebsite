@@ -1,0 +1,44 @@
+.request-container {
+    
+}
+
+.request-grid {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 0px 30px;
+}
+
+.info {
+    margin-top:50px;
+}
+
+.info p{
+    font-size:1.1em;
+}
+
+.info h2{
+    font-weight:600;
+    font-size:23px;
+}
+
+.request-nav{
+    margin-top:50px;
+}
+
+.request-nav div{
+    padding:20px 15px;
+    border-radius:10px 0px 0px 10px;
+    background:white;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+}
+
+.request-nav div:hover svg{
+    fill: #a52722;
+}
+
+.active{
+    background:white;
+}

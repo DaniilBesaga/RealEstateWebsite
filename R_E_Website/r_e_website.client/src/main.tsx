@@ -11,7 +11,8 @@ import Helfpful_Info from './pages/Helpful_Info'
 import ResidentialComplexesList from './pages/ResidentialComplexesList'
 import ResidentialComplex from './pages/ResidentialComplex'
 import Catalog from './pages/Catalog'
+import Request from './pages/Request'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <Catalog />
+    <Request />
 )

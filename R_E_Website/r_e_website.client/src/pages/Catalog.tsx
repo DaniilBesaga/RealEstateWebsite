@@ -103,7 +103,7 @@ function ResidentialComplex() {
 
             <div style={{ marginTop: -100 }}>
                 <Footer />
-            div</div>
+            </div>
         </div>
 
     )
