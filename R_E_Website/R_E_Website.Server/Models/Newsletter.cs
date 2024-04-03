@@ -6,6 +6,11 @@ namespace R_E_Website.Server.Models
 {
     public class Newsletter
     {
+        [Required]
+        [Key]
+        [Column("newsletter_id")]
+        public int Id { get; set; }
+
         [Column("email")]
         [EmailAddress]
         public required string Email { get; set; }

@@ -26,6 +26,6 @@ namespace R_E_Website.Server.Models
 
         [Column("request_id")]
         public int RequestId { get; set; }
-        public Request request { get; set; }
+        public Request Request { get; set; }
     }
 }

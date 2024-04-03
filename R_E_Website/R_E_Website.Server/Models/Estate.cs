@@ -19,42 +19,50 @@ namespace R_E_Website.Server.Models
         public string ImgsUrlFolder { get; set; }
 
         [Column("city")]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         [Column("district")]
-        public string District { get; set; }
+        public string? District { get; set; }
+
+        [Column("estate_address")]
+        public string? EstateAddress { get; set; }
 
         [Column("totalSquare")]
-        public int TotalSquare { get; set; }
+        public int? TotalSquare { get; set; }
 
         [Column("livingSquare")]
-        public int LivingSquare { get; set; }
+        public int? LivingSquare { get; set; }
 
         [Column("kitchenSquare")]
         public int KitchenSquare { get; set; }
 
-        
-
         [Column("floorsNumber")]
-        public int FloorsNumber { get; set; }
+        public int? FloorsNumber { get; set; }
+
+        [Column("estate_floor")]
+        public int? EstateFloor { get; set; }
+
+        [Column("price_uah")]
+        public int PriceUah { get; set; }
+
+        [Column("price_usd")]
+        public int PriceUsd  => PriceUah * 39; 
 
         [Column("houseSeria")]
-        public int HouseSeria { get; set; }
+        public int? HouseSeria { get; set; }
 
         [Column("houseMaterial")]
-        public int HouseMaterial { get; set; }
+        public int? HouseMaterial { get; set; }
 
         [Column("discriptiion")]
-        public int Discriptiion { get; set; }
+        public string Discription { get; set; }
 
         [Column("iframeUrl")]
-        public int IFrameUrl { get; set; }
+        public string? IFrameUrl { get; set; }
 
         [Column("phonenumber")]
         [Phone]
         public int PhoneNumber { get; set; }
-
-        public EstateThumbnail? EstateThumbnail { get; set; }
         
     }
 }

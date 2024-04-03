@@ -11,7 +11,10 @@ namespace R_E_Website.Server.Models
         [Column("complex_id")]
         public int Id { get; set; }
 
-        [Column("imgsUrl")]
+        [Column("complex_name")]
+        public string ComplexName {  get; set; }
+
+        [Column("imgs_url")]
         public string ImgsUrlFolder { get; set; }
 
         [Column("class_type")]
@@ -41,6 +44,6 @@ namespace R_E_Website.Server.Models
         [Column("description")]
         public string Description { get; set; }
 
-        public ComplexThumbnail? ComplexThumbnail { get; set; }
+        
     }
 }

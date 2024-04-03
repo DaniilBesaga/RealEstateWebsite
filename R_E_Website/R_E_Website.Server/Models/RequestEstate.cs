@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace R_E_Website.Server.Models
 {
-    public class RequestEstate
+    public class RequestEstate : Estate
     {
         [Required]
         [Key]
@@ -11,6 +11,6 @@ namespace R_E_Website.Server.Models
         public int Id { get; set; }
         [Column("request_id")]
         public int RequestId { get; set; }
-        public Request request { get; set; }
+        public Request Request { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace R_E_Website.Server.Models
         [Column("client_info")]
         public ClientInfo ClientInfo { get; set; }
         [Column("estate_info")]
-        public Estate EstateInfo { get; set; }
+        public RequestEstate EstateInfo { get; set; }
 
         [Column("add_info")]
         public string? AdditionalInfo { get; set; }
