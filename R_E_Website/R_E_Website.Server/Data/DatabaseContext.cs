@@ -270,7 +270,67 @@ namespace R_E_Website.Server.Data
 
             #region land
 
-
+            new Estate()
+            {
+                Id = 9,
+                City = "Виноградів",
+                EstateAddress = "Черешнева, 38",
+                TotalSquare = 100,
+                EstateType = Enums.EstateType.Land,
+                PriceUah = 1370000,
+                IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.133083235615!2d23.02698667629793!3d48.14623947124443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47383a6bf94f9bf5%3A0xa82c66cba6bb5f2a!2z0LLRg9C70LjRhtGPINCn0LXRgNC10YjQvdC10LLQsCwgMzgsINCS0LjQvdC-0LPRgNCw0LTRltCyLCDQl9Cw0LrQsNGA0L_QsNGC0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsINCj0LrRgNCw0ZfQvdCwLCA5MDMwMA!5e0!3m2!1suk!2sro!4v1712229626396!5m2!1suk!2sro",
+                ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/Chereshnevaya38",
+                PhoneNumber = "+380-96-566-11-04",
+                Discription = "Продається земельна ділянка під будівництво будинку. Площа 11 соток, р-н геріатричного " +
+                "пансіонату, \"Школярка\") Комунікації на ділянці відсутні (електрика, газ підведені поруч із ділянкою) " +
+                "Прекрасне розташування. Поруч збудовані будинки"
+            },
+            new Estate()
+            {
+                Id = 10,
+                City = "Новоселиця",
+                EstateAddress = "вулиця Глебова",
+                TotalSquare = 90,
+                EstateType = Enums.EstateType.Land,
+                PriceUah = 1300000,
+                IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.984300952943!2d26.26985727630265!3d48.2261768712533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4734768081c8c617%3A0xeb8ced3f7ac558bd!2z0LLRg9C70LjRhtGPINCT0LvQtdCx0L7QstCwLCDQndC-0LLQvtGB0LXQu9C40YbRjywg0KfQtdGA0L3RltCy0LXRhtGM0LrQsCDQvtCx0LvQsNGB0YLRjCwg0KPQutGA0LDRl9C90LAsIDYwMzAw!5e0!3m2!1suk!2sro!4v1712229814827!5m2!1suk!2sro",
+                ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/HlebovaAlley",
+                PhoneNumber = "+380-96-587-19-54",
+                Discription = "Продається земельна ділянка в чудовому мальовничому місці. Перші Новоселицьі дачі. " +
+                "Діляночка рівненька, доглянута. Вода від башти Світло на ділянці; Газ поруч; Зручний заїзд з " +
+                "центральної дороги"
+            },
+            new Estate()
+            {
+                Id = 11,
+                City = "Київ",
+                EstateAddress = "Лесі Українки бульвар, 13",
+                TotalSquare = 80,
+                EstateType = Enums.EstateType.Land,
+                PriceUah = 600000,
+                IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.56769444266!2d30.5355076407809!3d50.43052567935468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf0f6f0b8c3b%3A0x7c900d268facc356!2z0LHRg9C70YzQstCw0YAg0JvQtdGB0ZYg0KPQutGA0LDRl9C90LrQuCwgMTMsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sro!4v1712230148070!5m2!1suk!2sro",
+                ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/LesiUkrainkiAlley13",
+                PhoneNumber = "+380-98-317-45-11",
+                Discription = "Продаж земельної ділянки сільськогосподарського призначення! Є вода від башні та септик. " +
+                "Газ та світло поруч з ділянкою. На ділянці деревʼяний будинок. Частково зроблений паркан. Вулиця обжита. " +
+                "Дуже гарне місце та спокійне місце розташування."
+            },
+            new Estate()
+            {
+                Id = 12,
+                City = "Гостомель",
+                EstateAddress = "Остромирська вулиця, 7",
+                TotalSquare = 95,
+                EstateType = Enums.EstateType.Land,
+                PriceUah = 750000,
+                IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2533.8296166013656!2d30.21313027644506!3d50.57453177161618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b31d53781c73d%3A0xf0b1c5ff34c1bced!2z0LLRg9C70LjRhtGPINCe0YHRgtGA0L7QvNC40YDRgdGM0LrQsCwgNywg0JPQvtGB0YLQvtC80LXQu9GMLCDQmtC40ZfQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCDQo9C60YDQsNGX0L3QsCwgMDgyODk!5e0!3m2!1suk!2sro!4v1712230186713!5m2!1suk!2sro",
+                ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/OstromirskaStreet7",
+                PhoneNumber = "+380-95-321-69-66",
+                Discription = "Продається земельна ділянка у мальовничому місці біля лісу, чудове місце для будівництва " +
+                "будинку своєї мрії! На ділянці підключене світло 16 кВат, газова труба проходить по під ділянку - " +
+                "є можливість підключення! Ділянка рівна прямокутна правильної форми. До центру міста 3 хвилини " +
+                "автомобілем. Аналогів в місті не знайдете!"
+            },
 
             #endregion land
 
@@ -467,6 +527,8 @@ namespace R_E_Website.Server.Data
             );
             #endregion reviews
 
+            #region complexes
+
             modelBuilder.Entity<Complex>().HasData(
                 new Complex()
                 {
@@ -642,6 +704,7 @@ namespace R_E_Website.Server.Data
                     "якості та передові технології, що дозволяють створити справжній витвір мистецтва."
                 }
             );
+            #endregion complexes
         }
     }
 }
