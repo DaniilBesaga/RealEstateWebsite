@@ -4,5 +4,6 @@
     {
         Comfort,
         Business,
+        Elite
     }
 }

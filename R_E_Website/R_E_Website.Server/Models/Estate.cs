@@ -21,6 +21,12 @@ namespace R_E_Website.Server.Models
         [Column("city")]
         public string? City { get; set; }
 
+        [Column("complexName")]
+        public string? ComplexName { get; set; }
+
+        [Column("complexUrl")]
+        public string? ComplexUrl { get; set; }
+
         [Column("district")]
         public string? District { get; set; }
 
@@ -36,8 +42,11 @@ namespace R_E_Website.Server.Models
         [Column("kitchenSquare")]
         public int KitchenSquare { get; set; }
 
+        [Column("roomCount")]
+        public int? RoomCount { get; set; }
+
         [Column("floorsNumber")]
-        public int? FloorsNumber { get; set; }
+        public int? NumberOfFloors { get; set; }
 
         [Column("estate_floor")]
         public int? EstateFloor { get; set; }
@@ -49,10 +58,13 @@ namespace R_E_Website.Server.Models
         public int PriceUsd  => PriceUah * 39; 
 
         [Column("houseSeria")]
-        public int? HouseSeria { get; set; }
+        public string? HouseSeria { get; set; }
+
+        [Column("houseArea")]
+        public int? HouseArea { get; set; }
 
         [Column("houseMaterial")]
-        public int? HouseMaterial { get; set; }
+        public string? HouseMaterial { get; set; }
 
         [Column("discriptiion")]
         public string Discription { get; set; }
@@ -62,7 +74,7 @@ namespace R_E_Website.Server.Models
 
         [Column("phonenumber")]
         [Phone]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         
     }
 }

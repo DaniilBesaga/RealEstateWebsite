@@ -30,7 +30,7 @@ namespace R_E_Website.Server.Models
         public string BuildTechnology { get; set; }
 
         [Column("houses_count")]
-        public int HousesCount { get; set; }
+        public int HouseCount { get; set; }
 
         [Column("commisioned_year")]
         public int CommisionedYear { get; set; }
