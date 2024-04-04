@@ -8,20 +8,20 @@ namespace R_E_Website.Server.Controllers
 {
     public class ComplexController : ControllerBase
     {
-        private IGenericRepository<Newsletter> _complexRepository;
-        public ComplexController(IGenericRepository<Newsletter> complexRepository)
+        private IGenericRepository<Models.Complex> _complexRepository;
+        public ComplexController(IGenericRepository<Models.Complex> complexRepository)
         {
             _complexRepository = complexRepository;
         }
         [HttpGet]
-        public async Task<ActionResult> GetCategory()
+        public async Task<ActionResult> GetComplexes()
         {
             var complexes = await _complexRepository.GetAllAsync();
             return Ok(complexes);
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult> GetCategoryById(Guid id)
+        public async Task<ActionResult> GetComplexById(int id)
         {
             var complex = await _complexRepository.GetByIdAsync(id);
 
@@ -34,7 +34,7 @@ namespace R_E_Website.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateCategory([FromBody] Newsletter complex)
+        public async Task<ActionResult> CreateComplex([FromBody] Models.Complex complex)
         {
             if (complex == null)
             {
@@ -43,11 +43,11 @@ namespace R_E_Website.Server.Controllers
 
             await _complexRepository.InsertAsync(complex);
 
-            return CreatedAtAction(nameof(GetCategoryById), new { id = complex.Id }, complex);
+            return CreatedAtAction(nameof(GetComplexById), new { id = complex.Id }, complex);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCategory(int id, [FromBody] Newsletter complex)
+        public async Task<ActionResult> UpdateComplex(int id, [FromBody] Models.Complex complex)
         {
             if (complex == null || id != complex.Id)
             {
@@ -66,7 +66,7 @@ namespace R_E_Website.Server.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteComplex(int id)
         {
             var existingComplex = await _complexRepository.GetByIdAsync(id);
             if (existingComplex == null)

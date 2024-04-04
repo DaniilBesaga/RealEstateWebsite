@@ -4,6 +4,8 @@ using R_E_Website.Server.Models;
 
 namespace R_E_Website.Server.Controllers
 {
+    [ApiController]
+    [Route("[api/controller]")]
     public class NewsletterController : ControllerBase
     {
         private IGenericRepository<Newsletter> _newsletterRepository;
@@ -12,14 +14,14 @@ namespace R_E_Website.Server.Controllers
             _newsletterRepository = newsletterRepository;
         }
         [HttpGet]
-        public async Task<ActionResult> GetCategory()
+        public async Task<ActionResult> GetNewsletters()
         {
             var newsletters = await _newsletterRepository.GetAllAsync();
             return Ok(newsletters);
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult> GetCategoryById(Guid id)
+        public async Task<ActionResult> GetNewsletterById(int id)
         {
             var newsletter = await _newsletterRepository.GetByIdAsync(id);
 
@@ -32,7 +34,7 @@ namespace R_E_Website.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateCategory([FromBody] Newsletter newsletter)
+        public async Task<ActionResult> CreateNewsletter([FromBody] Newsletter newsletter)
         {
             if (newsletter == null)
             {
@@ -41,13 +43,13 @@ namespace R_E_Website.Server.Controllers
 
             await _newsletterRepository.InsertAsync(newsletter);
 
-            return CreatedAtAction(nameof(GetCategoryById), new { id = newsletter.Id }, newsletter);
+            return CreatedAtAction(nameof(GetNewsletterById), new { id = newsletter.Id }, newsletter);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCategory(int id, [FromBody] Newsletter entity)
+        public async Task<ActionResult> UpdateNewsletter(int id, [FromBody] Newsletter newsletter)
         {
-            if (entity == null || id != entity.Id)
+            if (newsletter == null || id != newsletter.Id)
             {
                 return BadRequest();
             }
@@ -64,7 +66,7 @@ namespace R_E_Website.Server.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteNewsletter(int id)
         {
             var existingCategory = await _newsletterRepository.GetByIdAsync(id);
             if (existingCategory == null)

@@ -6,7 +6,7 @@ using R_E_Website.Server.Models;
 
 namespace R_E_Website.Server.Repository
 {
-    public class ComplexDTORepository : GenericRepository<ComplexDTO>, IComplexDTORepository
+    public class ComplexDTORepository : IComplexDTORepository
     {
         private DatabaseContext _context = null;
         public ComplexDTORepository()
