@@ -20,3 +20,8 @@ ul li{
 .invest-container ul {
     padding-left: 25px;
 }
+
+.inner-title-ul {
+    color:black;
+    font-weight:500;
+}

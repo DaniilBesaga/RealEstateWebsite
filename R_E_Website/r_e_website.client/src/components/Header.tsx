@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import '../style/Header.css';
 import 'remixicon/fonts/remixicon.css';
+import { Link } from 'react-router-dom';
 
 function WelcomePage() {
 
@@ -24,14 +25,24 @@ function WelcomePage() {
                 <li onMouseEnter={()=>handleMouseEnter('showCatalog')}
                     onMouseLeave={()=>handleMouseLeave('showCatalog')}>
                     <div style={{ background: displaySubMenu.showCatalog ? "#f1f1f0" : 'white' }}>
-                        <a href="#">Каталог</a>
+                        <Link to="#">
+                            Каталог
+                        </Link>
                         <i className={displaySubMenu.showCatalog ? "ri-arrow-down-s-line rotated" : "ri-arrow-down-s-line"}></i>
                     </div>
                     <ul className="sub-menu" style={{ display: displaySubMenu.showCatalog ? "block" : 'none' }}>
-                        <li><a>Квартири</a></li>
-                        <li><a>Будинки</a></li>
-                        <li><a>Земля</a></li>
-                        <li><a>Комерційна нерухомість</a></li>
+                        <li><Link to="/catalog">
+                            Квартири
+                        </Link></li>
+                        <li><Link to="/catalog">
+                            Будинки
+                        </Link></li>
+                        <li><Link to="/catalog">
+                            Земля
+                        </Link></li>
+                        <li><Link to="/catalog">
+                            Комерційна нерухомість
+                        </Link></li>
                     </ul>
                 </li>
                 <li onMouseEnter={() => handleMouseEnter('showServices')}
@@ -41,9 +52,15 @@ function WelcomePage() {
                         <i className={displaySubMenu.showServices ? "ri-arrow-down-s-line rotated" : "ri-arrow-down-s-line"}></i>
                     </div>
                     <ul className="sub-menu" style={{ display: displaySubMenu.showServices ? "block" : 'none' }}>
-                        <li><a>Купівля</a></li>
-                        <li><a>Продаж</a></li>
-                        <li><a>Інші послуги</a></li>
+                        <li><Link to="/pokupka-neruhomosti">
+                            Купівля
+                        </Link></li>
+                        <li><Link to="/prodazh-neruhomosti">
+                            Продаж
+                        </Link></li>
+                        <li><Link to="/services">
+                            Інші послуги
+                        </Link></li>
                     </ul>
                 </li>
                 <li onMouseEnter={() => handleMouseEnter('showAbout')}
@@ -53,13 +70,17 @@ function WelcomePage() {
                         <i className={displaySubMenu.showAbout ? "ri-arrow-down-s-line rotated" : "ri-arrow-down-s-line"}></i>
                     </div>
                     <ul className="sub-menu" style={{ display: displaySubMenu.showAbout ? "block" : 'none' }}>
-                        <li><a>Інформація</a></li>
+                        <li><Link to="/about">
+                            Інформація
+                        </Link></li>
                         <li><a>Вакансії</a></li>
                         <li><a>Відгуки</a></li>
                     </ul>
                 </li>
                 <li style={{ paddingBottom: 15, paddingTop: 15 }}>
-                    <a href="#">Контакти</a>
+                    <li><Link to="/contact">
+                        Контакти
+                    </Link></li>
                 </li>
                 <li onMouseEnter={() => handleMouseEnter('showElse')}
                     onMouseLeave={() => handleMouseLeave('showElse')}>
@@ -67,7 +88,9 @@ function WelcomePage() {
                         <a href="#">Ще...</a>
                     </div>
                     <ul className="sub-menu" style={{ display: displaySubMenu.showElse ? "block" : 'none' }}>
-                        <li><a>Корисна інформація</a></li>
+                        <li><Link to="/conpendium">
+                            Корисна інформація
+                        </Link></li>
                     </ul>
                 </li>
             </ul>

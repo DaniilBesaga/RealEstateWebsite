@@ -15,5 +15,5 @@ import Request from './pages/Request'
 import MainPage from './pages/MainPage'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <MainPage />
+    <App />
 )

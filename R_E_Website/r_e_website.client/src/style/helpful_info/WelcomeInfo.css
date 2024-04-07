@@ -38,6 +38,11 @@
 .welcome-hello p{
     margin-top:40px;
     font-size:1.1em;
+    color:black;
+}
+
+.welcome-hello h2{
+    color:black !important;
 }
 
 .welcome-sub-menu {
@@ -49,6 +54,7 @@
     visibility: hidden;
     transition: all .3s ease-out;
     opacity:0;
+    z-index:100;
 }
 
 .welcome-sub-menu ul{

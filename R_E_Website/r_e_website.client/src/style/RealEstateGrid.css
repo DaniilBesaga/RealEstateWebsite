@@ -12,6 +12,7 @@
     text-align:center;
     padding-top:50px;
     padding-bottom:50px;
+    margin-top:50px;
 }
 
 .rl-grid-container h2{
@@ -24,6 +25,7 @@
     margin-right:1.5%; 
     background: #f1f1f0;
     margin-bottom: 100px;
+    gap:20px;
 }
 
 .button-action {

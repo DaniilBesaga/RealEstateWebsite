@@ -1,6 +1,7 @@
 ﻿import '../../style/helpful_info/WelcomeInfo.css';
 import '../../style/BuyEstateInfo.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function WelcomeInfo() {
 
@@ -19,7 +20,9 @@ function WelcomeInfo() {
             <div className="welcome_info_content">
                 <div className="inpage-nav">
                     <a onMouseEnter={() => setShowSubmenu(true)}>Серії житлових будинків</a>
-                    <a>Житлові комплекси Києва</a>
+                    <Link to="/resindential-complexes">
+                        Житлові комлекси Києва
+                    </Link>
                 </div>
                 <div className="welcome-hello"  onMouseLeave={() => setShowSubmenu(false)}>
                     <div className="welcome-sub-menu" style={{

@@ -1,6 +1,5 @@
 ﻿import Header from '../components/Header';
 import '../style/Contacts.css';
-import '../style/BuyEstateInfo.css';
 import Footer from '../components/Footer';
 
 function Contacts() {

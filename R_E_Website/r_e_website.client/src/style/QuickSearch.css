@@ -31,10 +31,16 @@
 }
 
 .qs-container {
-    margin-top: 100px;
+    padding-top:30px;
     display: flex;
     justify-content: flex-start;
     padding-left: 50px;
+    background: #f1f1f0;
+    margin-left: 50px;
+    margin-right: 50px;
+    z-index:100;
+    position:absolute;
+    margin-top:-80px;
 }
 
 .qs-container form{
@@ -61,6 +67,7 @@
 .search-item-header p{
     font-size:20px;
     margin-left:10px;
+    color: black;
 }
 
 .search-item-body, .svg-container div {

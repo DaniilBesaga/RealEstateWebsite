@@ -3,6 +3,18 @@
     left:50%;
     transform:translate(-50%, 0);
     position:absolute;
+    color:black !important;
+}
+
+.page-nav h2::before{
+    position: initial;
+    content: initial;
+    background-color: initial;
+    top: initial;
+    left: initial;
+    right: initial;
+    bottom: initial;
+    z-index: initial;
 }
 
 .contacts-container iframe{

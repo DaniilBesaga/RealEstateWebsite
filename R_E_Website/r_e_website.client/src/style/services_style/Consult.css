@@ -40,6 +40,11 @@ section::before{
     margin-left:-20px;
 }
 
+.consult-title p{
+    color:#a52822;
+    font-size:15px !important;
+}
+
 .consult-title span{
     line-height: 2em;
     display: inline-block;
