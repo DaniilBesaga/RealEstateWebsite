@@ -6,6 +6,8 @@ using System.Numerics;
 
 namespace R_E_Website.Server.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class ComplexController : ControllerBase
     {
         private IGenericRepository<Models.Complex> _complexRepository;

@@ -18,6 +18,12 @@ namespace R_E_Website.Server.GenericRepository
             dbSet = _context.Set<T>();
         }
 
+        public GenericRepository(DatabaseContext context)
+        {
+            _context = context;
+            dbSet = _context.Set<T>();
+        }
+
         public async Task DeleteAsync(object id)
         {
             try

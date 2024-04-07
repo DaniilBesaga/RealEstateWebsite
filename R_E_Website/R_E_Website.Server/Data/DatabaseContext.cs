@@ -59,7 +59,9 @@ namespace R_E_Website.Server.Data
                     .WithOne(c => c.Request)
                     .HasForeignKey<ClientInfo>(c => c.RequestId)
                     .OnDelete(DeleteBehavior.Cascade);
-
+            modelBuilder.Entity<Estate>().UseTpcMappingStrategy()
+                .ToTable("Estate");
+            modelBuilder.Entity<RequestEstate>().ToTable("RequestEstate");
 
             modelBuilder.Entity<Estate>().HasData(
             #region flats

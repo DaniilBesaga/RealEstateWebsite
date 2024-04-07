@@ -4,6 +4,8 @@ using R_E_Website.Server.Models;
 
 namespace R_E_Website.Server.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class RequestController : ControllerBase
     {
         private IGenericRepository<Request> _requestRepository;

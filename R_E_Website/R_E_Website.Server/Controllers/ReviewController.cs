@@ -4,6 +4,8 @@ using R_E_Website.Server.Models;
 
 namespace R_E_Website.Server.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class ReviewController : ControllerBase
     {
         private IGenericRepository<Review> _reviewsRepository;
@@ -15,7 +17,7 @@ namespace R_E_Website.Server.Controllers
         public async Task<ActionResult> GetReviews()
         {
             var reviews = await _reviewsRepository.GetAllAsync();
-            return Ok(reviews);
+            return Ok(reviews.ToArray());
         }
 
         [HttpGet("{id:int}")]

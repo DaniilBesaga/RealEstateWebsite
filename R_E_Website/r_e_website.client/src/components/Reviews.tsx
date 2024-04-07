@@ -1,8 +1,19 @@
-﻿import { useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import '../style/Reviews.css';
 import 'remixicon/fonts/remixicon.css';
 
+interface Review {
+    id: number,
+    body: string,
+    author: string,
+    createdAt: Date 
+}
+
 function Reviews() {
+
+    const [reviews, setReviews] = useState<Review[]>();
+
+    useEffect(() => { displayReviews() }, []);
 
     const [firstReviewNumber, setFirstReviewNumber] = useState(0);
 
@@ -11,6 +22,15 @@ function Reviews() {
     const handleSlideButton = (num: number) => {
         setFirstReviewNumber(num);
         setLastReviewNumber(num + 4);
+    }
+
+    async function displayReviews() {
+        const response = await fetch('api/review');
+        console.log(response.headers.get("content-type"));
+        const data = await response.json();
+        console.log(data);
+        setReviews(data);
+        console.log(data);
     }
 
     return (
@@ -73,5 +93,6 @@ const reviewAuthorArray = ['Юлія', 'Андрій', 'Сергей', 'Світ
 const reviewDateArray = ['2024-02-20 19:34:38', '2024-02-15 22:08:24', '2024-02-15 19:36:12',
     '2024-02-12 13:01:11', '2024-01-17 16:59', '2024-10-01 21:55', '2023-26-12 14:42',
     '2023-24-12 15:49', '2024-28-01 14:05', '2024-09-02 16:24', '2023-20-12 19:52', '2023-11-10 13:31'];
+
 
 export default Reviews;

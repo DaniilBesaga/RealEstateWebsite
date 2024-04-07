@@ -12,7 +12,8 @@ import ResidentialComplexesList from './pages/ResidentialComplexesList'
 import ResidentialComplex from './pages/ResidentialComplex'
 import Catalog from './pages/Catalog'
 import Request from './pages/Request'
+import MainPage from './pages/MainPage'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <Request />
+    <MainPage />
 )
