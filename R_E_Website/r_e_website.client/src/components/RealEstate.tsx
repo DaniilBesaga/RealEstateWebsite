@@ -1,7 +1,19 @@
-﻿import { useState } from 'react';
+﻿import { useEffect, useLayoutEffect, useState } from 'react';
 import '../style/RealEstate.css';
 import 'remixicon/fonts/remixicon.css';
 import ResidentialComplexItem from './helpful_info_components/ResidentialComplexItem';
+
+interface EstateDTO {
+    id: number,
+    estateAddress: string,
+    estateFloor: number,
+    estateFloorCount: number,
+    estateSquare: number,
+    estateRoomCount: number,
+    imgUrl: string,
+    priceUah: number,
+    priceUsd: number
+}
 
 function RealState({ display }) {
 
@@ -15,45 +27,65 @@ function RealState({ display }) {
         setWhiteBackground(false);
     }
 
+    const [estates, setEstates] = useState<EstateDTO[]>([]);
+
+    useEffect(() => { displayEstates() }, []);
+
+    async function displayEstates() {
+        setTimeout(async () => {
+            const response = await fetch('/api/estatedto', {
+                headers: new Headers({
+                    'estateType': 'flat'
+                })
+            });
+            const data = await response.json();
+            setEstates(data);
+        }, 1000); // Introducing a 1-second delay
+    }
+
+    
     return (
-        <div>
-            {display == 'grid' && 
-                <a className="promo-item" onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}>
-                    <div className="box-img">
-                        <div className="label label-exclusive"><span>ексклюзив</span></div>
-                    </div>
 
-                    <div className="info" style={{ backgroundColor: whiteBackground ? "white" : "#f1f1f0" }}>
-                        <div className="info1">
-                            <i className="ri-building-line"></i>
-                            Бишевська вулиця, 14
+        <div className="rl-grid-container">
+            {display == 'grid' &&
+                estates.map((item, index) =>
+                    <a className="promo-item" onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave} key={index}>
+                        <div className="box-img" style={{ backgroundImage: `url(${item.imgUrl})` }}>
+                            <div className="label label-exclusive"><span>ексклюзив</span></div>
                         </div>
-                        <div className="info1">
-                            <i className="ri-layout-line"></i>
-                            2 кімнатна
-                        </div>
-                        <div className="info2">
-                            <span className="sq">
-                                <i className="ri-crop-line"></i>
-                                63 кв.м.
-                            </span>
-                            <span className="fl">
-                                <i className="ri-stack-line"></i>
-                                10/11 поверхового
-                            </span>
-                        </div>
-                        <div className="info3">
-                            <i className="ri-money-dollar-circle-line"></i>
-                            2 788 500 ₴
-                            <span className="sep">|</span>
-                            75 000 $
-                        </div>
-                        <div className="info4">
 
+                        <div className="info" style={{ backgroundColor: whiteBackground ? "white" : "#f1f1f0" }}>
+                            <div className="info1">
+                                <i className="ri-building-line"></i>
+                                {item.estateAddress}
+                            </div>
+                            <div className="info1">
+                                <i className="ri-layout-line"></i>
+                                {item.estateRoomCount} кімнатна
+                            </div>
+                            <div className="info2">
+                                <span className="sq">
+                                    <i className="ri-crop-line"></i>
+                                    {item.estateSquare} кв.м.
+                                </span>
+                                <span className="fl">
+                                    <i className="ri-stack-line"></i>
+                                    {item.estateFloor}/{item.estateFloorCount} поверхового
+                                </span>
+                            </div>
+                            <div className="info3">
+                                <i className="ri-money-dollar-circle-line"></i>
+                                {item.priceUah} ₴
+                                <span className="sep">|</span>
+                                {item.priceUsd} $
+                            </div>
+                            <div className="info4">
+
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                )
             }
             {display == 'block' &&
                 <div className="block-container">

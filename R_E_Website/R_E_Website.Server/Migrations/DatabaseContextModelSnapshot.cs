@@ -57,7 +57,7 @@ namespace R_E_Website.Server.Migrations
                     b.HasIndex("RequestId")
                         .IsUnique();
 
-                    b.ToTable("ClientsInfo");
+                    b.ToTable("ClientsInfo", (string)null);
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.Complex", b =>
@@ -120,7 +120,7 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Complexes");
+                    b.ToTable("Complexes", (string)null);
 
                     b.HasData(
                         new
@@ -667,7 +667,7 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Newsletters");
+                    b.ToTable("Newsletters", (string)null);
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.Request", b =>
@@ -689,7 +689,7 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Requests");
+                    b.ToTable("Requests", (string)null);
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.Review", b =>
@@ -717,7 +717,7 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
 
                     b.HasData(
                         new

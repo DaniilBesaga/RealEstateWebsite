@@ -1,56 +1,56 @@
-.search-container{
+.search-container-s{
     margin-top:50px;
     display:flex;
     justify-content:flex-start;
     padding-left:50px;
 }
 
-.search-container > div{
+.search-container-s > div{
     padding-left:10px;
     padding-right:10px;
     border-right: 1px solid #d5d5d5;
 }
 
-.search-item-header{
-    display:flex;
-    padding-bottom:20px;
-    align-items:center;
+.search-item-header-s {
+    display: flex;
+    padding-bottom: 20px;
+    align-items: center;
 }
 
-.search-item-header svg{
+.search-item-header-s svg{
     width:26px;
     height:26px;
 }
 
-.search-item-header p{
+.search-item-header-s p{
     font-size:14px;
     margin-left:10px;
 }
 
-.search-item-body, .svg-container > div > div {
+.search-item-body-s, .svg-container-s > div > div {
     background: white;
     font-size: 18px;
     border: 1px solid #d5d5d5;
     border-radius: 10px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.search-item-body {
+.search-item-body-s {
     margin: 0 auto;
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
 }
 
-.search-item-body span{
+.search-item-body-s span{
     margin-right:auto;
     padding: 10px 100px 10px 21px;
 }
 
-.search-item-body i{
+.search-item-body-s i{
     margin-right:10px;
 }
 
-.search-item-body input{
+.search-item-body-s input{
     width:100px;
     height: 46px;
     border-radius: 10px;
@@ -60,16 +60,16 @@
     padding-left: 10px;
 }
 
-.rooms-container {
+.rooms-container-s {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border: 0;
     background: #f1f1f0;
-    gap:1px;
-    padding:0 30px 0 0;
+    gap: 1px;
+    padding: 0 30px 0 0;
 }
 
-.rooms-container div {
+.rooms-container-s div {
     border: 2px solid #d5d5d5;
     border-radius: 10px;
     padding: 8px 13px;
@@ -78,40 +78,40 @@
     text-align:center;
 }
 
-.search-item-body i {
+.search-item-body-s i {
     font-size: 20px;
 }
 
-.svg-container{
-    display:flex;
-    gap:10px;
-    text-align:center;
-    align-items:center;
+.svg-container-s {
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
 }
 
-.svg-container div{
+.svg-container-s div{
     padding: 7px 3px;
     font-size:1px;
 }
 
-.svg-container svg{
+.svg-container-s svg{
     width:30px;
     height:30px;
 }
 
-.currency-icon{
-    display:inline-block;
-    width:23px;
-    height:23px;
-    border-radius:11px;
+.currency-icon-s {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border-radius: 11px;
     border: 1px solid #d5d5d5;
-    vertical-align:middle;
+    vertical-align: middle;
     transition: all .2s ease;
-    position:relative;
-    margin-right:2px;
+    position: relative;
+    margin-right: 2px;
 }
 
-.currency-icon::before{
+.currency-icon-s::before{
     content: '';
     display: block;
     position: absolute;
@@ -126,13 +126,11 @@
 }
 
 
-.search-b {
-    
+.search-b-s {
     text-transform: uppercase;
     color: white;
     transition: all .7s ease;
     background: #a52722;
     width: 170px;
     height: 46px;
-    
 }

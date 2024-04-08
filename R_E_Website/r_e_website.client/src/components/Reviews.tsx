@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+﻿import { useEffect, useLayoutEffect, useState } from 'react';
 import '../style/Reviews.css';
 import 'remixicon/fonts/remixicon.css';
 
@@ -6,15 +6,15 @@ interface Review {
     id: number,
     body: string,
     author: string,
-    createdAt: Date 
+    created_At: Date 
 }
 
 function Reviews() {
 
-    const [reviews, setReviews] = useState<Review[]>();
-
-    useEffect(() => { displayReviews() }, []);
-
+    const [reviews, setReviews] = useState<Review[]>([]);
+    
+    useLayoutEffect(() => { displayReviews() }, []);
+    
     const [firstReviewNumber, setFirstReviewNumber] = useState(0);
 
     const [lastReviewNumber, setLastReviewNumber] = useState(4);
@@ -25,12 +25,11 @@ function Reviews() {
     }
 
     async function displayReviews() {
-        const response = await fetch('api/review');
-        console.log(response.headers.get("content-type"));
-        const data = await response.json();
-        console.log(data);
-        setReviews(data);
-        console.log(data);
+        setTimeout(async () => {
+            const response = await fetch('/api/review');
+            const data = await response.json();
+            setReviews(data);
+        }, 1000);
     }
 
     return (
@@ -44,14 +43,14 @@ function Reviews() {
                 </div>
                 <div className="reviews-slides">
                     {
-                        reviewAuthorArray.map((item, index) => {
+                        reviews.map((item, index) => {
                             if (index >= firstReviewNumber && index < lastReviewNumber) {
                                 return (
                                     <div className="review">
-                                        <p className="comment">{reviewContentArray[index]}</p>
+                                        <p className="comment">{item.body}</p>
                                         <div>
-                                            <p className="comment-author">{item}</p>
-                                            <p className="comment-date">{reviewDateArray[index]}</p>
+                                            <p className="comment-author">{item.author}</p>
+                                            <p className="comment-date">{item.created_At.toString().replace("T", " ")}</p>
                                         </div>
                                     </div>
                                 )

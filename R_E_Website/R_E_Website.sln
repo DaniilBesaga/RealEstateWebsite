@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R_E_Website.Server", "R_E_Website.Server\R_E_Website.Server.csproj", "{CABCC363-29D3-4E11-A6C3-A2C842D02EF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R_E_Website.Server", "R_E_Website.Server\R_E_Website.Server.csproj", "{CABCC363-29D3-4E11-A6C3-A2C842D02EF1}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "r_e_website.client", "r_e_website.client\r_e_website.client.esproj", "{FA4132D6-61EC-4A87-84CD-FDF1C2527AFC}"
 EndProject

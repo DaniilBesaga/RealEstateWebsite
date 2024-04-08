@@ -54,6 +54,14 @@ export default defineConfig({
                 target: 'https://localhost:7074/',
                 secure: false
             },
+            '^/api/estatedto': {
+                target: 'https://localhost:7074/',
+                secure: false
+            },
+            '^/api/estate': {
+                target: 'https://localhost:7074/',
+                secure: false
+            },
             //'^/pokupka-neruhomosti': {
             //    target: 'https://localhost:7074/',
             //    secure: false

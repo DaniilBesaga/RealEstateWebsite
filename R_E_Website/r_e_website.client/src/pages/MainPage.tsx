@@ -4,7 +4,7 @@ import SellAd from '../components/SellAd.tsx'
 import Reviews from '../components/Reviews.tsx'
 import InstPosts from '../components/InstPosts.tsx'
 import Footer from '../components/Footer.tsx'
-import RealEstateGrid from '../components/RealEstateGrid.tsx'
+import RealEstate from '../components/RealEstate.tsx'
 
 
 function MainPage() {
@@ -12,7 +12,7 @@ function MainPage() {
         <div>
             <Header></Header>
             <SlideShow></SlideShow>
-            <RealEstateGrid></RealEstateGrid>
+            <RealEstate display="grid"></RealEstate>
             <SellAd></SellAd>
             <Reviews></Reviews>
             <InstPosts></InstPosts>

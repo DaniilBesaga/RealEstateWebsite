@@ -31,16 +31,17 @@
 }
 
 .qs-container {
-    padding-top:30px;
+    padding-top: 30px;
     display: flex;
     justify-content: flex-start;
+    padding-right: 50px;
     padding-left: 50px;
     background: #f1f1f0;
     margin-left: 50px;
     margin-right: 50px;
-    z-index:100;
-    position:absolute;
-    margin-top:-80px;
+    z-index: 100;
+    position: absolute;
+    margin-top: -80px;
 }
 
 .qs-container form{

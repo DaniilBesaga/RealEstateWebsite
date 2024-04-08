@@ -11,6 +11,8 @@ namespace R_E_Website.Server.Models
         public string EstateAddress { get; set; }
         public int? EstateSquare { get; set; }     
         public int? EstateFloor { get; set; }
+        public int? EstateFloorCount { get; set; }
+        public int? EstateRoomCount { get; set; }
         public int PriceUah { get; set; }
         public int PriceUsd { get; set; }
     }
