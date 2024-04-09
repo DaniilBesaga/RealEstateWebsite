@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using R_E_Website.Server.Interfaces;
 using R_E_Website.Server.Repository;
 
 namespace R_E_Website.Server.Controllers
@@ -7,16 +8,22 @@ namespace R_E_Website.Server.Controllers
     [Route("api/[controller]")]
     public class ComplexDTOController : ControllerBase
     {
-        private ComplexDTORepository _complexDTORepository;
-        public ComplexDTOController(ComplexDTORepository complexDTORepository)
+        private IComplexDTORepository _complexDTORepository;
+        public ComplexDTOController(IComplexDTORepository complexDTORepository)
         {
             _complexDTORepository = complexDTORepository;
         }
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult> GetComplexDTO(int id)
+        [HttpGet]
+        public async Task<IActionResult> GetAllComplexesDTO()
         {
-            var requestEstates = await _complexDTORepository.GetComplexShortcutByIdAsync(id);
-            return Ok(requestEstates);
+            var complexesDTO = await _complexDTORepository.GetAllComplexesShortcutAsync();
+            return Ok(complexesDTO);
+        }
+        [HttpGet("{name:string}")]
+        public async Task<ActionResult> GetComplexDTO(string name)
+        {
+            var complexDTO = await _complexDTORepository.GetComplexShortcutByNameAsync(name);
+            return Ok(complexDTO);
         }
     }
 }

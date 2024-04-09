@@ -1,7 +1,33 @@
 ﻿import '../../style/SlideShow.css';
 import '../../style/helpful_info/ResidentialComplexItem.css';
 import '../../style/Reviews.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+interface ResidentialComplex {
+    id: number;
+    complexName: string;
+    imgsUrlFolder: string;
+    classType: ClassType;
+    developer: string;
+    numberOfFloors: number;
+    buildTechnology: string;
+    houseCount: number;
+    commisionedYear: number;
+    ceillingHeight: number;
+    parkingType: ParkingType;
+    description: string;
+}
+
+enum ParkingType {
+    Closed,
+    Opened
+}
+
+enum ClassType {
+    Business,
+    Comfort,
+    Elite
+}
 
 function ResidentialComplexItem({ itemType, shortDisplay }) {
 
@@ -9,6 +35,21 @@ function ResidentialComplexItem({ itemType, shortDisplay }) {
 
     const handleSlideButton = (num: number) => {
         setFirstReviewNumber(num);
+    }
+
+    const [complex, setComplex] = useState<ResidentialComplex>([]);
+
+    useEffect(() => { displayComplexes() }, []);
+
+    async function displayComplexes() {
+        setTimeout(async () => {
+            const response = await fetch('/api/complex/name');
+            const data = await response.json();
+            setComplex(data);
+        }, 1000);
+        //const response = await fetch('/api/complexdto');
+        //const data = await response.json();
+        //setComplexes(data);
     }
 
     return (
@@ -48,16 +89,16 @@ function ResidentialComplexItem({ itemType, shortDisplay }) {
                                     <span className="title">Деталі<i className="ri-add-line"></i></span>
                                     <div className="uls-container">
                                         <ul>
-                                            <li><span>Клас</span> <span><b>бізнес</b></span></li>
-                                            <li><span>Забудовник</span> <span><b>Kadorr Group</b></span></li>
-                                            <li><span>Поверховість</span><span><b>22</b></span></li>
-                                            <li><span>Технологія будівництва</span><span><b>монолітно-каркасна</b></span></li>
+                                            <li><span>Клас</span> <span><b>{complex.classType}</b></span></li>
+                                            <li><span>Забудовник</span> <span><b>{complex.developer }</b></span></li>
+                                            <li><span>Поверховість</span><span><b>{complex.numberOfFloors}</b></span></li>
+                                            <li><span>Технологія будівництва</span><span><b>{complex.buildTechnology}</b></span></li>
                                         </ul>
                                         <ul>
-                                            <li><span>Будинків</span> <span><b>1</b></span></li>
-                                            <li><span>Введення в експлуатацію</span> <span><b>2019</b></span></li>
-                                            <li><span>Висота стелі</span><span><b>3.00 м.</b></span></li>
-                                            <li><span>Паркінг</span><span><b>Закритий</b></span></li>
+                                            <li><span>Будинків</span> <span><b>{complex.houseCount}</b></span></li>
+                                            <li><span>Введення в експлуатацію</span> <span><b>{complex.commisionedYear}</b></span></li>
+                                            <li><span>Висота стелі</span><span><b>{complex.ceillingHeight} м.</b></span></li>
+                                            <li><span>Паркінг</span><span><b>{complex.parkingType}</b></span></li>
                                         </ul>
                                     </div>
                                 </div>
