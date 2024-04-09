@@ -12,7 +12,7 @@ function MainPage() {
         <div>
             <Header></Header>
             <SlideShow></SlideShow>
-            <RealEstate display="grid"></RealEstate>
+            <RealEstate display="grid" estateType="house"></RealEstate>
             <SellAd></SellAd>
             <Reviews></Reviews>
             <InstPosts></InstPosts>

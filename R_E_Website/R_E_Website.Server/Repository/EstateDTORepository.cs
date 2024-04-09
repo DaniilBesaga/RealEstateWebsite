@@ -48,12 +48,13 @@ namespace R_E_Website.Server.Repository
 
             BlobContainerClient blobContainerClient = 
                 new BlobContainerClient(connectionString,
-                    $"{estateType}" + "s");
+                    $"{estateType}");
 
             var bs = blobContainerClient.GetBlobs();
             var firstImages = bs
             .GroupBy(blob => blob.Name.Split('/')[0])  
-            .Select(group => group.First()).Select(x => x.Name.Split("/")[1])  
+            .Select(group => group.First())
+            .Select(x => x.Name.Split("/")[1])  
             .ToList();
 
             var estateDTOs = estates.Where(estate=>estate.EstateType ==

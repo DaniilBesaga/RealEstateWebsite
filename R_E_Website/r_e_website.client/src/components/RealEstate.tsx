@@ -1,21 +1,13 @@
-﻿import { useEffect, useLayoutEffect, useState } from 'react';
+﻿import { useState } from 'react';
 import '../style/RealEstate.css';
 import 'remixicon/fonts/remixicon.css';
 import ResidentialComplexItem from './helpful_info_components/ResidentialComplexItem';
+import Flat from './estate_types_components/Flat';
+import House from './estate_types_components/House';
+import Commerce from './estate_types_components/Commerce';
+import Land from './estate_types_components/Land';
 
-interface EstateDTO {
-    id: number,
-    estateAddress: string,
-    estateFloor: number,
-    estateFloorCount: number,
-    estateSquare: number,
-    estateRoomCount: number,
-    imgUrl: string,
-    priceUah: number,
-    priceUsd: number
-}
-
-function RealState({ display }) {
+function RealState({ display, estateType }) {
 
     const [whiteBackground, setWhiteBackground] = useState(false);
 
@@ -27,65 +19,45 @@ function RealState({ display }) {
         setWhiteBackground(false);
     }
 
-    const [estates, setEstates] = useState<EstateDTO[]>([]);
+    //useEffect(() => { displayEstates() }, []);
 
-    useEffect(() => { displayEstates() }, []);
+    //async function displayEstates() {
+    //    setTimeout(async () => {
+    //        const response = await fetch('/api/estatedto', {
+    //            headers: new Headers({
+    //                'estateType': 'flat'
+    //            })
+    //        });
+    //        const data = await response.json();
+    //        setEstates(data);
+    //    }, 1000); // Introducing a 1-second delay
+    //}
 
-    async function displayEstates() {
-        setTimeout(async () => {
-            const response = await fetch('/api/estatedto', {
-                headers: new Headers({
-                    'estateType': 'flat'
-                })
-            });
-            const data = await response.json();
-            setEstates(data);
-        }, 1000); // Introducing a 1-second delay
+    function renderSwitch(et: string) {
+        switch (et) {
+            case 'flat':
+                return <Flat handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                    whiteBackground={whiteBackground} />;
+            case 'house':
+                return <House handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                    whiteBackground={whiteBackground} />;
+            case 'land':
+                return <Land handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                    whiteBackground={whiteBackground} />;
+            case 'commerce':
+                return <Commerce handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                    whiteBackground={whiteBackground} />;
+        }
     }
-
-    
     return (
 
-        <div className="rl-grid-container">
+        <div>
             {display == 'grid' &&
-                estates.map((item, index) =>
-                    <a className="promo-item" onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave} key={index}>
-                        <div className="box-img" style={{ backgroundImage: `url(${item.imgUrl})` }}>
-                            <div className="label label-exclusive"><span>ексклюзив</span></div>
-                        </div>
-
-                        <div className="info" style={{ backgroundColor: whiteBackground ? "white" : "#f1f1f0" }}>
-                            <div className="info1">
-                                <i className="ri-building-line"></i>
-                                {item.estateAddress}
-                            </div>
-                            <div className="info1">
-                                <i className="ri-layout-line"></i>
-                                {item.estateRoomCount} кімнатна
-                            </div>
-                            <div className="info2">
-                                <span className="sq">
-                                    <i className="ri-crop-line"></i>
-                                    {item.estateSquare} кв.м.
-                                </span>
-                                <span className="fl">
-                                    <i className="ri-stack-line"></i>
-                                    {item.estateFloor}/{item.estateFloorCount} поверхового
-                                </span>
-                            </div>
-                            <div className="info3">
-                                <i className="ri-money-dollar-circle-line"></i>
-                                {item.priceUah} ₴
-                                <span className="sep">|</span>
-                                {item.priceUsd} $
-                            </div>
-                            <div className="info4">
-
-                            </div>
-                        </div>
-                    </a>
-                )
+                (renderSwitch(estateType))
             }
             {display == 'block' &&
                 <div className="block-container">

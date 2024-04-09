@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="src\components\services_components\" />
     <Folder Include="src\components\helpful_info_components\" />
+    <Folder Include="src\components\estate_types_components\" />
     <Folder Include="src\style\services_style\" />
     <Folder Include="src\style\helpful_info\" />
   </ItemGroup>
