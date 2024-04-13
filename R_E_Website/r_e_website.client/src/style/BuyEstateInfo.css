@@ -190,36 +190,3 @@
     border-radius:10px;
 }
 
-.order-service-container form{
-    margin-top:20px;
-    display:flex;
-    gap:30px;
-}
-
-.order-service-container input{
-    font-size:20px;
-    padding:20px 10px;
-    border: 1px solid #d5d5d5;
-    outline: none; 
-}
-
-input:focus {
-    outline: none;
-}
-
-.order-service-container input, .order-service-container button {
-    width: 250px;
-    border-radius: 10px;
-}
-
-.order-service-container button {
-    background: #a52822;
-    color: white;
-    text-transform: uppercase;
-    font-size: 17px;
-    transition: opacity .3s ease;
-}
-
-.order-service-container button:hover{
-    opacity:.8;
-}

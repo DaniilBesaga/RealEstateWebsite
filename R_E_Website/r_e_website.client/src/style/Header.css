@@ -172,6 +172,10 @@ header
     margin-top: -10px;
 }
 
+.request a{
+    color: white;
+}
+
 .request:hover{
     background:#c71010;
 }

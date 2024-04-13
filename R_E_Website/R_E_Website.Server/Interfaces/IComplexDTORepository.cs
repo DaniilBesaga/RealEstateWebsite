@@ -5,7 +5,7 @@ namespace R_E_Website.Server.Interfaces
 {
     public interface IComplexDTORepository 
     {
-        Task<ComplexDTO> GetComplexShortcutByNameAsync(string name);
+        Task<ComplexDTO> GetComplexShortcutByNameAsync(int name);
         Task<IEnumerable<ComplexDTO>> GetAllComplexesShortcutAsync();
     }
 }

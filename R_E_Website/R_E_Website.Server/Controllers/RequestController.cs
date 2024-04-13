@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using R_E_Website.Server.GenericRepository;
 using R_E_Website.Server.Models;
+using System.Text.Json;
 
 namespace R_E_Website.Server.Controllers
 {
@@ -34,16 +35,21 @@ namespace R_E_Website.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateRequest([FromBody] Request request)
+        public async Task<ActionResult> CreateRequest([FromBody] JsonDocument request)
         {
-            if (request == null)
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            Request? deserializedObject = JsonSerializer.Deserialize<Request>
+                (request.RootElement.GetRawText(), options);
+            if (deserializedObject == null)
             {
                 return BadRequest();
             }
 
-            await _requestRepository.InsertAsync(request);
-
-            return CreatedAtAction(nameof(GetRequestById), new { id = request.Id }, request);
+            await _requestRepository.InsertAsync(deserializedObject);
+            return CreatedAtAction(nameof(GetRequestById), new { id = deserializedObject.Id }, deserializedObject);
         }
 
         [HttpPut("{id}")]

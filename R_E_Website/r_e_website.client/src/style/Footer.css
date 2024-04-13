@@ -70,6 +70,7 @@
     color:white;
     background:#a52822;
     border-radius: 10px;
+    cursor:pointer;
 }
 
 .part_form_checkboxes{

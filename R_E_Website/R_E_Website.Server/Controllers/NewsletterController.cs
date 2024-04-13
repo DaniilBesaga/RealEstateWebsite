@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
+using R_E_Website.Server.Enums;
 using R_E_Website.Server.GenericRepository;
 using R_E_Website.Server.Models;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace R_E_Website.Server.Controllers
 {
@@ -34,16 +38,40 @@ namespace R_E_Website.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateNewsletter([FromBody] Newsletter newsletter)
+        public async Task<ActionResult> CreateNewsletter([FromBody] JsonDocument newsletter)
         {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            Newsletter? deserializedObject = JsonSerializer.Deserialize<Newsletter>
+                (newsletter.RootElement.GetRawText(), options)!;
+            
+            List<EstateType> est = new List<EstateType>();
+            string name = newsletter.RootElement.GetProperty("estateType").GetString()!;
+            string[] values = name.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            foreach (var value in values)
+            {
+                if (Enum.TryParse(value.Trim(), true, out EstateType parsedEstateType))
+                {
+                    est.Add(parsedEstateType);
+                }
+                else
+                {
+                }
+            }
+
+            deserializedObject.EstateTypes = est.ToArray();
+           
             if (newsletter == null)
             {
                 return BadRequest();
             }
 
-            await _newsletterRepository.InsertAsync(newsletter);
+            await _newsletterRepository.InsertAsync(deserializedObject);
 
-            return CreatedAtAction(nameof(GetNewsletterById), new { id = newsletter.Id }, newsletter);
+            return CreatedAtAction(nameof(GetNewsletterById), new { id = deserializedObject.Id }, deserializedObject);
         }
 
         [HttpPut("{id}")]

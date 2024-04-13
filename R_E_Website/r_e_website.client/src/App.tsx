@@ -10,6 +10,7 @@ import AboutUs_Info from "./pages/AboutUs_Info";
 import Contacts from "./pages/Contacts";
 import Helfpful_Info from "./pages/Helpful_Info";
 import ResidentialComplexesList from "./pages/ResidentialComplexesList";
+import Request from "./pages/Request";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path='/about' element={<AboutUs_Info />} />
                 <Route path='/contact' element={<Contacts />} />
                 <Route path='/conpendium' element={<Helfpful_Info />} />
+                <Route path='/request' element={<Request />} />
                 <Route path='/resindential-complexes' element={<ResidentialComplexesList />} />
             </Routes>
         </Router>

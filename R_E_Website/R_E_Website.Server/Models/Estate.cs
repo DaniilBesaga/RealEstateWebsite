@@ -16,7 +16,7 @@ namespace R_E_Website.Server.Models
         public EstateType EstateType { get; set; }
 
         [Column("imgsUrl")]
-        public string ImgsUrlFolder { get; set; }
+        public string? ImgsUrlFolder { get; set; }
 
         [Column("city")]
         public string? City { get; set; }
@@ -40,7 +40,7 @@ namespace R_E_Website.Server.Models
         public int? LivingSquare { get; set; }
 
         [Column("kitchenSquare")]
-        public int KitchenSquare { get; set; }
+        public int? KitchenSquare { get; set; }
 
         [Column("roomCount")]
         public int? RoomCount { get; set; }
@@ -67,7 +67,7 @@ namespace R_E_Website.Server.Models
         public string? HouseMaterial { get; set; }
 
         [Column("discriptiion")]
-        public string Discription { get; set; }
+        public string? Discription { get; set; }
 
         [Column("iframeUrl")]
         public string? IFrameUrl { get; set; }

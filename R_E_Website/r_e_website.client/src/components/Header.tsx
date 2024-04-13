@@ -108,7 +108,7 @@ function WelcomePage() {
             </ul>
 
             <button className="request">
-                ЗАЛИШИТИ ЗАЯВКУ
+                <Link to="/request">ЗАЛИШИТИ ЗАЯВКУ</Link>
             </button>
 
             <div className="bx bx-menu" id="menu-icon">

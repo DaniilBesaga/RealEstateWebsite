@@ -195,6 +195,7 @@
 
 .opened {
     animation: expandAnimation .8s ease forwards;
+    pointer-events: auto;
 }
 
 @keyframes expandAnimation-i {

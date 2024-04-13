@@ -2,37 +2,119 @@
 import '../style/Footer.css';
 import 'remixicon/fonts/remixicon.css';
 
+interface Newsletter {
+    email: string,
+    estateType: string,
+    roomsCountFrom: number,
+    roomsCountTo: number,
+    totalSquareFrom: number,
+    totalSquareTo: number,
+    priceRangeFrom: number,
+    priceRangeTo: number
+}
+
+enum EstateType {
+    Flat,
+    House,
+    Land,
+    Commerce
+}
 function Footer() {
 
     const [showAdd, setShowAdd] = useState(false);
 
+    const [estateType, setEstateType] = useState<EstateType[]>([]);
+
+    
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>,
+        selectedEstateType: EstateType) => {
+        if (e.target.checked) {
+            setEstateType([...estateType, selectedEstateType])
+            setEstateType(estateType => {
+                setFormData(newsletter => ({ ...newsletter, estateType: estateType.map(type => EstateType[type]).join(", ") }))
+                return estateType;
+            });
+        }
+        else {
+            setEstateType(estateType.filter(type => type != selectedEstateType))
+        }
+        
+    }
+    const validEstateTypes = [
+        EstateType.Flat,
+        EstateType.House,
+        EstateType.Land,
+        EstateType.Commerce
+    ];
+
+    async function postNewsletter() {
+
+        const requestData: Newsletter = {
+            email: formData.email,
+            estateType: formData.estateType.length > 0 ? formData.estateType :
+                validEstateTypes.map(type => EstateType[type]).join(", "),
+            roomsCountFrom: formData.priceRangeFrom,
+            roomsCountTo: formData.priceRangeTo,
+            totalSquareFrom: formData.totalSquareFrom,
+            totalSquareTo: formData.totalSquareTo,
+            priceRangeFrom: formData.priceRangeFrom,
+            priceRangeTo: formData.priceRangeTo
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestData)
+        }
+        const response = await fetch('/api/newsletter', requestOptions);
+        const data = response.json();
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        postNewsletter();
+    }
+
+    const [formData, setFormData] = useState({
+        email: '',
+        estateType: EstateType[EstateType.Flat],
+        roomsCountFrom: 0,
+        roomsCountTo: 0,
+        totalSquareFrom: 0,
+        totalSquareTo: 0,
+        priceRangeFrom: 0,
+        priceRangeTo: 0
+    });
+    
     return (
         <footer className="footer">
             <div className="section-subsc">
                 <span>Підпишіться на нашу розсилку</span>
                 <div className="subsc-form">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="part_form_inner">
-                            <input type="email" placeholder="Ваш email_">
+                            <input type="email" placeholder="Ваш email_"
+                                value={formData.email}
+                                onChange={e => setFormData(newsletter => ({ ...newsletter, email: e.target.value }))}>
                             </input>
-                            <button>ПІДПИСАТИСЯ</button>
+                            <button type="submit">ПІДПИСАТИСЯ</button>
                         </div>
                         <div className="part_form_checkboxes">
                             <span>
-                                <input type="checkbox" value="Квартири" id="flats" />
+                                <input type="checkbox" value="Квартири" id="flats" onChange={(e) => handleCheckboxChange(e, EstateType.Flat)} />
                                 <label htmlFor="flats"> Квартири </label>
                             </span>
                             <span>
-                                <input type="checkbox" value="Будинки" id="houses" />
+                                <input type="checkbox" value="Будинки" id="houses" onChange={(e) => handleCheckboxChange(e, EstateType.House)} />
                                 <label htmlFor="houses"> Будинки </label>
                             </span>
                             <span>
-                                <input type="checkbox" value="Земля" id="ground" />
-                                <label htmlFor="ground"> Земля </label>
+                                <input type="checkbox" value="Земля" id="land" onChange={(e) => handleCheckboxChange(e, EstateType.Land)} />
+                                <label htmlFor="land"> Земля </label>
                             </span>
                             <span>
-                                <input type="checkbox" value="Комерція" id="commerc" />
-                                <label htmlFor="commerc"> Комерція </label>
+                                <input type="checkbox" value="Комерція" id="commerce" onChange={(e) => handleCheckboxChange(e, EstateType.Commerce)} />
+                                <label htmlFor="commerce"> Комерція </label>
                             </span>
                         </div>
                         <div className="add-params">
@@ -43,18 +125,30 @@ function Footer() {
                             <div className={showAdd ? "add-params-grid show" : "add-params-grid hide"}>
                                 <span>
                                     <label>Кіл-сть кімнат:</label>
-                                    <input type="number" placeholder="0"></input>
-                                    <input type="number" placeholder="до"></input>
+                                    <input type="number" placeholder="0"
+                                        value={formData.roomsCountFrom}
+                                        onChange={e => setFormData(newsletter => ({ ...newsletter, roomsCountFrom: parseInt(e.target.value) }))}></input>
+                                    <input type="number" placeholder="до"
+                                        value={formData.roomsCountTo}
+                                        onChange={e => setFormData(newsletter => ({ ...newsletter, roomsCountTo: parseInt(e.target.value) }))}></input>
                                 </span>
                                 <span>
                                     <label>Заг. площа(кв.м):</label>
-                                    <input type="number" placeholder="від"></input>
-                                    <input type="number" placeholder="до"></input>
+                                    <input type="number" placeholder="від"
+                                        value={formData.totalSquareFrom}
+                                        onChange={e => setFormData(newsletter => ({ ...newsletter, totalSquareFrom: parseInt(e.target.value) }))}></input>
+                                    <input type="number" placeholder="до"
+                                        value={formData.totalSquareTo}
+                                        onChange={e => setFormData(newsletter => ({ ...newsletter, totalSquareTo: parseInt(e.target.value) }))}></input>
                                 </span>
                                 <span>
                                     <label>Ціна($):</label>
-                                    <input type="number" placeholder="від"></input>
-                                    <input type="number" placeholder="до"></input>
+                                    <input type="number" placeholder="від"
+                                        value={formData.priceRangeFrom}
+                                        onChange={e => setFormData(newsletter => ({ ...newsletter, priceRangeFrom: parseInt(e.target.value) }))}></input>
+                                    <input type="number" placeholder="до"
+                                        value={formData.priceRangeTo}
+                                        onChange={e => setFormData(newsletter => ({ ...newsletter, priceRangeTo: parseInt(e.target.value) }))}></input>
                                 </span>
                             </div>
                         </div>

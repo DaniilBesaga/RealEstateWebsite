@@ -1,5 +1,6 @@
 ﻿import '../style/BuyEstateInfo.css';
 import 'remixicon/fonts/remixicon.css';
+import OrderService from '../components/OrderService'
 import Footer from './Footer';
 function BuyEstateInfo() {
     return (
@@ -341,17 +342,11 @@ function BuyEstateInfo() {
                 </div>
             </div>
 
-            <div className="order-service-container">
-                <h2>Замовити послугу</h2>
-                <form>
-                    <input type="text" placeholder="Ваше ім'я *"></input>
-                    <input type="text" placeholder="Телефон +38(__) ___ __ __ *"></input>
-                    <button>Відправити</button>
-                </form>
-            </div>
+            <OrderService/>
+            
             <div style={{ marginTop:350 } }>
                 <Footer></Footer>
-            </div>
+            OrderService</div>
         </div>
     )
 }

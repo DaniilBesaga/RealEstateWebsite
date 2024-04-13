@@ -19,8 +19,8 @@ namespace R_E_Website.Server.Controllers
             var complexesDTO = await _complexDTORepository.GetAllComplexesShortcutAsync();
             return Ok(complexesDTO);
         }
-        [HttpGet("{name:string}")]
-        public async Task<ActionResult> GetComplexDTO(string name)
+        [HttpGet("{name:int}")]
+        public async Task<ActionResult> GetComplexDTO(int name)
         {
             var complexDTO = await _complexDTORepository.GetComplexShortcutByNameAsync(name);
             return Ok(complexDTO);

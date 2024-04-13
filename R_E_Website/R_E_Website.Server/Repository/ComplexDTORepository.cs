@@ -16,10 +16,10 @@ namespace R_E_Website.Server.Repository
             _context = context;
             Configuration = configuration;
         }
-        public async Task<ComplexDTO> GetComplexShortcutByNameAsync(string name)
+        public async Task<ComplexDTO> GetComplexShortcutByNameAsync(int name)
         {
             var complex = await _context.Complexes.FirstOrDefaultAsync
-                (i => i.ComplexName == name);
+                (i => i.Id == name);
             return new ComplexDTO()
             {
                 Id = complex.Id,
