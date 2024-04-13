@@ -18,6 +18,7 @@ namespace R_E_Website.Server.Data
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestEstate> RequestsEstate { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<OrderService> OrdersService { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

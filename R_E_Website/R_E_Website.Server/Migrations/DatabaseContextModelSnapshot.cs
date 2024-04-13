@@ -57,7 +57,7 @@ namespace R_E_Website.Server.Migrations
                     b.HasIndex("RequestId")
                         .IsUnique();
 
-                    b.ToTable("ClientsInfo", (string)null);
+                    b.ToTable("ClientsInfo");
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.Complex", b =>
@@ -120,7 +120,7 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Complexes", (string)null);
+                    b.ToTable("Complexes");
 
                     b.HasData(
                         new
@@ -268,7 +268,6 @@ namespace R_E_Website.Server.Migrations
                         .HasColumnName("complexUrl");
 
                     b.Property<string>("Discription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("discriptiion");
 
@@ -305,11 +304,10 @@ namespace R_E_Website.Server.Migrations
                         .HasColumnName("iframeUrl");
 
                     b.Property<string>("ImgsUrlFolder")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("imgsUrl");
 
-                    b.Property<int>("KitchenSquare")
+                    b.Property<int?>("KitchenSquare")
                         .HasColumnType("int")
                         .HasColumnName("kitchenSquare");
 
@@ -518,7 +516,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 2,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.133083235615!2d23.02698667629793!3d48.14623947124443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47383a6bf94f9bf5%3A0xa82c66cba6bb5f2a!2z0LLRg9C70LjRhtGPINCn0LXRgNC10YjQvdC10LLQsCwgMzgsINCS0LjQvdC-0LPRgNCw0LTRltCyLCDQl9Cw0LrQsNGA0L_QsNGC0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsINCj0LrRgNCw0ZfQvdCwLCA5MDMwMA!5e0!3m2!1suk!2sro!4v1712229626396!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/Chereshnevaya38",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-96-566-11-04",
                             PriceUah = 1370000,
                             TotalSquare = 100
@@ -532,7 +529,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 2,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.984300952943!2d26.26985727630265!3d48.2261768712533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4734768081c8c617%3A0xeb8ced3f7ac558bd!2z0LLRg9C70LjRhtGPINCT0LvQtdCx0L7QstCwLCDQndC-0LLQvtGB0LXQu9C40YbRjywg0KfQtdGA0L3RltCy0LXRhtGM0LrQsCDQvtCx0LvQsNGB0YLRjCwg0KPQutGA0LDRl9C90LAsIDYwMzAw!5e0!3m2!1suk!2sro!4v1712229814827!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/HlebovaAlley",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-96-587-19-54",
                             PriceUah = 1300000,
                             TotalSquare = 90
@@ -546,7 +542,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 2,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.56769444266!2d30.5355076407809!3d50.43052567935468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf0f6f0b8c3b%3A0x7c900d268facc356!2z0LHRg9C70YzQstCw0YAg0JvQtdGB0ZYg0KPQutGA0LDRl9C90LrQuCwgMTMsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sro!4v1712230148070!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/LesiUkrainkiAlley13",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-98-317-45-11",
                             PriceUah = 600000,
                             TotalSquare = 80
@@ -560,7 +555,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 2,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2533.8296166013656!2d30.21313027644506!3d50.57453177161618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b31d53781c73d%3A0xf0b1c5ff34c1bced!2z0LLRg9C70LjRhtGPINCe0YHRgtGA0L7QvNC40YDRgdGM0LrQsCwgNywg0JPQvtGB0YLQvtC80LXQu9GMLCDQmtC40ZfQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCDQo9C60YDQsNGX0L3QsCwgMDgyODk!5e0!3m2!1suk!2sro!4v1712230186713!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/OstromirskaStreet7",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-95-321-69-66",
                             PriceUah = 750000,
                             TotalSquare = 95
@@ -574,7 +568,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 3,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.803833157774!2d30.63238427643468!3d50.407493371584046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c5aa28620637%3A0xf657c9de6580e444!2z0LLRg9C70LjRhtGPINCQ0L3QvdC4INCQ0YXQvNCw0YLQvtCy0L7RlywgMTMsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sro!4v1712219664794!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/AnnaAhmatovoiStreet13",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-97-556-15-41",
                             PriceUah = 743000,
                             TotalSquare = 15
@@ -588,7 +581,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 3,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.9999454755944!2d30.35874877644016!3d50.49695877160105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b32cd54d37977%3A0xae0498dab8468d64!2z0LLRg9C70LjRhtGPINCR0LXRgNC60L7QstC10YbRjNC60LAsIDYsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sro!4v1712219827242!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/BerkovetskayaStreet6",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-97-556-15-41",
                             PriceUah = 408000,
                             TotalSquare = 37
@@ -602,7 +594,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 3,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.519780952712!2d30.537083976436204!3d50.43141827158855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf0f2c700001%3A0x2c4f5dbed125502c!2z0LLRg9C70LjRhtGPINCd0LXQvNC40YDQvtCy0LjRh9CwLdCU0LDQvdGH0LXQvdC60LAsIDHQsCwg0JrQuNGX0LIsINCj0LrRgNCw0ZfQvdCwLCAwMTAxMQ!5e0!3m2!1suk!2sro!4v1712220047235!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/DanchenkoSerhiyaStreet1a",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-96-346-10-17",
                             PriceUah = 483000,
                             TotalSquare = 14
@@ -616,7 +607,6 @@ namespace R_E_Website.Server.Migrations
                             EstateType = 3,
                             IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.012433289071!2d30.521661376436725!3d50.44086907159036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ceff91801181%3A0xa4fc3e1b39fcd872!2z0LLRg9C70LjRhtGPINCa0YDQvtC_0LjQstC90LjRhtGM0LrQvtCz0L4sIDEwLCDQmtC40ZfQsiwg0KPQutGA0LDRl9C90LAsIDAyMDAw!5e0!3m2!1suk!2sro!4v1712220189620!5m2!1suk!2sro",
                             ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/KropivnitskogoStreet10",
-                            KitchenSquare = 0,
                             PhoneNumber = "+380-97-056-22-87",
                             PriceUah = 9200000,
                             TotalSquare = 140
@@ -667,7 +657,31 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Newsletters", (string)null);
+                    b.ToTable("Newsletters");
+                });
+
+            modelBuilder.Entity("R_E_Website.Server.Models.OrderService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("order_id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("client_name");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("client_phone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrdersService");
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.Request", b =>
@@ -689,7 +703,7 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Requests", (string)null);
+                    b.ToTable("Requests");
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.Review", b =>
@@ -717,7 +731,7 @@ namespace R_E_Website.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
 
                     b.HasData(
                         new

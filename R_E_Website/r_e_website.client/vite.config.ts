@@ -74,6 +74,10 @@ export default defineConfig({
                 target: 'https://localhost:7074/',
                 secure: false
             },
+            '^/api/orderservice': {
+                target: 'https://localhost:7074/',
+                secure: false
+            },
             //'^/pokupka-neruhomosti': {
             //    target: 'https://localhost:7074/',
             //    secure: false
