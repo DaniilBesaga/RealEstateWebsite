@@ -1,6 +1,7 @@
 ﻿import '../style/Sell_Buy_Request.css';
 import '../style/Search.css';
-import { useEffect, useState } from 'react';
+import { EstateType } from '../estateManagement/EnumEstateType'
+import { useState } from 'react';
 import Request from '../pages/Request';
 
 interface Request {
@@ -47,12 +48,7 @@ enum RequestType {
     Sell,
     Buy
 }
-enum EstateType {
-    Flat,
-    House,
-    Land,
-    Commerce
-}
+
 function Sell_Buy_Request({ type }) {
 
     const [selectedNumber, setSelectedNumber] = useState(0);

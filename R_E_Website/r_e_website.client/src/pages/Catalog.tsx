@@ -6,13 +6,30 @@ import Search from '../components/Search';
 import '../style/ResidentialComplexesList.css';
 import '../style/Catalog.css';
 import RealState from '../components/RealEstate';
-import React from 'react';
+import React, { useState } from 'react';
 
 function ResidentialComplex() {
 
     const [display, setDisplay] = React.useState({
         grid: true, block: false, map: false
     })
+
+    const [formData, setFormData] = useState(0)
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        getRequest()
+    }
+
+    async function getRequest() {
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        }
+        const response = await fetch(`/api/estatedto/${formData}`, requestOptions);
+        const data = response.json();
+    }
 
     return (
         <div>
@@ -30,8 +47,10 @@ function ResidentialComplex() {
                     
                     <h2 style={{ fontSize: 20, fontWeight: 600, marginLeft:-80 }}>Знайди оселю своєї мрії</h2>
                     <div className="search-jk">
-                        <form>
-                            <input type="search" placeholder="Знайти по ID номеру" />
+                        <form onSubmit={handleSubmit}>
+                            <input type="search" placeholder="Знайти по ID номеру"
+                                value={formData}
+                                onChange={e => setFormData(parseInt(e.target.value))}/>
                             <i className="ri-search-line"></i>
                         </form>
                     </div>
@@ -67,35 +86,35 @@ function ResidentialComplex() {
 
                 {display.block && 
                     <div className="items-block">
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
-                        <RealState display={'block'} />
+                        <RealState display={'block'} estateType={'flat'}/>
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} />
                     </div>    
                 }
 
                 {display.grid &&
                     <div className="items-grid">
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
-                        <RealState display={'grid'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'} />
+                        <RealState display={'grid'} estateType={'flat'}/>
                     </div>
                 }
 
