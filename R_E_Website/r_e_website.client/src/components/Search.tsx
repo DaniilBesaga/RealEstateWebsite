@@ -3,11 +3,21 @@ import { IEstateFilter } from '../estateManagement/IEstateFilter'
 import { EstateType } from '../estateManagement/EnumEstateType'
 import { useState } from 'react';
 
-function Search() {
+function Search({onFilters}) {
+
+    const [divColor, setDivColor] = useState({
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false
+    });
 
     const [districtsList, setDisctrictsList] = useState(false);
 
     const [selectedType, setSelectedType] = useState(0);
+
+    const [selectedCur, setSelectedCur] = useState(false);
 
     const [selectedNumber, setSelectedNumber] = useState(0);
 
@@ -22,7 +32,16 @@ function Search() {
 
     const handleNumberSelection = (value: number) => {
         setSelectedNumber(value);
-        setFormData(data => ({ ...data, roomsCountFrom: selectedNumber }))
+        setDivColor((prev) => ({ ...prev, [value]: !prev[value] }));
+
+        const chosenNumbers = Object.entries(divColor)
+            .filter(([key, value]) => value)
+            .map(([key]) => parseInt(key, 10));
+        const minChosen = Math.min(...chosenNumbers);
+        const maxChosen = Math.max(...chosenNumbers);
+
+        setFormData(data => ({ ...data, roomsCountFrom: minChosen }))
+        setFormData(data => ({ ...data, roomsCountTo: maxChosen }))
     };
 
     const [formData, setFormData] = useState({
@@ -45,8 +64,8 @@ function Search() {
             roomsCountTo: formData.roomsCountTo,
             totalSquareFrom: formData.totalSquareFrom,
             totalSquareTo: formData.totalSquareTo,
-            priceRangeFrom: formData.priceRangeFrom,
-            priceRangeTo: formData.priceRangeTo,
+            priceRangeFrom: selectedCur ? formData.priceRangeFrom * 39 : formData.priceRangeFrom,
+            priceRangeTo: selectedCur ? formData.priceRangeTo * 39 : formData.priceRangeTo,
         }
 
         const requestOptions = {
@@ -54,8 +73,9 @@ function Search() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(filterData)
         }
-        const response = await fetch('/api/estatedto', requestOptions);
+        const response = await fetch('/api/estatedto/getbyfilter', requestOptions);
         const data = response.json();
+        onFilters(data);
     }
 
     const handleSubmit = (event) => {
@@ -124,11 +144,11 @@ function Search() {
                     </div>
 
                     <div className="search-item-body-s rooms-container-s">
-                        <div onClick={() => handleNumberSelection(1)}>1</div>
-                        <div onClick={() => handleNumberSelection(2)}>2</div>
-                        <div onClick={() => handleNumberSelection(3)}>3</div>
-                        <div onClick={() => handleNumberSelection(4)}>4</div>
-                        <div onClick={() => handleNumberSelection(5)}>5+</div>
+                        <div onClick={() => handleNumberSelection(1)} style={{ backgroundColor: divColor[1] ? '#a52722' : 'white', color: divColor[1] ? 'white' : 'black' }}>1</div>
+                        <div onClick={() => handleNumberSelection(2)} style={{ backgroundColor: divColor[2] ? '#a52722' : 'white', color: divColor[2] ? 'white' : 'black' }}>2</div>
+                        <div onClick={() => handleNumberSelection(3)} style={{ backgroundColor: divColor[3] ? '#a52722' : 'white', color: divColor[3] ? 'white' : 'black' }}>3</div>
+                        <div onClick={() => handleNumberSelection(4)} style={{ backgroundColor: divColor[4] ? '#a52722' : 'white', color: divColor[4] ? 'white' : 'black' }}>4</div>
+                        <div onClick={() => handleNumberSelection(5)} style={{ backgroundColor: divColor[5] ? '#a52722' : 'white', color: divColor[5] ? 'white' : 'black' }}>5+</div>
                     </div>
 
                 </div>
@@ -148,14 +168,16 @@ function Search() {
 
                 <div>
                     <div className="search-item-header-s">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23"><g transform="translate(0)"><path class="a" d="M19.632,3.368A11.5,11.5,0,0,0,3.368,19.632,11.5,11.5,0,0,0,19.632,3.368ZM11.5,21.652A10.152,10.152,0,1,1,21.652,11.5,10.164,10.164,0,0,1,11.5,21.652Z" transform="translate(0)"></path></g><g transform="translate(7.939 4.331)"><path class="a" d="M181.017,102.9h-1.444a1.491,1.491,0,1,1,0-2.983h2.887a.674.674,0,1,0,0-1.348h-1.491V97.075a.674.674,0,1,0-1.348,0v1.491h-.048a2.839,2.839,0,1,0,0,5.678h1.444a1.491,1.491,0,0,1,0,2.983H178.13a.674.674,0,1,0,0,1.348h1.491v1.491a.674.674,0,1,0,1.348,0v-1.491h.048a2.839,2.839,0,0,0,0-5.678Z" transform="translate(-176.734 -96.401)"></path></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23"><g transform="translate(0)"><path d="M19.632,3.368A11.5,11.5,0,0,0,3.368,19.632,11.5,11.5,0,0,0,19.632,3.368ZM11.5,21.652A10.152,10.152,0,1,1,21.652,11.5,10.164,10.164,0,0,1,11.5,21.652Z" transform="translate(0)"></path></g><g transform="translate(7.939 4.331)"><path className="a" d="M181.017,102.9h-1.444a1.491,1.491,0,1,1,0-2.983h2.887a.674.674,0,1,0,0-1.348h-1.491V97.075a.674.674,0,1,0-1.348,0v1.491h-.048a2.839,2.839,0,1,0,0,5.678h1.444a1.491,1.491,0,0,1,0,2.983H178.13a.674.674,0,1,0,0,1.348h1.491v1.491a.674.674,0,1,0,1.348,0v-1.491h.048a2.839,2.839,0,0,0,0-5.678Z" transform="translate(-176.734 -96.401)"></path></g></svg>
                         <p>Ціна</p>
                         <div style={{ marginLeft: '50px' }}>
-                            <i className="currency-icon-s"></i>
+                            <i className={selectedCur ? "currency-icon-s" : "currency-icon-s active-cur"}
+                                onClick={()=>setSelectedCur(false)}></i>
                             <span>грн</span>
                         </div>
                         <div>
-                            <i className="currency-icon-s"></i>
+                            <i className={selectedCur ? "currency-icon-s active-cur" : "currency-icon-s"}
+                                onClick={() => setSelectedCur(true)}></i>
                             <span>$</span>
                         </div>
                     </div>
@@ -166,7 +188,7 @@ function Search() {
                             onChange={e => setFormData(filter => ({ ...filter, priceRangeFrom: parseInt(e.target.value) }))}></input>
                         <input type="number" placeholder="до"
                             value={formData.priceRangeTo}
-                            onChange={e => setFormData(filter => ({ ...filter, priceRangeFrom: parseInt(e.target.value) }))}></input>
+                            onChange={e => setFormData(filter => ({ ...filter, priceRangeTo: parseInt(e.target.value) }))}></input>
                     </div>
 
                 </div>

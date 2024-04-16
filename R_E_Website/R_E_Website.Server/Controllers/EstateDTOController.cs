@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using R_E_Website.Server.Interfaces;
+using R_E_Website.Server.Models;
 using R_E_Website.Server.Repository;
 
 namespace R_E_Website.Server.Controllers
@@ -15,9 +16,16 @@ namespace R_E_Website.Server.Controllers
             _estateDTORepository = estateDTORepository;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllEstatesDTO([FromHeader] string EstateType)
+        public async Task<IActionResult> GetAllEstatesDTO([FromHeader] string EstateType, [FromHeader] string sort)
         {
-            var requestEstates = await _estateDTORepository.GetAllEstatesShortcutAsync(EstateType);
+            var requestEstates = await _estateDTORepository.GetAllEstatesShortcutAsync(EstateType, sort);
+            return Ok(requestEstates);
+        }
+
+        [HttpPost("getByFilter")]
+        public async Task<IActionResult> GetAllEstatesDTOByFilter([FromBody] FilterEstate filterEstate)
+        {
+            var requestEstates = await _estateDTORepository.GetAllEstatesFilterAsync(filterEstate);
             return Ok(requestEstates);
         }
 

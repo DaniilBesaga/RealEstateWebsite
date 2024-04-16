@@ -79,6 +79,11 @@
     background:white;
     font-size:17px;
     text-align:center;
+    transition: all .8s ease;
+}
+
+.rooms-container-s div:hover{
+    border: 2px solid #a52722;
 }
 
 .search-item-body-s i {
@@ -120,7 +125,7 @@
     margin-right: 2px;
 }
 
-.currency-icon-s::before{
+.active-cur::before{
     content: '';
     display: block;
     position: absolute;

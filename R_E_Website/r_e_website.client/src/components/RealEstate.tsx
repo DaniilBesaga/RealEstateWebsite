@@ -7,7 +7,7 @@ import House from './estate_types_components/House';
 import Commerce from './estate_types_components/Commerce';
 import Land from './estate_types_components/Land';
 
-function RealState({ display, estateType }) {
+function RealState({ display, estateType, filters }) {
 
     const [whiteBackground, setWhiteBackground] = useState(false);
 
@@ -38,19 +38,23 @@ function RealState({ display, estateType }) {
             case 'flat':
                 return <Flat handleMouseEnter={handleMouseEnter}
                     handleMouseLeave={handleMouseLeave}
-                    whiteBackground={whiteBackground} />;
+                    whiteBackground={whiteBackground}
+                    filters={filters} />;
             case 'house':
                 return <House handleMouseEnter={handleMouseEnter}
                     handleMouseLeave={handleMouseLeave}
-                    whiteBackground={whiteBackground} />;
+                    whiteBackground={whiteBackground}
+                    filters={filters} />;
             case 'land':
                 return <Land handleMouseEnter={handleMouseEnter}
                     handleMouseLeave={handleMouseLeave}
-                    whiteBackground={whiteBackground} />;
+                    whiteBackground={whiteBackground}
+                    filters={filters} />;
             case 'commerce':
                 return <Commerce handleMouseEnter={handleMouseEnter}
                     handleMouseLeave={handleMouseLeave}
-                    whiteBackground={whiteBackground} />;
+                    whiteBackground={whiteBackground}
+                    filters={filters} />;
         }
     }
     return (

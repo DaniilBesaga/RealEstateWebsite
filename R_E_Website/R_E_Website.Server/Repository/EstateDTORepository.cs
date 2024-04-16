@@ -38,7 +38,7 @@ namespace R_E_Website.Server.Repository
             };
         }
 
-        public async Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType)
+        public async Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType, string sort)
         {
             var estates = await _context.Estates.ToListAsync();
 
@@ -72,8 +72,62 @@ namespace R_E_Website.Server.Repository
                 PriceUsd = estate.PriceUsd
             }).ToList();
 
+            switch (sort)
+            {
+                case "any":
+                    break;
+                case "descending":
+                    estateDTOs.OrderByDescending(x => x.PriceUah);
+                    break;
+                case "ascending":
+                    estateDTOs.OrderBy(x => x.PriceUah);
+                    break;
+                case "":
+                    break;
+            }
+
             return estateDTOs;
         }
 
+        public async Task<IEnumerable<EstateDTO>> GetAllEstatesFilterAsync(FilterEstate filterEstate)
+        {
+            var estates = await _context.Estates.ToListAsync();
+
+            string connectionString = "DefaultEndpointsProtocol=https;AccountName=profirealt;AccountKey=tvTsQXf/+qyEuXBntsjOPQlEa7HakqgHaf7EJFPz9F52gGnc7LppbkUmNtGMH1JQzmtZ5v3ptDBN+ASt0hWoMA==;EndpointSuffix=core.windows.net";
+
+            BlobContainerClient blobContainerClient =
+                new BlobContainerClient(connectionString,
+                    $"{filterEstate.EstateType}");
+
+            var bs = blobContainerClient.GetBlobs();
+            var firstImages = bs
+            .GroupBy(blob => blob.Name.Split('/')[0])
+            .Select(group => group.First())
+            .Select(x => x.Name.Split("/")[1])
+            .ToList();
+
+            var estateDTOs = estates.Where(estate => estate.EstateType ==
+            filterEstate.EstateType && estate.EstateAddress.Contains(filterEstate.EstateLocation)
+            && estate.TotalSquare >= filterEstate.TotalSquareFrom 
+            && estate.TotalSquare <= filterEstate.TotalSquareTo
+            && (estate.PriceUah >= filterEstate.PriceRangeFrom
+            && estate.PriceUah <= filterEstate.PriceRangeTo)
+            && estate.RoomCount >= filterEstate.RoomsCountFrom
+            && estate.RoomCount <= filterEstate.RoomsCountTo)
+                .Select((estate, index) => new EstateDTO
+                {
+                    Id = estate.Id,
+                    EstateAddress = estate.EstateAddress,
+                    EstateFloor = estate.EstateFloor,
+                    EstateFloorCount = estate.NumberOfFloors,
+                    EstateSquare = estate.TotalSquare,
+                    EstateRoomCount = estate.RoomCount,
+                    ImgUrl = estate.ImgsUrlFolder + $"/{firstImages[index]}",
+                    PriceUah = estate.PriceUah,
+                    PriceUsd = estate.PriceUsd
+                }).ToList();
+
+            return estateDTOs;
+        }
     }
 }

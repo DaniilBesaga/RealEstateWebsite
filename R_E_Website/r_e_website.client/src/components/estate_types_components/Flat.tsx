@@ -4,12 +4,25 @@ import 'remixicon/fonts/remixicon.css';
 import { displayEstates } from '../../estateManagement/estateGetFetch';
 import { EstateDTO } from '../../estateManagement/IEstateDTO';
 import { EstateProps } from '../../estateManagement/estateProps';
-function Flat({ handleMouseEnter, handleMouseLeave, whiteBackground }: EstateProps) {
+function Flat({ handleMouseEnter, handleMouseLeave, whiteBackground, filters }: EstateProps) {
 
     const [flats, setFlats] = useState<EstateDTO[]>([]);
 
-    useEffect(() => { displayEstates('flats').then((data)=> { setFlats(data) }) }, []);
-
+    useEffect(() => {
+        if (filters.length > 0 || (filters instanceof Object && 'id' in filters)) {
+            if (!(filters instanceof Array)) {
+                setFlats([filters]);
+            }
+            else
+                setFlats(filters);
+        } else {
+            displayEstates('flats')
+                .then((data) => {
+                    setFlats(data);
+                })
+        }
+    }, [filters]);
+    
     return (
 
         <div className="rl-grid-container">

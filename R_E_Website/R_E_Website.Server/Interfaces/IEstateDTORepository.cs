@@ -6,6 +6,7 @@ namespace R_E_Website.Server.Interfaces
     public interface IEstateDTORepository
     {
         Task<EstateDTO> GetEstateShortcutByIdAsync(int id);
-        Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType);
+        Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType, string sort);
+        Task<IEnumerable<EstateDTO>> GetAllEstatesFilterAsync(FilterEstate filterEstate);
     }
 }

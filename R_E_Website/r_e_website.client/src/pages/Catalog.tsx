@@ -7,6 +7,7 @@ import '../style/ResidentialComplexesList.css';
 import '../style/Catalog.css';
 import RealState from '../components/RealEstate';
 import React, { useState } from 'react';
+import { EstateDTO } from '../estateManagement/IEstateDTO';
 
 function ResidentialComplex() {
 
@@ -14,21 +15,40 @@ function ResidentialComplex() {
         grid: true, block: false, map: false
     })
 
-    const [formData, setFormData] = useState(0)
+    const [id, setId] = useState(0)
 
-    const handleSubmit = (event) => {
+    const [filters, setFilters] = useState<EstateDTO[]>([]);
+
+    const [sortMethod, setSortMethod] = useState("")
+
+    const handleIdSubmit = (event) => {
         event.preventDefault()
-        getRequest()
+        getByIdRequest()
     }
 
-    async function getRequest() {
+    const handleSortSelection = (sortType: string) => {
+        setSortMethod(sortType)
+        getBySortRequest()
+    }
+
+    async function getByIdRequest() {
         const requestOptions = {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            headers: { 'Content-Type': 'application/json' }
         }
-        const response = await fetch(`/api/estatedto/${formData}`, requestOptions);
-        const data = response.json();
+        const response = await fetch(`/api/estatedto/${id}`, requestOptions);
+        const data = await response.json();
+        setFilters(data)
+    }
+
+    async function getBySortRequest() {
+        const response = await fetch(`/api/estatedto`, {
+            headers: new Headers({
+                'sortMethod': `${sortMethod}`
+            })
+        });
+        const data = await response.json();
+        setFilters(data)
     }
 
     return (
@@ -47,15 +67,15 @@ function ResidentialComplex() {
                     
                     <h2 style={{ fontSize: 20, fontWeight: 600, marginLeft:-80 }}>Знайди оселю своєї мрії</h2>
                     <div className="search-jk">
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <input type="search" placeholder="Знайти по ID номеру"
-                                value={formData}
-                                onChange={e => setFormData(parseInt(e.target.value))}/>
-                            <i className="ri-search-line"></i>
+                                value={id == 0 ? '' : id}
+                                onChange={e => setId(parseInt(e.target.value))}/>
+                            <i className="ri-search-line" onClick={handleIdSubmit}></i>
                         </form>
                     </div>
                 </div>
-                <Search />
+                <Search onFilters={setFilters} />
             </div>
 
             <div className={display.grid ? "grid-container" : "grid-container"}>
@@ -65,6 +85,11 @@ function ResidentialComplex() {
                         <div className="search-item-body sort-menu">
                             <span>Будь-яке</span>
                             <i className="ri-arrow-down-s-line"></i>
+                            <ul>
+                                <li onClick={() => handleSortSelection("any")}>будь-яке</li>
+                                <li onClick={() => handleSortSelection("descending")}>за ціною(зменшення)</li>
+                                <li onClick={() => handleSortSelection("ascending")}>за ціною(збільшення)</li>
+                            </ul>
                         </div>
                     </div>
                     <h1>Каталог Нерухомості</h1>
@@ -86,35 +111,35 @@ function ResidentialComplex() {
 
                 {display.block && 
                     <div className="items-block">
-                        <RealState display={'block'} estateType={'flat'}/>
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
-                        <RealState display={'block'} estateType={'flat'} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} />
                     </div>    
                 }
 
                 {display.grid &&
                     <div className="items-grid">
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'} />
-                        <RealState display={'grid'} estateType={'flat'}/>
+                        <RealState display={'grid'} estateType={'flat'} filters={filters} />
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
+                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
                     </div>
                 }
 
