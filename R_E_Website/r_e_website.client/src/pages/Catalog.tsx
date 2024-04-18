@@ -129,17 +129,6 @@ function ResidentialComplex() {
                 {display.grid &&
                     <div className="items-grid">
                         <RealState display={'grid'} estateType={'flat'} filters={filters} />
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
-                        {/*<RealState display={'grid'} estateType={'flat'} filters={filters} />*/}
                     </div>
                 }
 
