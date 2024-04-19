@@ -29,7 +29,7 @@ enum ClassType {
     Elite
 }
 
-function ResidentialComplexItem({ itemType, shortDisplay }) {
+function ResidentialComplexItem({ itemType, shortDisplay, complex }) {
 
     const [firstReviewNumber, setFirstReviewNumber] = useState(0);
 

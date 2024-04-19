@@ -14,5 +14,6 @@
     <Folder Include="src\components\estate_types_components\" />
     <Folder Include="src\style\services_style\" />
     <Folder Include="src\style\helpful_info\" />
+    <Folder Include="src\complexItemManagement\" />
   </ItemGroup>
 </Project>

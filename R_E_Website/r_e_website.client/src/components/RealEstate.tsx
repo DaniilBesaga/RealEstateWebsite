@@ -19,20 +19,6 @@ function RealState({ display, estateType, filters }) {
         setWhiteBackground(false);
     }
 
-    //useEffect(() => { displayEstates() }, []);
-
-    //async function displayEstates() {
-    //    setTimeout(async () => {
-    //        const response = await fetch('/api/estatedto', {
-    //            headers: new Headers({
-    //                'estateType': 'flat'
-    //            })
-    //        });
-    //        const data = await response.json();
-    //        setEstates(data);
-    //    }, 1000); // Introducing a 1-second delay
-    //}
-
     function renderSwitch(et: string) {
         switch (et) {
             case 'flat':
