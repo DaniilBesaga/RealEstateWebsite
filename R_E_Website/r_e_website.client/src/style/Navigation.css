@@ -1,0 +1,62 @@
+.page-nav {
+    display: flex;
+    font-size: 20px;
+    padding: 0 40px 50px 40px;
+}
+
+.page-nav div{
+    cursor:pointer;
+    display:flex;
+}
+
+.page-nav a{
+    color:black;
+}
+
+.page-nav i{
+    margin-right:10px;
+    margin-top:-5px;
+    font-size:1.5em;
+}
+
+.pave-nav i:first-of-type{
+    
+}
+
+.page-nav span{
+    color:gray;
+    margin: 0 10px 0 10px;
+}
+
+.objectCount{
+    font-weight:600;
+    margin-left:30px !important; 
+    color:black !important;
+    cursor:default;
+}
+
+.page-nav p{
+    opacity: .8;
+    color:gray;
+    display:inline-block;
+}
+
+.page-nav h2{
+    text-align:center;
+    left:50%;
+    transform:translate(-50%, 0);
+    position:absolute;
+    color:black !important;
+    font-size:20px;
+}
+
+.page-nav h2::before{
+    position: initial;
+    content: initial;
+    background-color: initial;
+    top: initial;
+    left: initial;
+    right: initial;
+    bottom: initial;
+    z-index: initial;
+}

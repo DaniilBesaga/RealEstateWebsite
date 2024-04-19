@@ -8,6 +8,7 @@ import '../style/Catalog.css';
 import RealState from '../components/RealEstate';
 import React, { useState } from 'react';
 import { EstateDTO } from '../estateManagement/IEstateDTO';
+import Navigation from '../components/Navigation';
 
 function ResidentialComplex() {
 
@@ -51,30 +52,32 @@ function ResidentialComplex() {
         setFilters(data)
     }
 
+    const searchField = () => {
+        return (
+            <React.Fragment>
+                <div className="search-jk">
+                    <form>
+                        <input
+                            type="search"
+                            placeholder="Знайти по ID номеру"
+                            value={id == 0 ? '' : id}
+                            onChange={e => setId(parseInt(e.target.value))}
+                        />
+                        <i className="ri-search-line" onClick={handleIdSubmit}></i>
+                    </form>
+                </div>
+            </React.Fragment>
+        );
+    }
+
     return (
         <div>
             <Header />
 
             <div className="list-container">
-                <div className="page-nav">
-                    <div>
-                        <i className="ri-arrow-left-s-line"></i>
-                        <a>Головна</a>
-                        <span>/</span>
-                        <a>Квартири</a>
-                        <span style={{ color: 'black', marginLeft:20 }}>863 Об'єктів</span>
-                    </div>
-                    
-                    <h2 style={{ fontSize: 20, fontWeight: 600, marginLeft:-80 }}>Знайди оселю своєї мрії</h2>
-                    <div className="search-jk">
-                        <form>
-                            <input type="search" placeholder="Знайти по ID номеру"
-                                value={id == 0 ? '' : id}
-                                onChange={e => setId(parseInt(e.target.value))}/>
-                            <i className="ri-search-line" onClick={handleIdSubmit}></i>
-                        </form>
-                    </div>
-                </div>
+                <Navigation url={"/, /services"} urlTitle={"Головна/Квартири"}
+                    objectCount={filters.length} header={"Знайди оселю своєї мрії"}
+                    addParams={searchField} />
                 <Search onFilters={setFilters} />
             </div>
 
