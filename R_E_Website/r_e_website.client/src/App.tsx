@@ -3,7 +3,6 @@ import './App.css';
 import MainPage from './pages/MainPage';
 import BuyEstate from './pages/MainPage';
 import Catalog from "./pages/Catalog";
-import BuyEstateInfo from "./components/BuyEstateInfo";
 import SellEstate from "./pages/SellEstate";
 import Services from "./pages/Services";
 import AboutUs_Info from "./pages/AboutUs_Info";
@@ -11,6 +10,7 @@ import Contacts from "./pages/Contacts";
 import Helfpful_Info from "./pages/Helpful_Info";
 import ResidentialComplexesList from "./pages/ResidentialComplexesList";
 import Request from "./pages/Request";
+import ResidentialComplex from "./pages/ResidentialComplex";
 
 function App() {
     return (
@@ -26,6 +26,7 @@ function App() {
                 <Route path='/conpendium' element={<Helfpful_Info />} />
                 <Route path='/request' element={<Request />} />
                 <Route path='/resindential-complexes' element={<ResidentialComplexesList />} />
+                <Route path='/resindential-complex/:id' element={<ResidentialComplex />} />
             </Routes>
         </Router>
     )

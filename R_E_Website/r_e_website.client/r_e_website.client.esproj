@@ -9,6 +9,7 @@
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist</PublishAssetsDirectory>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\components\estate_item_components\details_components\" />
     <Folder Include="src\components\services_components\" />
     <Folder Include="src\components\helpful_info_components\" />
     <Folder Include="src\components\estate_types_components\" />

@@ -13,40 +13,6 @@
     
 }
 
-.page-nav {
-    display: flex;
-    font-size: 20px;
-    padding: 0 40px 50px 40px;
-}
-
-.page-nav div{
-    cursor:pointer;
-}
-
-.page-nav a{
-    color:black;
-    margin-left:40px;
-}
-
-.page-nav i{
-    margin-right:0px;
-    margin-top:-7px;
-    font-size:1.5em;
-    position:absolute;
-}
-
-.page-nav span{
-    color:gray;
-    margin: 0 10px 0 10px;
-    display:inline-block;
-}
-
-.page-nav p{
-    opacity: .8;
-    color:gray;
-    display:inline-block;
-}
-
 .buy-estate-grid{
     padding: 0 50px 0 50px;
     display:grid;

@@ -78,6 +78,10 @@ export default defineConfig({
                 target: 'https://localhost:7074/',
                 secure: false
             },
+            '^/api/complex': {
+                target: 'https://localhost:7074/',
+                secure: false
+            },
             //'^/pokupka-neruhomosti': {
             //    target: 'https://localhost:7074/',
             //    secure: false

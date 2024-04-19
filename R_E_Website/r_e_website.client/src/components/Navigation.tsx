@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+Ôªøimport { ReactNode } from "react";
 import '../../src/style/Navigation.css';
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,7 @@ function Navigaton({ url, urlTitle, objectCount, header, addParams }: Navigation
 
     const splittedUrlsTitle = urlTitle.split('/')
     const splittedUrls = url.split(',')
-    console.log(splittedUrls)
+    
     return (
         <div className="page-nav">
             <div>
@@ -33,7 +33,7 @@ function Navigaton({ url, urlTitle, objectCount, header, addParams }: Navigation
                         }
                     </div>
                 )}
-                <span className="objectCount">{objectCount} Œ·'∫ÍÚ≥‚</span>
+                <span className="objectCount">{objectCount != undefined ? objectCount + "–û–±'—î–∫—Ç—ñ–≤" : ''} </span>
             </div>
 
             <h2>{header}</h2>

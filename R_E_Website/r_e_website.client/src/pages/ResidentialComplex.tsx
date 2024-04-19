@@ -12,7 +12,7 @@ function ResidentialComplex() {
 
     const params = useParams();
     const id = params.id;
-    console.log(params)
+    
     const [complex, setComplex] = useState<IResidentialComplex>(undefined!);
 
     useEffect(() => { displayComplexes() }, []);
@@ -36,7 +36,7 @@ function ResidentialComplex() {
                 <Navigaton url={"/resindential-complex/"}
                     urlTitle={"Головна/Житлові комплекси Києва/044"}
                 />
-                <ResidentialComplexItem itemType={'estate'} shortDisplay complex={complex} />
+                <ResidentialComplexItem itemType={'complex'} shortDisplay complex={complex} />
             </div>
             <div style={{ marginTop: -100 }}>
                 <Footer />
