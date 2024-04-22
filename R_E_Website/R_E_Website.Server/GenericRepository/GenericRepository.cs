@@ -3,6 +3,7 @@ using Azure.Storage.Blobs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
 using R_E_Website.Server.Data;
+using R_E_Website.Server.Enums;
 using R_E_Website.Server.Models;
 using System.Collections.Generic;
 
@@ -78,14 +79,14 @@ namespace R_E_Website.Server.GenericRepository
                     case Estate:
                         Estate e = result as Estate;
                         BlobContainerClient blobContainerClient2 =
-                            new BlobContainerClient(connectionString, "houses");
+                            new BlobContainerClient(connectionString, e.EstateType.ToString().ToLower()+"s");
 
-                        var bs2 = blobContainerClient2.GetBlobs(prefix: "IrpinskaStreet40" + "/");
-                        string url2 = e.ImgsUrlFolder.Split($"{e.EstateAddress.ToLower()}")[0];
+                        var bs2 = blobContainerClient2.GetBlobs(prefix: $"{e.EstateAddressEng}" + "/");
+                        string url2 = e.ImgsUrlFolder.Split($"{e.EstateAddressEng.ToLower()}")[0] + "/";
                         e.ImgsUrlFolder = "";
                         foreach (var image in bs2)
                         {
-                            e.ImgsUrlFolder += url2 + "/" + image.Name.Split('/')[1] + ",";
+                            e.ImgsUrlFolder += url2 + image.Name.Split("/")[1] + ",";
                         }
                         break;
                 }

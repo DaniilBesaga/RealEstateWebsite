@@ -4,6 +4,7 @@ import HouseDetails from "./details_components/HouseDetails";
 import LandDetails from "./details_components/LandDetails";
 import CommerceDetails from "./details_components/CommerceDetails";
 import { EstateType } from "../../estateManagement/EnumEstateType";
+import '../../style/RealEstate.css';
 
 
 function EstateItem({estate}) {
@@ -28,13 +29,12 @@ function EstateItem({estate}) {
                 return <CommerceDetails details={estate} />;
         }
     }
-
+    
     return (
         <div className="r-c-item-grid">
             <div>
                 <div className="item" style={{
-                    backgroundImage: `url(${arr[firstReviewNumber]})`, backgroundPosition: firstReviewNumber == 0 ?
-                        'right 0px top -200px' : ""
+                    backgroundImage: `url(${arr[firstReviewNumber]})`
                 }}>
                     <div className="prev-arrow" style={{ display: firstReviewNumber == 0 ? "none" : "initial" }}>
                         <i className="ri-arrow-left-s-line" onClick={() => handleSlideButton(firstReviewNumber - 1)}></i>
@@ -61,10 +61,10 @@ function EstateItem({estate}) {
                     <span className="title">Деталі<i className="ri-add-line"></i></span>
                     {(renderSwitch(estate.estateType))}
                 </div>
-                <div>
+                <div style={{marginTop:10} }>
                     <span className="title">Опис<i className="ri-add-line"></i></span>
                     <div className="prghps-container">
-                        <p style={{ fontSize: 19 }}>{estate.discription }
+                        <p style={{ fontSize: 19 }}>{estate.description}
                             ID: {estate.id}</p>
                     </div>
                 </div>
@@ -77,11 +77,5 @@ function EstateItem({estate}) {
         </div>
     )
 }
-
-const imgArray = ['https://db.profirealt.com.ua/data/housing_complex/113/6b2178a6e239f1956f9aa3f3815083b1image_0.jpeg',
-    'https://db.profirealt.com.ua/data/housing_complex/113/ed06d1353debfc5eb1e6eb9865859f81image_1.jpeg',
-    'https://db.profirealt.com.ua/data/housing_complex/113/9c395751583001c73d2303dc59f0e450image_2.jpeg',
-    'https://db.profirealt.com.ua/data/housing_complex/113/c1edf4957deaef46eabcb0f2a7ca6398image_3.jpeg'];
-
 
 export default EstateItem;

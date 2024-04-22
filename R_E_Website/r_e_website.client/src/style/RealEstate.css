@@ -158,6 +158,10 @@
     float:right;
 }
 
+.uls-container li{
+    gap:10px;
+}
+
 .uls-container li:nth-child(even) {
     background: #f1f1f0 !important;
 }
@@ -166,8 +170,16 @@
     background: white !important;
 }
 
-.action-block .info3{
-    font-size:18px;
+.prghps-container p{
+    color:black;
+}
+
+.item-on-map h2 {
+    color: black !important;
+}
+
+.action-block .info3 {
+    font-size: 18px;
 }
 
 .action-block .info3 i{

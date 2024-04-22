@@ -5,8 +5,6 @@ export interface IEstate {
     estateType: EstateType;
     imgsUrlFolder?: string;
     city?: string;
-    complexName?: string;
-    complexUrl?: string;
     district?: string;
     estateAddress?: string;
     totalSquare?: number;
@@ -20,7 +18,7 @@ export interface IEstate {
     houseSeria?: string;
     houseArea?: number;
     houseMaterial?: string;
-    discription?: string;
+    description?: string;
     iFrameUrl?: string;
     phoneNumber: string;
 }

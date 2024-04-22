@@ -57,7 +57,7 @@ function Estate() {
                     />
                     <EstateItem estate={estate} />
                 </div>
-                <div style={{ marginTop: -100 }}>
+                <div style={{ marginTop: -250 }}>
                     <Footer />
                 </div>
             </div>

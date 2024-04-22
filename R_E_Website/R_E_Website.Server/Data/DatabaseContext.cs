@@ -70,10 +70,9 @@ namespace R_E_Website.Server.Data
                 {
                     Id = 1,
                     City = "Київ",
-                    ComplexName = "044",
-                    ComplexUrl = "/",
                     District = "Подільський",
                     EstateAddress = "Данченка Сергія вулиця, 5",
+                    EstateAddressEng = "DanchenkaSerhiyaAvenue5",
                     EstateFloor = 5,
                     NumberOfFloors = 12,
                     RoomCount = 1,
@@ -86,7 +85,7 @@ namespace R_E_Website.Server.Data
                     ImgsUrlFolder = "https://profirealt.blob.core.windows.net/flats/DanchenkaSerhiyaAvenue5",
                     PhoneNumber = "+380-98-056-45-92",
                     HouseSeria = "Спецпроект/Совмін",
-                    Discription = "Затишна квартира на 1 кімнату у місті Київ, район Подільський, " +
+                    Description = "Затишна квартира на 1 кімнату у місті Київ, район Подільський, " +
                     "знаходиться на 5 поверсі. Площа становить 58 м2." + "Просторна кухня-вітальня оснащена необхідною " +
                     "вбудованою побутовою технікою та меблями високої якості. На підлогах ламінат та кахель. " +
                     "У просторому санвузлі ванна, раковина, унітаз, пральна машина. Житловий комплекс із системою " +
@@ -98,10 +97,9 @@ namespace R_E_Website.Server.Data
             {
                 Id = 2,
                 City = "Київ",
-                ComplexName = "4U",
-                ComplexUrl = "/",
                 District = "Голосіївський",
                 EstateAddress = "Голосіївська вулиця, 84",
+                EstateAddressEng = "HolosievkiyAvenue84",
                 EstateFloor = 20,
                 NumberOfFloors = 27,
                 RoomCount = 2,
@@ -114,7 +112,7 @@ namespace R_E_Website.Server.Data
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/flats/HolosievkiyAvenue84",
                 PhoneNumber = "+380-98-156-43-92",
                 HouseSeria = "Спецпроект/Новобуд",
-                Discription = "Чудова двокімнатна квартира в самому центрі Києва, вражає своєю просторістю " +
+                Description = "Чудова двокімнатна квартира в самому центрі Києва, вражає своєю просторістю " +
                     "та затишком. Загальна площа складає 75 м2, з просторою вітальнею та вбудоваою кухнею. В квартирі " +
                     "є все необхідне для комфортного проживання. Для майбутніх мешканців є підземний паркінг та " +
                     "парковочні місця біля будинку."
@@ -124,10 +122,9 @@ namespace R_E_Website.Server.Data
             {
                 Id = 3,
                 City = "Київ",
-                ComplexName = "Bristol",
-                ComplexUrl = "/",
                 District = "Подільський",
                 EstateAddress = "Правди проспект, 49",
+                EstateAddressEng = "PravduAvenue49",
                 EstateFloor = 3,
                 NumberOfFloors = 15,
                 RoomCount = 3,
@@ -140,7 +137,7 @@ namespace R_E_Website.Server.Data
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/flats/PravduAvenue49",
                 PhoneNumber = "+380-97-036-13-22",
                 HouseSeria = "Спецпроект/Совмін",
-                Discription = "Елітна трьохкімнатна квартира з видом на море в інноваційному житловому центрі" +
+                Description = "Елітна трьохкімнатна квартира з видом на море в інноваційному житловому центрі" +
                     " Одеси. Площа квартири 120 м2, велика вітальня, окрема кухня з виходом на балкон, дві спальні та " +
                     "два санвузли. Житловий комплекс має власний парк і дитячий сад, а також власну інфраструктуру." +
                     " Для мешканців парковка, охорона та консьєрж-сервіс."
@@ -150,10 +147,9 @@ namespace R_E_Website.Server.Data
             {
                 Id = 4,
                 City = "Київ",
-                ComplexName = "Arch House",
-                ComplexUrl = "/",
                 District = "Позняки",
                 EstateAddress = "Ревутського вулиця, 40В",
+                EstateAddressEng = "RevutskogoAvenue40B",
                 EstateFloor = 5,
                 NumberOfFloors = 12,
                 RoomCount = 1,
@@ -166,7 +162,7 @@ namespace R_E_Website.Server.Data
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/flats/RevutskogoAvenue40B",
                 PhoneNumber = "+380-98-056-45-92",
                 HouseSeria = "Спецпроект/Новобуд",
-                Discription = "Простора квартира з чотирма спальнями в новобудові з закритою територією, дитячим" +
+                Description = "Простора квартира з чотирма спальнями в новобудові з закритою територією, дитячим" +
                     " майданчиком та парковкою. Квартира з якісним ремонтом, повністю укомплектована меблями і технікою." +
                     " Сучасне планування з кухнею-вітальнею, три санвузли, вбудована кухня, балкон з чудовим краєвидом." +
                     " У дворі є місце для парковки авто, ліфт та дитячий майданчик."
@@ -179,6 +175,7 @@ namespace R_E_Website.Server.Data
                  Id = 5,
                  City = "Бровари",
                  EstateAddress = "Ірпінська вулиця, 40",
+                 EstateAddressEng = "IrpinskaStreet40",
                  NumberOfFloors = 2,
                  HouseArea = 10,
                  RoomCount = 4,
@@ -191,7 +188,7 @@ namespace R_E_Website.Server.Data
                  ImgsUrlFolder = "https://profirealt.blob.core.windows.net/houses/IrpinskaStreet40",
                  PhoneNumber = "+380-95-126-33-12",
                  HouseMaterial = "Брус",
-                 Discription = "4-х кімнатний, двоповерховий будинок із профільного бруса, " +
+                 Description = "4-х кімнатний, двоповерховий будинок із профільного бруса, " +
                  "з лазнею та сонячною електростанцією, загальною площею 208м. У Броварах.\r\n10 соток землі\r\nНавіс " +
                  "під автомобілі\r\nДистанційні ворота\r\nВода – свердловина 50 м\r\n" +
                  "Газ\r\nКаналізація - двокамерний септик\r\nЕлектрика - централізована 15 кВт та сонячна Електростанція " +
@@ -204,6 +201,7 @@ namespace R_E_Website.Server.Data
                   Id = 6,
                   City = "Київ",
                   EstateAddress = "Польова вулиця, 7",
+                  EstateAddressEng = "PoljovaStreet7",
                   NumberOfFloors = 2,
                   HouseArea = 25,
                   RoomCount = 6,
@@ -216,7 +214,7 @@ namespace R_E_Website.Server.Data
                   ImgsUrlFolder = "https://profirealt.blob.core.windows.net/houses/PoljovaStreet7",
                   PhoneNumber = "+380-98-036-34-52",
                   HouseMaterial = "Газоблок",
-                  Discription = "Двоповерховий будинок. Скважина - 60м.п. підведено в будинок, її при ямок можливо " +
+                  Description = "Двоповерховий будинок. Скважина - 60м.п. підведено в будинок, її при ямок можливо " +
                   "використовувати, як погріб.лектрика 32 кВт розведена по будинку і частково на другому поверсі + " +
                   "зроблене заземлення. В будинок кабель заходить під землею.\r\nТеплі водяні поли з ел.котлем " +
                   "Bosh 24 кВт\r\nВ будинку на першому поверсі чистова стяжка, на другому дерев'яне перекриття.\r\n" +
@@ -228,6 +226,7 @@ namespace R_E_Website.Server.Data
                    Id = 7,
                    City = "Славгород",
                    EstateAddress = "Шевченко вулиця, 20",
+                   EstateAddressEng = "SchevchenkoStreet20",
                    NumberOfFloors = 2,
                    HouseArea = 6,
                    RoomCount = 5,
@@ -240,7 +239,7 @@ namespace R_E_Website.Server.Data
                    ImgsUrlFolder = "https://profirealt.blob.core.windows.net/houses/SchevchenkoStreet20",
                    PhoneNumber = "+380-95-156-13-72",
                    HouseMaterial = "Цегла",
-                   Discription = "Опалення - газовий двоконтурний котел, оплата за лічильником, також на будинок " +
+                   Description = "Опалення - газовий двоконтурний котел, оплата за лічильником, також на будинок " +
                    "заведено 2 фази по 16 кВт електроенергії, встановлений лічильник День - Ніч, прямий договір з ДТЕК. " +
                    "Стіни - цегла(380 мм) + утеплення(60 мм).Зовні - кароїд + фарбування. Дах - бітумна черепиця. " +
                    "У будинку встановлено справжній камін"
@@ -251,6 +250,7 @@ namespace R_E_Website.Server.Data
                     Id = 8,
                     City = "Миргород",
                     EstateAddress = "Троїцька вулиця, 10",
+                    EstateAddressEng = "TroitskaStreet10",
                     NumberOfFloors = 1,
                     HouseArea = 20,
                     RoomCount = 2,
@@ -263,7 +263,7 @@ namespace R_E_Website.Server.Data
                     ImgsUrlFolder = "https://profirealt.blob.core.windows.net/houses/TroitskaStreet10",
                     PhoneNumber = "+380-99-346-03-02",
                     HouseMaterial = "Цегла",
-                    Discription = "Будинок деревяний але обкладений цеглою, у будинку, газові конвектори, грубка для " +
+                    Description = "Будинок деревяний але обкладений цеглою, у будинку, газові конвектори, грубка для " +
                     "альтернативного опалення будинку, встановлено металопластикові вікна. Також є топоміжні примішення, " +
                     "літня кухня та господарська споруда, а також погріб для зберігання продуктів. Ділянка розташована у " +
                     "зручному місці, поруч школа, садок, магазини і транспортна зупинка."
@@ -271,20 +271,21 @@ namespace R_E_Website.Server.Data
 
             #endregion
 
-            #region land
+            #region lands
 
             new Estate()
             {
                 Id = 9,
                 City = "Виноградів",
                 EstateAddress = "Черешнева, 38",
+                EstateAddressEng = "Chereshnevaya38",
                 TotalSquare = 100,
                 EstateType = Enums.EstateType.Land,
                 PriceUah = 1370000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.133083235615!2d23.02698667629793!3d48.14623947124443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47383a6bf94f9bf5%3A0xa82c66cba6bb5f2a!2z0LLRg9C70LjRhtGPINCn0LXRgNC10YjQvdC10LLQsCwgMzgsINCS0LjQvdC-0LPRgNCw0LTRltCyLCDQl9Cw0LrQsNGA0L_QsNGC0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsINCj0LrRgNCw0ZfQvdCwLCA5MDMwMA!5e0!3m2!1suk!2sro!4v1712229626396!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/Chereshnevaya38",
                 PhoneNumber = "+380-96-566-11-04",
-                Discription = "Продається земельна ділянка під будівництво будинку. Площа 11 соток, р-н геріатричного " +
+                Description = "Продається земельна ділянка під будівництво будинку. Площа 11 соток, р-н геріатричного " +
                 "пансіонату, \"Школярка\") Комунікації на ділянці відсутні (електрика, газ підведені поруч із ділянкою) " +
                 "Прекрасне розташування. Поруч збудовані будинки"
             },
@@ -293,13 +294,14 @@ namespace R_E_Website.Server.Data
                 Id = 10,
                 City = "Новоселиця",
                 EstateAddress = "вулиця Глебова",
+                EstateAddressEng = "HlebovaAlley",
                 TotalSquare = 90,
                 EstateType = Enums.EstateType.Land,
                 PriceUah = 1300000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.984300952943!2d26.26985727630265!3d48.2261768712533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4734768081c8c617%3A0xeb8ced3f7ac558bd!2z0LLRg9C70LjRhtGPINCT0LvQtdCx0L7QstCwLCDQndC-0LLQvtGB0LXQu9C40YbRjywg0KfQtdGA0L3RltCy0LXRhtGM0LrQsCDQvtCx0LvQsNGB0YLRjCwg0KPQutGA0LDRl9C90LAsIDYwMzAw!5e0!3m2!1suk!2sro!4v1712229814827!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/HlebovaAlley",
                 PhoneNumber = "+380-96-587-19-54",
-                Discription = "Продається земельна ділянка в чудовому мальовничому місці. Перші Новоселицьі дачі. " +
+                Description = "Продається земельна ділянка в чудовому мальовничому місці. Перші Новоселицьі дачі. " +
                 "Діляночка рівненька, доглянута. Вода від башти Світло на ділянці; Газ поруч; Зручний заїзд з " +
                 "центральної дороги"
             },
@@ -308,13 +310,14 @@ namespace R_E_Website.Server.Data
                 Id = 11,
                 City = "Київ",
                 EstateAddress = "Лесі Українки бульвар, 13",
+                EstateAddressEng = "LesiUkrainkiAlley13",
                 TotalSquare = 80,
                 EstateType = Enums.EstateType.Land,
                 PriceUah = 600000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.56769444266!2d30.5355076407809!3d50.43052567935468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf0f6f0b8c3b%3A0x7c900d268facc356!2z0LHRg9C70YzQstCw0YAg0JvQtdGB0ZYg0KPQutGA0LDRl9C90LrQuCwgMTMsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sro!4v1712230148070!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/LesiUkrainkiAlley13",
                 PhoneNumber = "+380-98-317-45-11",
-                Discription = "Продаж земельної ділянки сільськогосподарського призначення! Є вода від башні та септик. " +
+                Description = "Продаж земельної ділянки сільськогосподарського призначення! Є вода від башні та септик. " +
                 "Газ та світло поруч з ділянкою. На ділянці деревʼяний будинок. Частково зроблений паркан. Вулиця обжита. " +
                 "Дуже гарне місце та спокійне місце розташування."
             },
@@ -323,34 +326,36 @@ namespace R_E_Website.Server.Data
                 Id = 12,
                 City = "Гостомель",
                 EstateAddress = "Остромирська вулиця, 7",
+                EstateAddressEng = "OstromirskaStreet7",
                 TotalSquare = 95,
                 EstateType = Enums.EstateType.Land,
                 PriceUah = 750000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2533.8296166013656!2d30.21313027644506!3d50.57453177161618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b31d53781c73d%3A0xf0b1c5ff34c1bced!2z0LLRg9C70LjRhtGPINCe0YHRgtGA0L7QvNC40YDRgdGM0LrQsCwgNywg0JPQvtGB0YLQvtC80LXQu9GMLCDQmtC40ZfQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCDQo9C60YDQsNGX0L3QsCwgMDgyODk!5e0!3m2!1suk!2sro!4v1712230186713!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/lands/OstromirskaStreet7",
                 PhoneNumber = "+380-95-321-69-66",
-                Discription = "Продається земельна ділянка у мальовничому місці біля лісу, чудове місце для будівництва " +
+                Description = "Продається земельна ділянка у мальовничому місці біля лісу, чудове місце для будівництва " +
                 "будинку своєї мрії! На ділянці підключене світло 16 кВат, газова труба проходить по під ділянку - " +
                 "є можливість підключення! Ділянка рівна прямокутна правильної форми. До центру міста 3 хвилини " +
                 "автомобілем. Аналогів в місті не знайдете!"
             },
 
-            #endregion land
+            #endregion lands
 
-            #region commerce
+            #region commerces
 
             new Estate()
             {
                 Id = 13,
                 City = "Київ",
                 EstateAddress = "Анни Ахматової вулиця, 13",
+                EstateAddressEng = "AnnaAhmatovoiStreet13",
                 TotalSquare = 15,
                 EstateType = Enums.EstateType.Commerce,
                 PriceUah = 743000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.803833157774!2d30.63238427643468!3d50.407493371584046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c5aa28620637%3A0xf657c9de6580e444!2z0LLRg9C70LjRhtGPINCQ0L3QvdC4INCQ0YXQvNCw0YLQvtCy0L7RlywgMTMsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sro!4v1712219664794!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/AnnaAhmatovoiStreet13",
                 PhoneNumber = "+380-97-556-15-41",
-                Discription = "Продається паркове місце. По вулиці Васильченка 3. Парко місце під охороною, " +
+                Description = "Продається паркове місце. По вулиці Васильченка 3. Парко місце під охороною, " +
                 "Закрита територія. Один заїзд. 15 КВ метрів. Парк місце знаходиться в кінці паркінгу. "
             },
 
@@ -359,13 +364,14 @@ namespace R_E_Website.Server.Data
                 Id = 14,
                 City = "Київ",
                 EstateAddress = "Берковецька вулиця, 6",
+                EstateAddressEng = "BerkovetskayaStreet6",
                 TotalSquare = 37,
                 EstateType = Enums.EstateType.Commerce,
                 PriceUah = 408000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.9999454755944!2d30.35874877644016!3d50.49695877160105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b32cd54d37977%3A0xae0498dab8468d64!2z0LLRg9C70LjRhtGPINCR0LXRgNC60L7QstC10YbRjNC60LAsIDYsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sro!4v1712219827242!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/BerkovetskayaStreet6",
                 PhoneNumber = "+380-97-556-15-41",
-                Discription = "Продається доглянутий гараж з підвальним приміщенням в гаражному кооперативі \"Троянда\", " +
+                Description = "Продається доглянутий гараж з підвальним приміщенням в гаражному кооперативі \"Троянда\", " +
                 "що знаходиться по вулиці Берковецька 6. Територія охороняється, також є відеонагляд. " +
                 "Поруч знаходяться житлові комплекси ЖК \"Lalalend\", та ЖК \"Lucy Land\", в " +
                 "трьох хвилинах ходьби розташований ТРЦ \"Lavina\""
@@ -376,13 +382,14 @@ namespace R_E_Website.Server.Data
                 Id = 15,
                 City = "Київ",
                 EstateAddress = "Данченко Сергія вулиця, 1а",
+                EstateAddressEng = "DanchenkoSerhiyaStreet1a",
                 TotalSquare = 14,
                 EstateType = Enums.EstateType.Commerce,
                 PriceUah = 483000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.519780952712!2d30.537083976436204!3d50.43141827158855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf0f2c700001%3A0x2c4f5dbed125502c!2z0LLRg9C70LjRhtGPINCd0LXQvNC40YDQvtCy0LjRh9CwLdCU0LDQvdGH0LXQvdC60LAsIDHQsCwg0JrQuNGX0LIsINCj0LrRgNCw0ZfQvdCwLCAwMTAxMQ!5e0!3m2!1suk!2sro!4v1712220047235!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/DanchenkoSerhiyaStreet1a",
                 PhoneNumber = "+380-96-346-10-17",
-                Discription = "Продається паркомісце в Подільському районі, Липинка. Паркомісце знаходиться у " +
+                Description = "Продається паркомісце в Подільському районі, Липинка. Паркомісце знаходиться у " +
                 "багаторівневому паркінгу на третьому відкритому поверсі, біля Крістер Града, ЖК Варшавського та ЖК " +
                 "Липинки. Зручне на виїзд та виїзд. Є ліфт та цілодобова охорона. Право власності. Податки сплачуємо " +
                 "за себе."
@@ -393,18 +400,19 @@ namespace R_E_Website.Server.Data
                 Id = 16,
                 City = "Київ",
                 EstateAddress = "Кропивницького вулиця, 10",
+                EstateAddressEng = "KropivnitskogoStreet10",
                 TotalSquare = 140,
                 EstateType = Enums.EstateType.Commerce,
                 PriceUah = 9200000,
                 IFrameUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.012433289071!2d30.521661376436725!3d50.44086907159036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ceff91801181%3A0xa4fc3e1b39fcd872!2z0LLRg9C70LjRhtGPINCa0YDQvtC_0LjQstC90LjRhtGM0LrQvtCz0L4sIDEwLCDQmtC40ZfQsiwg0KPQutGA0LDRl9C90LAsIDAyMDAw!5e0!3m2!1suk!2sro!4v1712220189620!5m2!1suk!2sro",
                 ImgsUrlFolder = "https://profirealt.blob.core.windows.net/commerce/KropivnitskogoStreet10",
                 PhoneNumber = "+380-97-056-22-87",
-                Discription = "Продаж двоповерхового офісного приміщення, загальною площею 140 кв м у центральній частині " +
+                Description = "Продаж двоповерхового офісного приміщення, загальною площею 140 кв м у центральній частині " +
                 "міста за сім хвилин ходьби від станції метро Площа Українських Героїв. Окремий вхід, закрита територія. " +
                 "Вхід до офісного приміщення здійснюється з вул. Шовковична, Басейна, Кропивницького. Кабінетна система, " +
                 "кухня-їдальня, санвузли на кожному поверсі. Індивідуальне опалення, своя скважина. Є окремий гараж."
             }
-            #endregion commerce
+            #endregion commerces
             );
 
             #region reviews

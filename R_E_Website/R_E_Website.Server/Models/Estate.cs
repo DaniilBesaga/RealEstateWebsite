@@ -21,18 +21,15 @@ namespace R_E_Website.Server.Models
         [Column("city")]
         public string? City { get; set; }
 
-        [Column("complexName")]
-        public string? ComplexName { get; set; }
-
-        [Column("complexUrl")]
-        public string? ComplexUrl { get; set; }
-
         [Column("district")]
         public string? District { get; set; }
 
         [Column("estate_address")]
         public string? EstateAddress { get; set; }
 
+        [Column("estate_address_eng")]
+        public string? EstateAddressEng { get; set; }
+        
         [Column("totalSquare")]
         public int? TotalSquare { get; set; }
 
@@ -66,8 +63,8 @@ namespace R_E_Website.Server.Models
         [Column("houseMaterial")]
         public string? HouseMaterial { get; set; }
 
-        [Column("discriptiion")]
-        public string? Discription { get; set; }
+        [Column("descriptiion")]
+        public string? Description { get; set; }
 
         [Column("iframeUrl")]
         public string? IFrameUrl { get; set; }
