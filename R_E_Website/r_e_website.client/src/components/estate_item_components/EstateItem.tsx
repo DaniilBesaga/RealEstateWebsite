@@ -5,6 +5,7 @@ import LandDetails from "./details_components/LandDetails";
 import CommerceDetails from "./details_components/CommerceDetails";
 import { EstateType } from "../../estateManagement/EnumEstateType";
 import '../../style/RealEstate.css';
+import EstateLabel from "../EstateLabel";
 
 
 function EstateItem({estate}) {
@@ -73,7 +74,7 @@ function EstateItem({estate}) {
                 <h2>На карті</h2>
                 <iframe src={estate.iFrameUrl} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
-
+            <EstateLabel estate={estate}/>
         </div>
     )
 }

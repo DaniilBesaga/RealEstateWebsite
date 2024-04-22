@@ -1,0 +1,78 @@
+.elabel-container{
+    position:fixed;
+    bottom: 0;
+    left:0;
+    right:0;
+    padding:30px 50px;
+    padding-bottom:20px;
+    z-index:1000;
+    background:white;
+}
+
+.elabel{
+    display:flex;
+}
+
+.label-address h1{
+    font-size:20px;
+}
+
+.label-main-content{
+    display:flex;
+    align-items:center;
+    margin-left:20%;
+    margin-top:-15px;
+}
+
+.label-price-uah, .label-price-usd {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.label-price-uah span, .label-price-usd span{
+    
+    font-weight: 500;
+}
+
+.label-price-uah {
+    padding-right: 15px;
+    border-right: 2px solid black;
+}
+
+.label-price-uah svg {
+    width: 22px;
+    height: 22px;
+    margin-left:-30px;
+    position:absolute;
+}
+
+.label-price-usd {
+    padding-left: 15px;
+}
+
+.label-button {
+    color: white;
+    display: flex;
+    text-transform: uppercase;
+    width: 220px;
+    height: 50px;
+    background: #a52822;
+    margin-left:70px;
+    border-radius:10px;
+    padding:15px 20px;
+    border:0;
+    font-weight:600;
+    align-items:center;
+}
+
+.label-button svg{
+    fill:white;
+    height:25px;
+    width:25px;
+    margin-right:10px;
+}
+
+.label-button:hover{
+    opacity:0.8;
+    transition:all .8s ease;
+}
