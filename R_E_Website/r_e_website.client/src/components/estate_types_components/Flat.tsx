@@ -4,7 +4,8 @@ import 'remixicon/fonts/remixicon.css';
 import { displayEstates } from '../../estateManagement/estateGetFetch';
 import { EstateDTO } from '../../estateManagement/IEstateDTO';
 import { EstateProps } from '../../estateManagement/estateProps';
-function Flat({ handleMouseEnter, handleMouseLeave, whiteBackground, filters }: EstateProps) {
+import { Link } from 'react-router-dom';
+function Flat({filters}: EstateProps) {
 
     const [flats, setFlats] = useState<EstateDTO[]>([]);
 
@@ -16,7 +17,7 @@ function Flat({ handleMouseEnter, handleMouseLeave, whiteBackground, filters }: 
             else
                 setFlats(filters);
         } else {
-            displayEstates('flats')
+            displayEstates('flat')
                 .then((data) => {
                     setFlats(data);
                 })
@@ -27,13 +28,12 @@ function Flat({ handleMouseEnter, handleMouseLeave, whiteBackground, filters }: 
 
         <div className="rl-grid-container">
             {flats.map((item, index) =>
-                <a className="promo-item" onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave} key={index}>
+                <Link to={`/flat/${item.id}`} className="promo-item" key={index}>
                     <div className="box-img" style={{ backgroundImage: `url(${item.imgUrl})` }}>
                         <div className="label label-exclusive"><span>ексклюзив</span></div>
                     </div>
 
-                    <div className="info" style={{ backgroundColor: whiteBackground ? "white" : "#f1f1f0" }}>
+                    <div className="info">
                         <div className="info1">
                             <i className="ri-building-line"></i>
                             {item.estateAddress}
@@ -62,7 +62,7 @@ function Flat({ handleMouseEnter, handleMouseLeave, whiteBackground, filters }: 
 
                         </div>
                     </div>
-                </a>
+                </Link>
             )}
         </div>
     )

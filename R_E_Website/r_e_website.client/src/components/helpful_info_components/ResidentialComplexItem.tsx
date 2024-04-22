@@ -2,8 +2,7 @@
 import '../../style/helpful_info/ResidentialComplexItem.css';
 import '../../style/Reviews.css';
 import { useState } from 'react';
-
-function ResidentialComplexItem({complex }) {
+function ResidentialComplexItem({ complex }) {
 
     const [firstReviewNumber, setFirstReviewNumber] = useState(0);
 
@@ -11,15 +10,15 @@ function ResidentialComplexItem({complex }) {
         setFirstReviewNumber(num);
     }
 
-    return (
+    const arr = complex.imgsUrlFolder.split(",")
 
+    return (
         <div>
             <div className="r-c-item-grid">
                 <div>
 
                     <div className="item" style={{
-                        backgroundImage: `url(${imgArray[firstReviewNumber]})`, backgroundPosition: firstReviewNumber == 0 ?
-                            'right 0px top -200px' : ""
+                        backgroundImage: `url(${arr[firstReviewNumber]})`
                     }}>
                         <div className="prev-arrow" style={{ display: firstReviewNumber == 0 ? "none" : "initial" }}>
                             <i className="ri-arrow-left-s-line" onClick={() => handleSlideButton(firstReviewNumber - 1)}></i>
@@ -63,23 +62,7 @@ function ResidentialComplexItem({complex }) {
                     <div>
                         <span className="title">Опис<i className="ri-add-line"></i></span>
                         <div className="prghps-container">
-                            <p>Величний житловий комплекс «Тридцять восьма перлина» в Києві розташований за
-                                адресою вул. Жилянська, 68, Голосіївський район. З його вікон з панорамним склінням
-                                відкривається прекрасний вид на центр української столиці.</p>
-                            <p>По сусідству з новобудовою розташовані загальноосвітні установи, дитячий сад,
-                                інститут, кілька торгових центрів. Ботанічний сад імені Фоміна знаходиться в
-                                вісімсот метрах, до станції метро «Університет» трохи більше одного кілометра.
-                                Поруч зупиняються автобуси, тролейбуси і маршрутні таксі.</p>
-                            <p>«38 перлина» - житловий комплекс бізнес-класу висотою двадцять п'ять поверхів, в
-                                ході будівництва якого застосовуються сучасні матеріали неперевершеної якості та
-                                передові технології, що дозволяють створити справжній витвір мистецтва.</p>
-                            <p>Каркас будівлі з монолітного залізобетону володіє феноменальною міцністю,
-                                тому здатний благополучно перенести найбільш руйнівний землетрус.</p>
-                            <p>Планування житлових приміщень забезпечує високий рівень комфорту. У соціальних мережах
-                                і на форумах можна бачити фото з прикладами елегантного оформлення 1-2-3-кімнатних апартаментів,
-                                побудованих компанією «Kadorr Group».</p>
-                            <p>Комплекс має автономне водо-, тепло- та енергопостачання. Споруджується власна енергопідстанцій,
-                                підземний паркінг, встановлюються три швидкісні ліфти, один з яких вантажний.</p>
+                            {complex.description}
                         </div>
                     </div>
 
@@ -89,10 +72,5 @@ function ResidentialComplexItem({complex }) {
     )
 }
 
-
-const imgArray = ['https://db.profirealt.com.ua/data/housing_complex/113/6b2178a6e239f1956f9aa3f3815083b1image_0.jpeg',
-    'https://db.profirealt.com.ua/data/housing_complex/113/ed06d1353debfc5eb1e6eb9865859f81image_1.jpeg',
-    'https://db.profirealt.com.ua/data/housing_complex/113/9c395751583001c73d2303dc59f0e450image_2.jpeg',
-    'https://db.profirealt.com.ua/data/housing_complex/113/c1edf4957deaef46eabcb0f2a7ca6398image_3.jpeg'];
 
 export default ResidentialComplexItem;

@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import { EstateDTO } from '../estateManagement/IEstateDTO';
 import Navigation from '../components/Navigation';
 
-function ResidentialComplex() {
+function ResidentialComplex({ catalogType }) {
 
     const [display, setDisplay] = React.useState({
         grid: true, block: false, map: false
@@ -130,9 +130,7 @@ function ResidentialComplex() {
                 }
 
                 {display.grid &&
-                    <div className="items-grid">
-                        <RealState display={'grid'} estateType={'flat'} filters={filters} />
-                    </div>
+                    <RealState display={'grid'} estateType={catalogType.length > 0 ? catalogType : 'flat'} filters={filters} />
                 }
 
             </div>

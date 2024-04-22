@@ -52,7 +52,7 @@ function ResidentialComplexesList() {
 
                 <div className="list-grid">
                     {complexes.map((item, index) =>
-                        <ResidentialComplexThumbnail name={item.complexName} imgUrl={item.imgUrl} key={index} />
+                        <ResidentialComplexThumbnail name={item.complexName} imgUrl={item.imgUrl} id={index+1} key={index}/>
                     )}
                 </div>
             </div>

@@ -1,8 +1,9 @@
 ﻿import { useState } from 'react';
 import '../../style/helpful_info/ResidentialComplexThumbnail.css';
 import '../../style/RealEstate.css';
+import { Link } from 'react-router-dom';
 
-function ResidentialComplexThumbnail({ name, imgUrl }) {
+function ResidentialComplexThumbnail({ name, imgUrl, id }) {
 
     const [whiteBackground, setWhiteBackground] = useState(false);
 
@@ -15,7 +16,7 @@ function ResidentialComplexThumbnail({ name, imgUrl }) {
     }
 
     return (
-        <a className="promo-item" onMouseEnter={handleMouseEnter}
+        <Link to={`/residential-complex/${id}`} className="promo-item" onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>
             <div className="box-img" style={{ backgroundImage: `url(${imgUrl})` }}>
 
@@ -26,7 +27,7 @@ function ResidentialComplexThumbnail({ name, imgUrl }) {
                     {name}
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 

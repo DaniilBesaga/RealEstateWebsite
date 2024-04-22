@@ -3,24 +3,23 @@ import '../../style/RealEstate.css';
 import 'remixicon/fonts/remixicon.css';
 import { displayEstates } from '../../estateManagement/estateGetFetch';
 import { EstateDTO } from '../../estateManagement/IEstateDTO';
-import { EstateProps } from '../../estateManagement/estateProps';
-function Land({ handleMouseEnter, handleMouseLeave, whiteBackground }: EstateProps) {
+
+function Land({ filters }) {
 
     const [houses, setHouses] = useState<EstateDTO[]>([]);
 
-    useEffect(() => { displayEstates('lands').then((data) => { setHouses(data) }) }, []);
+    useEffect(() => { displayEstates('land').then((data) => { setHouses(data) }) }, []);
 
     return (
 
         <div className="rl-grid-container">
             {houses.map((item, index) =>
-                <a className="promo-item" onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave} key={index}>
+                <a className="promo-item" key={index}>
                     <div className="box-img" style={{ backgroundImage: `url(${item.imgUrl})` }}>
                         <div className="label label-exclusive"><span>ексклюзив</span></div>
                     </div>
 
-                    <div className="info" style={{ backgroundColor: whiteBackground ? "white" : "#f1f1f0" }}>
+                    <div className="info">
                         <div className="info1">
                             <i className="ri-building-line"></i>
                             {item.estateAddress}

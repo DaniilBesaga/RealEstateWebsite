@@ -42,13 +42,13 @@ namespace R_E_Website.Server.Repository
         {
             var estates = await _context.Estates.ToListAsync();
 
-            Enum.TryParse(estateType, true, out Enums.EstateType localEstateType);
+            Enum.TryParse(estateType, true, out EstateType localEstateType);
             
             string connectionString = "DefaultEndpointsProtocol=https;AccountName=profirealt;AccountKey=tvTsQXf/+qyEuXBntsjOPQlEa7HakqgHaf7EJFPz9F52gGnc7LppbkUmNtGMH1JQzmtZ5v3ptDBN+ASt0hWoMA==;EndpointSuffix=core.windows.net";
 
             BlobContainerClient blobContainerClient = 
                 new BlobContainerClient(connectionString,
-                    $"{estateType}");
+                    $"{estateType}s");
 
             var bs = blobContainerClient.GetBlobs();
             var firstImages = bs

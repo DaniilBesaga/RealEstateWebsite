@@ -13,9 +13,8 @@
     text-decoration: none;
     transition: all .2s ease-out 0s;
     color: black;
-    /*#a52722*/
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding: 1.5%;
+    padding-bottom: 0;
     margin-left:6%;
     margin-right:5%;
     cursor:pointer;
@@ -23,6 +22,11 @@
 
 .promo-item:hover{
     transform:scale(1.1);
+    background:white;
+}
+
+.promo-item:hover .info{
+    background:white;
 }
 
 .box-img {
@@ -37,6 +41,7 @@
 }
 
 .box-img:hover{
+
 }
 
 .info {

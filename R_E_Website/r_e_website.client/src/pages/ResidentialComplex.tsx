@@ -15,34 +15,36 @@ function ResidentialComplex() {
     
     const [complex, setComplex] = useState<IResidentialComplex>(undefined!);
 
-    useEffect(() => { displayComplexes() }, []);
+    useEffect(() => { displayComplex() });
 
-    async function displayComplexes() {
+    const [readyForRender, setReadyForRender] = useState(false);
+
+    async function displayComplex() {
         setTimeout(async () => {
             const response = await fetch(`/api/complex/${id}`);
             const data = await response.json();
             setComplex(data);
+            setReadyForRender(true); 
         }, 1000);
-        //const response = await fetch('/api/complexdto');
-        //const data = await response.json();
-        //setComplexes(data);
+        
     }
+    if (readyForRender) {
+        return (
+            <div>
+                <Header />
 
-    return (
-        <div>
-            <Header />
-
-            <div className="list-container">
-                <Navigaton url={"/resindential-complex/"}
-                    urlTitle={"Головна/Житлові комплекси Києва/044"}
-                />
-                <ResidentialComplexItem itemType={'complex'} shortDisplay complex={complex} />
+                <div className="list-container">
+                    <Navigaton url={"/,/residential-complexes/"}
+                        urlTitle={`Головна/Житлові комплекси Києва/${complex.complexName}`}
+                    />
+                    <ResidentialComplexItem complex={complex} />
+                </div>
+                <div style={{ marginTop: -100 }}>
+                    <Footer />
+                </div>
             </div>
-            <div style={{ marginTop: -100 }}>
-                <Footer />
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default ResidentialComplex;

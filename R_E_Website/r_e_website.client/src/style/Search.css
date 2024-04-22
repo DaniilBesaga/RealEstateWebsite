@@ -150,3 +150,15 @@
     height: 46px;
     border-radius: 10px;
 }
+
+.active-svg {
+    background: #a52722;
+}
+
+.active-svg svg{
+    fill:white;
+}
+
+.active-svg p{
+    color:white;
+}

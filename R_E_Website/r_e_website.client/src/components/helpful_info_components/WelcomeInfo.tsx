@@ -20,7 +20,7 @@ function WelcomeInfo() {
             <div className="welcome_info_content">
                 <div className="inpage-nav">
                     <a onMouseEnter={() => setShowSubmenu(true)}>Серії житлових будинків</a>
-                    <Link to="/resindential-complexes">
+                    <Link to="/residential-complexes">
                         Житлові комлекси Києва
                     </Link>
                 </div>

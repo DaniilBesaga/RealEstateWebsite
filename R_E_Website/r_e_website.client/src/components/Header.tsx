@@ -34,13 +34,13 @@ function WelcomePage() {
                         <li><Link to="/catalog">
                             Квартири
                         </Link></li>
-                        <li><Link to="/catalog">
+                        <li><Link to="/catalog-house">
                             Будинки
                         </Link></li>
-                        <li><Link to="/catalog">
+                        <li><Link to="/catalog-land">
                             Земля
                         </Link></li>
-                        <li><Link to="/catalog">
+                        <li><Link to="/catalog-commerce">
                             Комерційна нерухомість
                         </Link></li>
                     </ul>
