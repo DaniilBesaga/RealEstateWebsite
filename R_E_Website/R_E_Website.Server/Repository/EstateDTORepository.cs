@@ -5,8 +5,6 @@ using R_E_Website.Server.Enums;
 using R_E_Website.Server.GenericRepository;
 using R_E_Website.Server.Interfaces;
 using R_E_Website.Server.Models;
-using System.Collections.Generic;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace R_E_Website.Server.Repository
 {
@@ -32,7 +30,7 @@ namespace R_E_Website.Server.Repository
                 EstateFloor = estate.EstateFloor,
                 EstateFloorCount = estate.NumberOfFloors,
                 EstateSquare = estate.TotalSquare,
-                ImgUrl = estate.ImgsUrlFolder + "/0e6b82db0dd134bde942d0c911be6f3eimage_7.jpeg",
+                ImgUrl = estate.ImgsUrlFolder + $"{Utils.Utils.AzureConnetionImages(estate.EstateType.ToString()+"s").First()}",
                 PriceUah = estate.PriceUah,
                 PriceUsd = estate.PriceUsd
             };
@@ -44,18 +42,7 @@ namespace R_E_Website.Server.Repository
 
             Enum.TryParse(estateType, true, out EstateType localEstateType);
             
-            string connectionString = "DefaultEndpointsProtocol=https;AccountName=profirealt;AccountKey=tvTsQXf/+qyEuXBntsjOPQlEa7HakqgHaf7EJFPz9F52gGnc7LppbkUmNtGMH1JQzmtZ5v3ptDBN+ASt0hWoMA==;EndpointSuffix=core.windows.net";
-
-            BlobContainerClient blobContainerClient = 
-                new BlobContainerClient(connectionString,
-                    $"{estateType}s");
-
-            var bs = blobContainerClient.GetBlobs();
-            var firstImages = bs
-            .GroupBy(blob => blob.Name.Split('/')[0])  
-            .Select(group => group.First())
-            .Select(x => x.Name.Split("/")[1])  
-            .ToList();
+            var firstImages = Utils.Utils.AzureConnetionImages(estateType);
 
             var estateDTOs = estates.Where(estate=>estate.EstateType ==
             localEstateType)
@@ -93,18 +80,7 @@ namespace R_E_Website.Server.Repository
         {
             var estates = await _context.Estates.ToListAsync();
 
-            string connectionString = "DefaultEndpointsProtocol=https;AccountName=profirealt;AccountKey=tvTsQXf/+qyEuXBntsjOPQlEa7HakqgHaf7EJFPz9F52gGnc7LppbkUmNtGMH1JQzmtZ5v3ptDBN+ASt0hWoMA==;EndpointSuffix=core.windows.net";
-
-            BlobContainerClient blobContainerClient =
-                new BlobContainerClient(connectionString,
-                    $"{filterEstate.EstateType}");
-
-            var bs = blobContainerClient.GetBlobs();
-            var firstImages = bs
-            .GroupBy(blob => blob.Name.Split('/')[0])
-            .Select(group => group.First())
-            .Select(x => x.Name.Split("/")[1])
-            .ToList();
+            var firstImages = Utils.Utils.AzureConnetionImages(filterEstate.EstateType.ToString()+"s");
 
             var estateDTOs = estates.Where(estate => estate.EstateType ==
             filterEstate.EstateType && estate.EstateAddress.Contains(filterEstate.EstateLocation)

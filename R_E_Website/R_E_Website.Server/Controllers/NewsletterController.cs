@@ -71,6 +71,8 @@ namespace R_E_Website.Server.Controllers
 
             await _newsletterRepository.InsertAsync(deserializedObject);
 
+            Utils.Utils.SendEmail(deserializedObject);
+
             return CreatedAtAction(nameof(GetNewsletterById), new { id = deserializedObject.Id }, deserializedObject);
         }
 
