@@ -32,7 +32,7 @@ namespace R_E_Website.Server.Repository
                 EstateFloor = estate.EstateFloor,
                 EstateFloorCount = estate.NumberOfFloors,
                 EstateSquare = estate.TotalSquare,
-                ImgUrl = estate.ImgsUrlFolder + "/1",
+                ImgUrl = estate.ImgsUrlFolder + "/0e6b82db0dd134bde942d0c911be6f3eimage_7.jpeg",
                 PriceUah = estate.PriceUah,
                 PriceUsd = estate.PriceUsd
             };

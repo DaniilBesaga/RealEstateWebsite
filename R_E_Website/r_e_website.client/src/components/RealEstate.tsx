@@ -5,19 +5,19 @@ import Flat from './estate_types_components/Flat';
 import House from './estate_types_components/House';
 import Commerce from './estate_types_components/Commerce';
 import Land from './estate_types_components/Land';
+import { EstateType } from '../estateManagement/EnumEstateType';
 
 function RealState({ display, estateType, filters }) {
-
     
-    function renderSwitch(et: string) {
+    function renderSwitch(et: EstateType) {
         switch (et) {
-            case 'flat':
+            case EstateType.Flat:
                 return <Flat filters={filters} />;
-            case 'house':
+            case EstateType.House:
                 return <House filters={filters} />;
-            case 'land':
+            case EstateType.Land:
                 return <Land filters={filters} />;
-            case 'commerce':
+            case EstateType.Commerce:
                 return <Commerce filters={filters} />;
         }
     }

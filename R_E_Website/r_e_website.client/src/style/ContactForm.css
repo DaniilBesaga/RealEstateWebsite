@@ -1,0 +1,87 @@
+.contact-form-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 60px 15%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.contact-form {
+    background: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow: scroll;
+    height: 100%;
+    
+}
+
+.contact-form > div {
+  
+}
+
+.contact-form h1{
+    font-size:35px;
+    margin-top:50px;
+}
+
+.order-service-container form {
+    display: block;
+}
+
+.form-object .rl-grid-container {
+    background: white;
+    display: block;
+    width: 25%;
+    min-width: 300px;
+    pointer-events: none;
+    padding-top:0;
+    padding-bottom:10px;
+}
+
+.form-object .rl-grid-container a{
+    
+}
+
+.form-object .info{
+    margin-top:20px;
+}
+
+.close-form {
+    position: absolute;
+    right: 250px;
+}
+
+.close-form i {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.o-r-container {
+    
+}
+
+.order-service-container{
+    margin-top:-100px;
+}
+
+.order-service-container h2 {
+    display: none;
+}
+
+.order-service-container form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.order-service-container input {
+    display: block
+}

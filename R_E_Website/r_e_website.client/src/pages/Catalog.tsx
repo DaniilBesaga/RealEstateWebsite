@@ -9,6 +9,7 @@ import RealState from '../components/RealEstate';
 import React, { useState } from 'react';
 import { EstateDTO } from '../estateManagement/IEstateDTO';
 import Navigation from '../components/Navigation';
+import { EstateType } from '../estateManagement/EnumEstateType';
 
 function ResidentialComplex({ catalogType }) {
 
@@ -130,7 +131,7 @@ function ResidentialComplex({ catalogType }) {
                 }
 
                 {display.grid &&
-                    <RealState display={'grid'} estateType={catalogType.length > 0 ? catalogType : 'flat'} filters={filters} />
+                    <RealState display={'grid'} estateType={catalogType.length > 0 ? catalogType : EstateType.Flat} filters={filters} />
                 }
 
             </div>

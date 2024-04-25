@@ -4,11 +4,25 @@ import 'remixicon/fonts/remixicon.css';
 import { displayEstates } from '../../estateManagement/estateGetFetch';
 import { EstateDTO } from '../../estateManagement/IEstateDTO';
 import { Link } from 'react-router-dom';
-function House({ filters }) {
+import { EstateProps } from '../../estateManagement/estateProps';
+function House({ filters }: EstateProps) {
 
     const [houses, setHouses] = useState<EstateDTO[]>([]);
 
-    useEffect(() => { displayEstates('house').then((data) => { setHouses(data) }) }, []);
+    useEffect(() => {
+        if (filters.length > 0 || (filters instanceof Object && 'id' in filters)) {
+            if (!(filters instanceof Array)) {
+                setHouses([filters]);
+            }
+            else
+                setHouses(filters);
+        } else {
+            displayEstates('house')
+                .then((data) => {
+                    setHouses(data);
+                })
+        }
+    }, [filters]);
 
     return (
 

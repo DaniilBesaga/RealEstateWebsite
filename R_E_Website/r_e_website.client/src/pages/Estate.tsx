@@ -21,6 +21,7 @@ function Estate() {
     const [readyForRender, setReadyForRender] = useState(false);
 
     const [estateTypeString, setEstateTypeString] = useState('');
+    const [estateTypeStringUrl, setEstateTypeStringUrl] = useState('');
 
     async function displayEstate() {
         setTimeout(async () => {
@@ -31,15 +32,19 @@ function Estate() {
             switch (data.estateType) {
                 case EstateType.Flat:
                     setEstateTypeString('Квартири');
+                    setEstateTypeStringUrl('catalog');
                     break;
                 case EstateType.House:
                     setEstateTypeString('Будинки');
+                    setEstateTypeStringUrl('catalog-house');
                     break;
                 case EstateType.Land:
                     setEstateTypeString('Земля');
+                    setEstateTypeStringUrl('catalog-land');
                     break;
                 case EstateType.Commerce:
                     setEstateTypeString('Комерція');
+                    setEstateTypeStringUrl('catalog-commerce');
                     break;
 
             }
@@ -52,7 +57,7 @@ function Estate() {
                 <Header />
 
                 <div className="list-container">
-                    <Navigaton url={`/,/${estate.estateType.toString().toLowerCase()}/`}
+                    <Navigaton url={`/,/${estateTypeStringUrl}`}
                         urlTitle={`Головна/${estateTypeString}/${estate.estateAddress}`}
                     />
                     <EstateItem estate={estate} />

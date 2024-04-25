@@ -40,6 +40,7 @@ function OrderService() {
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Ваше ім'я *"></input>
                 <input type="text" placeholder="Телефон +38(__) ___ __ __ *"></input>
+                <input type="email" placeholder="Електронна пошта"></input>
                 <button type="submit">Відправити</button>
             </form>
         </div>

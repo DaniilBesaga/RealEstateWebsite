@@ -6,9 +6,12 @@ import CommerceDetails from "./details_components/CommerceDetails";
 import { EstateType } from "../../estateManagement/EnumEstateType";
 import '../../style/RealEstate.css';
 import EstateLabel from "../EstateLabel";
+import ContactForm from "../ContactForm";
 
 
-function EstateItem({estate}) {
+function EstateItem({ estate }) {
+
+    const [showContactForm, setShowContactForm] = useState(false)
 
     const [firstReviewNumber, setFirstReviewNumber] = useState(0);
 
@@ -74,7 +77,8 @@ function EstateItem({estate}) {
                 <h2>На карті</h2>
                 <iframe src={estate.iFrameUrl} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <EstateLabel estate={estate}/>
+            <EstateLabel estate={estate} setShowContactForm={setShowContactForm} />
+            {showContactForm ? <ContactForm estateItem={estate} setShowContactForm={setShowContactForm}  /> : null}
         </div>
     )
 }
