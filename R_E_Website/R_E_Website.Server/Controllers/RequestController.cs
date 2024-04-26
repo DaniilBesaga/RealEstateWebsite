@@ -49,6 +49,9 @@ namespace R_E_Website.Server.Controllers
             }
 
             await _requestRepository.InsertAsync(deserializedObject);
+
+            Utils.Utils.SendRequestEmail(deserializedObject);
+
             return CreatedAtAction(nameof(GetRequestById), new { id = deserializedObject.Id }, deserializedObject);
         }
 

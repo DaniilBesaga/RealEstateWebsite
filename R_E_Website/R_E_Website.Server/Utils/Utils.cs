@@ -10,26 +10,33 @@ namespace R_E_Website.Server.Utils
     {
         public static void SendEmail(Newsletter newsletter)
         {
-            using(var client = new SmtpClient())
+            try
             {
-                client.Host = "smtp.gmail.com";
-                client.Port = 587;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.EnableSsl = true;
-                client.Credentials = new NetworkCredential("zloikot.mya@gmail.com", "phoi lylc wals pwvd");
-                using (var message = new MailMessage(
-                    from: new MailAddress("zloikot.mya@gmail.com", "Pivo"),
-                    to: new MailAddress($"{newsletter.Email}", "")
-                    ))
+                using (var client = new SmtpClient())
                 {
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
+                    client.EnableSsl = true;
+                    client.Credentials = new NetworkCredential("zloikot.mya@gmail.com", "phoi lylc wals pwvd");
+                    using (var message = new MailMessage(
+                        from: new MailAddress("zloikot.mya@gmail.com", "Admin"),
+                        to: new MailAddress($"{newsletter.Email}", "")
+                        ))
+                    {
 
-                    message.Subject = "Розсилка ProfiRealt";
-                    message.Body = "Ви щойно підписалися на розсилку ProfiRealt." +
-                        "\nДякуємо, що Ви з нами!";
+                        message.Subject = "Розсилка ProfiRealt";
+                        message.Body = "Ви щойно підписалися на розсилку ProfiRealt." +
+                            "\nДякуємо, що Ви з нами!";
 
-                    client.Send(message);
+                        client.Send(message);
+                    }
                 }
+            }
+            catch
+            {
+                Console.WriteLine("Something went wrong...");
             }
         }
 
@@ -49,6 +56,36 @@ namespace R_E_Website.Server.Utils
             .ToList();
 
             return firstImages;
+        }
+
+        public static void SendRequestEmail(Request request)
+        {
+            using (var client = new SmtpClient())
+            {
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential("zloikot.mya@gmail.com", "phoi lylc wals pwvd");
+
+                string requestAction = request.RequestType == Enums.RequestType.Sell ? "придбання" : "продаж";
+
+                using (var message = new MailMessage(
+                    from: new MailAddress("zloikot.mya@gmail.com", "Admin"),
+                    to: new MailAddress($"{request.ClientInfo.Email}", $"{request.ClientInfo.Name}")
+                    ))
+                {
+
+                    message.Subject = $"Заявка на {requestAction} житла";
+                    message.Body = $"Вітаємо, шановний ${request.ClientInfo.Name}!+" +
+                        $"\nВи залишили заявку на ${requestAction} житла" +
+                        $"\nМи зв'яжемося з Вами найближчими днями." +
+                        $"Гарного дня та дякуємо, що обрали нас!";
+
+                    client.Send(message);
+                }
+            }
         }
 
     }
