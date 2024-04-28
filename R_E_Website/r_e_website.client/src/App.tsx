@@ -14,6 +14,7 @@ import ResidentialComplex from "./pages/ResidentialComplex";
 import Estate from "./pages/Estate";
 import RealEstate from "./components/RealEstate";
 import { EstateType } from "./estateManagement/EnumEstateType";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                 <Route path='/land/:id' element={<Estate />} />
                 <Route path='/commerce' element={<RealEstate display='grid' filters={undefined} estateType='commerce' />} />
                 <Route path='/commerce/:id' element={<Estate />} />
+                <Route path="*" element={<NotFoundPage/> } />
             </Routes>
         </Router>
     )

@@ -1,0 +1,72 @@
+.error-container {
+    margin-top:50px;
+    padding: 50px;
+    background-image: url(https://profirealt.com.ua/wp-content/themes/profirealt_child/access/images/404.png); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 63% auto;
+    background-position: 0 50%;
+    padding-top:500px;
+}
+
+.error-body {
+    display: flex;
+    position: relative;
+    top: -200px;
+}
+
+.error404 {
+    font-size: 8.854vw;
+    font-weight: 700;
+    line-height: .485em;
+    width: 57%;
+    text-align: center;
+    padding-top:30px;
+}
+
+.error-text{
+    
+}
+
+.error-text .h2, .error-text p{
+    color: #21232a;
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.13em;
+}
+
+.error-text p:last-of-type{
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin: 20px 0;
+}
+
+.error-text button{
+    display:inline-block;
+    background: #a52822;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: opacity .3s ease;
+    height:50px;
+    cursor:pointer;
+    border-radius:10px;
+    width:150px;
+}
+
+.error-text a{
+    color: white;
+}
+
+.error-text button:last-child{
+    background-color: #404040;
+    margin-left:20px;
+}
+
+.error-text button:hover{
+    transition: all .8s ease;
+    opacity: .8;
+}
+
+.error-text button:last-child:hover{
+    background: #a52822;
+}
