@@ -8,6 +8,7 @@
     <SpaRoot>..\r_e_website.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
+    <UserSecretsId>05ce105d-30ba-4dac-88bf-b5ff0b3219d1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -32,7 +32,7 @@
     margin-top:50px;
 }
 
-.order-service-container form {
+.contact-form .order-service-container form {
     display: block;
 }
 
@@ -68,20 +68,20 @@
     
 }
 
-.order-service-container{
+.contact-form .order-service-container{
     margin-top:-100px;
 }
 
-.order-service-container h2 {
+.contact-form .order-service-container h2 {
     display: none;
 }
 
-.order-service-container form{
+.contact-form .order-service-container form{
     display:flex;
     flex-direction:column;
     gap:20px;
 }
 
-.order-service-container input {
+.contact-form .order-service-container input {
     display: block
 }

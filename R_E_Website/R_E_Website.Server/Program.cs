@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using R_E_Website.Server.Data;
 using R_E_Website.Server.GenericRepository;
 using R_E_Website.Server.Interfaces;
 using R_E_Website.Server.Repository;
+using R_E_Website.Server.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });
+
 var app = builder.Build();
 
 app.UseDefaultFiles();

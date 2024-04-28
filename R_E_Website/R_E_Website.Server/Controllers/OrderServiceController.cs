@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 using R_E_Website.Server.GenericRepository;
 using R_E_Website.Server.Models;
+using System.Text.Json;
 
 namespace R_E_Website.Server.Controllers
 {
@@ -34,16 +36,22 @@ namespace R_E_Website.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateOrder([FromBody] OrderService order)
+        public async Task<ActionResult> CreateOrder([FromBody] JsonDocument order)
         {
-            if (order == null)
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            OrderService? deserializedObject = JsonSerializer.Deserialize<OrderService>
+                (order.RootElement.GetRawText(), options);
+            if (deserializedObject == null)
             {
                 return BadRequest();
             }
 
-            await _orderServiceRepository.InsertAsync(order);
+            await _orderServiceRepository.InsertAsync(deserializedObject);
 
-            return CreatedAtAction(nameof(GetOrderById), new { id = order.Id }, order);
+            return CreatedAtAction(nameof(GetOrderById), new { id = deserializedObject.Id }, order);
         }
 
         [HttpPut("{id}")]

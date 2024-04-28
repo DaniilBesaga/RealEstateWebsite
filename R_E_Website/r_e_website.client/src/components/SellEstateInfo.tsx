@@ -406,7 +406,9 @@ function SellEstateInfo() {
                 І дізнайтеся як продати квартиру<br />
                 на 10% дорожче ринку</h2>
 
-            <OrderService />
+            <div className="sell-estate-order-container">
+                <OrderService estateId={undefined} />
+            </div>
 
         </div>
     )

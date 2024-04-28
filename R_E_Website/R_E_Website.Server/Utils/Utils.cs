@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace R_E_Website.Server.Utils
 {
-    public class Utils
+    public static class Utils
     {
         public static void SendEmail(Newsletter newsletter)
         {

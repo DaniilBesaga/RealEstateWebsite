@@ -38,7 +38,7 @@ function ContactForm({ estateItem, setShowContactForm }) {
                     <RealEstate estateType={estateItem.estateType} filters={[estateItem]} display="grid" />
                 </div>
                 <div className="o-r-container">
-                    <OrderService/>
+                    <OrderService estateId={estateItem.id} />
                 </div>
             </div>
         </div>

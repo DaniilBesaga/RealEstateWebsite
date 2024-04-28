@@ -7,7 +7,7 @@ function SellEstate() {
         <div>
             <Header></Header>
             <SellEstateInfo></SellEstateInfo>
-            <div style={{ marginTop: 350 }}>
+            <div style={{ marginTop: 50 }}>
                 <Footer></Footer>
             </div>
         </div>

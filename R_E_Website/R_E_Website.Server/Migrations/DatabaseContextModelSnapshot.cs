@@ -673,6 +673,15 @@ namespace R_E_Website.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("client_email");
+
+                    b.Property<int?>("EstateId")
+                        .HasColumnType("int")
+                        .HasColumnName("estate_id");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -684,6 +693,8 @@ namespace R_E_Website.Server.Migrations
                         .HasColumnName("client_phone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EstateId");
 
                     b.ToTable("OrdersService");
                 });
@@ -836,7 +847,7 @@ namespace R_E_Website.Server.Migrations
                         .IsUnique()
                         .HasFilter("[request_id] IS NOT NULL");
 
-                    b.ToTable("RequestEstate", (string)null);
+                    b.ToTable("RequestsEstate", (string)null);
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.ClientInfo", b =>
@@ -850,6 +861,16 @@ namespace R_E_Website.Server.Migrations
                     b.Navigation("Request");
                 });
 
+            modelBuilder.Entity("R_E_Website.Server.Models.OrderService", b =>
+                {
+                    b.HasOne("R_E_Website.Server.Models.Estate", "Estate")
+                        .WithMany("OrdersService")
+                        .HasForeignKey("EstateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Estate");
+                });
+
             modelBuilder.Entity("R_E_Website.Server.Models.RequestEstate", b =>
                 {
                     b.HasOne("R_E_Website.Server.Models.Request", "Request")
@@ -859,6 +880,11 @@ namespace R_E_Website.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Request");
+                });
+
+            modelBuilder.Entity("R_E_Website.Server.Models.Estate", b =>
+                {
+                    b.Navigation("OrdersService");
                 });
 
             modelBuilder.Entity("R_E_Website.Server.Models.Request", b =>

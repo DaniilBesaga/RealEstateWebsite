@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using R_E_Website.Server.Enums;
 using System.Reflection.Metadata;
+using Microsoft.Extensions.Hosting;
 
 namespace R_E_Website.Server.Models
 {
@@ -52,7 +53,7 @@ namespace R_E_Website.Server.Models
         public int PriceUah { get; set; }
 
         [Column("price_usd")]
-        public int PriceUsd  => PriceUah * 39; 
+        public int PriceUsd  => PriceUah / 39; 
 
         [Column("houseSeria")]
         public string? HouseSeria { get; set; }
@@ -72,6 +73,6 @@ namespace R_E_Website.Server.Models
         [Column("phonenumber")]
         [Phone]
         public string PhoneNumber { get; set; }
-        
+        public ICollection<OrderService> OrdersService { get; } = new List<OrderService>();
     }
 }

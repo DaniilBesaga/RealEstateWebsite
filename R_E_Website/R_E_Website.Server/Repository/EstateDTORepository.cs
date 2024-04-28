@@ -30,7 +30,7 @@ namespace R_E_Website.Server.Repository
                 EstateFloor = estate.EstateFloor,
                 EstateFloorCount = estate.NumberOfFloors,
                 EstateSquare = estate.TotalSquare,
-                ImgUrl = estate.ImgsUrlFolder + $"{Utils.Utils.AzureConnetionImages(estate.EstateType.ToString()+"s").First()}",
+                ImgUrl = estate.ImgsUrlFolder + $"/{Utils.Utils.AzureConnetionImages(estate.EstateType.ToString().ToLower()).First()}",
                 PriceUah = estate.PriceUah,
                 PriceUsd = estate.PriceUsd
             };
