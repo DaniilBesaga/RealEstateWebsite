@@ -6,12 +6,12 @@ import Search from '../components/Search';
 import '../style/ResidentialComplexesList.css';
 import '../style/Catalog.css';
 import RealState from '../components/RealEstate';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EstateDTO } from '../estateManagement/IEstateDTO';
 import Navigation from '../components/Navigation';
 import { EstateType } from '../estateManagement/EnumEstateType';
 
-function ResidentialComplex({ catalogType }) {
+function Catalog({ catalogType }) {
 
     const [display, setDisplay] = React.useState({
         grid: true, block: false, map: false
@@ -22,6 +22,8 @@ function ResidentialComplex({ catalogType }) {
     const [filters, setFilters] = useState<EstateDTO[]>([]);
 
     const [sortMethod, setSortMethod] = useState("")
+
+    const [objectCount, setObjectCount] = useState(0);
 
     const handleIdSubmit = (event) => {
         event.preventDefault()
@@ -53,6 +55,15 @@ function ResidentialComplex({ catalogType }) {
         setFilters(data)
     }
 
+    useEffect(() => {
+        console.log(catalogType)
+        setTimeout(async () => {
+            const response = await fetch(`/api/estatedto/catalogType/${catalogType}`);
+            const data = await response.json();
+            setObjectCount(data);
+        }, 1000);
+    })
+
     const searchField = () => {
         return (
             <React.Fragment>
@@ -77,7 +88,7 @@ function ResidentialComplex({ catalogType }) {
 
             <div className="list-container">
                 <Navigation url={"/, /services"} urlTitle={"Головна/Квартири"}
-                    objectCount={filters.length} header={"Знайди оселю своєї мрії"}
+                    objectCount={objectCount} header={"Знайди оселю своєї мрії"}
                     addParams={searchField} />
                 <Search onFilters={setFilters} />
             </div>
@@ -131,7 +142,7 @@ function ResidentialComplex({ catalogType }) {
                 }
 
                 {display.grid &&
-                    <RealState display={'grid'} estateType={catalogType.length > 0 ? catalogType : EstateType.Flat} filters={filters} />
+                    <RealState display={'grid'} estateType={catalogType != undefined ? catalogType : EstateType.Flat} filters={filters} />
                 }
 
             </div>
@@ -144,4 +155,4 @@ function ResidentialComplex({ catalogType }) {
     )
 }
 
-export default ResidentialComplex;
+export default Catalog;

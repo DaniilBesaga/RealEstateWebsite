@@ -16,7 +16,7 @@ function Navigaton({ url, urlTitle, objectCount, header, addParams }: Navigation
 
     const splittedUrlsTitle = urlTitle.split('/')
     const splittedUrls = url.split(',')
-    
+    console.log(objectCount)
     return (
         <div className="page-nav">
             <div>
@@ -33,7 +33,7 @@ function Navigaton({ url, urlTitle, objectCount, header, addParams }: Navigation
                         }
                     </div>
                 )}
-                <span className="objectCount">{objectCount != undefined ? objectCount + "Об'єктів" : ''} </span>
+                <span className="objectCount">{objectCount != undefined ? objectCount + " Об'єктів" : ''} </span>
             </div>
 
             <h2>{header}</h2>

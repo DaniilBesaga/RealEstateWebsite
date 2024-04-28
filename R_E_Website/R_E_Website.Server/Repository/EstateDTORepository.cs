@@ -105,5 +105,15 @@ namespace R_E_Website.Server.Repository
 
             return estateDTOs;
         }
+
+        public async Task<int> GetObjectCount(int catalogType)
+        {
+            var estates = await _context.Estates.ToListAsync();
+
+            EstateType localEstateType = (EstateType)catalogType;
+
+            return estates.Count(e=>e.EstateType==localEstateType);
+
+        }
     }
 }

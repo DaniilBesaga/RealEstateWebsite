@@ -1,7 +1,7 @@
 ﻿import '../style/Search.css';
 import { IEstateFilter } from '../estateManagement/IEstateFilter'
 import { EstateType } from '../estateManagement/EnumEstateType'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Search({onFilters}) {
@@ -21,6 +21,22 @@ function Search({onFilters}) {
     const [selectedCur, setSelectedCur] = useState(false);
 
     const [selectedNumber, setSelectedNumber] = useState(0);
+
+    useEffect(() => {
+        switch (window.location.pathname) {
+            case '/catalog':
+                setSelectedType(EstateType.Flat)
+                break
+            case '/catalog-house':
+                setSelectedType(EstateType.House);
+                break;
+            case '/catalog-land':
+                setSelectedType(EstateType.Land);
+                break;
+            case '/catalog-commerce':
+                setSelectedType(EstateType.Commerce);
+                break;
+    } })
 
     const handleTypeSelection = (value: EstateType) => {
         setSelectedType(value);
@@ -65,8 +81,8 @@ function Search({onFilters}) {
             roomsCountTo: formData.roomsCountTo,
             totalSquareFrom: formData.totalSquareFrom,
             totalSquareTo: formData.totalSquareTo,
-            priceRangeFrom: selectedCur ? formData.priceRangeFrom * 39 : formData.priceRangeFrom,
-            priceRangeTo: selectedCur ? formData.priceRangeTo * 39 : formData.priceRangeTo,
+            priceRangeFrom: selectedCur ? formData.priceRangeFrom / 39 : formData.priceRangeFrom,
+            priceRangeTo: selectedCur ? formData.priceRangeTo / 39 : formData.priceRangeTo,
         }
 
         const requestOptions = {

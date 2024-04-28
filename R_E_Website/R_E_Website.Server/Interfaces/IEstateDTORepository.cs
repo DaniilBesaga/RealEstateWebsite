@@ -8,5 +8,6 @@ namespace R_E_Website.Server.Interfaces
         Task<EstateDTO> GetEstateShortcutByIdAsync(int id);
         Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType, string sort);
         Task<IEnumerable<EstateDTO>> GetAllEstatesFilterAsync(FilterEstate filterEstate);
+        Task<int> GetObjectCount(int catalogType);
     }
 }

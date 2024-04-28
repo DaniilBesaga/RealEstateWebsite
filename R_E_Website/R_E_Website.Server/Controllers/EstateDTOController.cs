@@ -35,5 +35,12 @@ namespace R_E_Website.Server.Controllers
             var requestEstates = await _estateDTORepository.GetEstateShortcutByIdAsync(id);
             return Ok(requestEstates);
         }
+
+        [HttpGet("catalogType/{catalogType:int}")]
+        public async Task<IActionResult> GetEstateCount(int catalogType)
+        {
+            var requestEstates = await _estateDTORepository.GetObjectCount(catalogType);
+            return Ok(requestEstates);
+        }
     }
 }
