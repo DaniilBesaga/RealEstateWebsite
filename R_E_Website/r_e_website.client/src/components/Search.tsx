@@ -4,7 +4,7 @@ import { EstateType } from '../estateManagement/EnumEstateType'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Search({onFilters}) {
+function Search({ onFilters, setSearchById }) {
 
     const [divColor, setDivColor] = useState({
         1: false,
@@ -16,7 +16,7 @@ function Search({onFilters}) {
 
     const [districtsList, setDisctrictsList] = useState(false);
 
-    const [selectedType, setSelectedType] = useState(0);
+    const [selectedType, setSelectedType] = useState(EstateType.Flat);
 
     const [selectedCur, setSelectedCur] = useState(false);
 
@@ -36,7 +36,8 @@ function Search({onFilters}) {
             case '/catalog-commerce':
                 setSelectedType(EstateType.Commerce);
                 break;
-    } })
+        }
+    }, [selectedType])
 
     const handleTypeSelection = (value: EstateType) => {
         setSelectedType(value);
@@ -57,12 +58,12 @@ function Search({onFilters}) {
         const minChosen = Math.min(...chosenNumbers);
         const maxChosen = Math.max(...chosenNumbers);
 
-        setFormData(data => ({ ...data, roomsCountFrom: minChosen }))
-        setFormData(data => ({ ...data, roomsCountTo: maxChosen }))
+        setFormData(data => ({ ...data, roomsCountFrom: 1 }))
+        setFormData(data => ({ ...data, roomsCountTo: 4 }))
     };
 
     const [formData, setFormData] = useState({
-        estateType: EstateType.Commerce,
+        estateType: selectedType,
         estateLocation: '',
         roomsCountFrom: 0,
         roomsCountTo: 0,
@@ -73,30 +74,40 @@ function Search({onFilters}) {
     })
 
     async function postRequest() {
-
-        const filterData: IEstateFilter = {
-            estateType: formData.estateType,
+        
+        const filterEstate: IEstateFilter = {
+            estateType: selectedType,
             estateLocation: formData.estateLocation,
             roomsCountFrom: formData.roomsCountFrom,
             roomsCountTo: formData.roomsCountTo,
-            totalSquareFrom: formData.totalSquareFrom,
-            totalSquareTo: formData.totalSquareTo,
+            totalSquareFrom: 50,
+            totalSquareTo: 300,
             priceRangeFrom: selectedCur ? formData.priceRangeFrom / 39 : formData.priceRangeFrom,
             priceRangeTo: selectedCur ? formData.priceRangeTo / 39 : formData.priceRangeTo,
         }
-
+        
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(filterData)
+            body: JSON.stringify(filterEstate)
         }
+        
         const response = await fetch('/api/estatedto/getbyfilter', requestOptions);
-        const data = response.json();
-        onFilters(data);
+        const data = response.json().then((data) => {
+            if (data.length > 0) {
+                setSearchById('notid')
+            }
+            else {
+                setSearchById('notid0')
+            }
+           
+        })
+        onFilters(data);  
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        
         postRequest()
     }
 
@@ -211,7 +222,7 @@ function Search({onFilters}) {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', border: 0 }}>
-                    <button className="search-b-s"><b>знайти</b></button>
+                    <button className="search-b-s" type="submit"><b>знайти</b></button>
                 </div>
 
             </div>

@@ -16,7 +16,7 @@ function Navigaton({ url, urlTitle, objectCount, header, addParams }: Navigation
 
     const splittedUrlsTitle = urlTitle.split('/')
     const splittedUrls = url.split(',')
-    console.log(objectCount)
+    
     return (
         <div className="page-nav">
             <div>

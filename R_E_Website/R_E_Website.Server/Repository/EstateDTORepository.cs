@@ -5,6 +5,7 @@ using R_E_Website.Server.Enums;
 using R_E_Website.Server.GenericRepository;
 using R_E_Website.Server.Interfaces;
 using R_E_Website.Server.Models;
+using System.Collections.Generic;
 
 namespace R_E_Website.Server.Repository
 {
@@ -23,17 +24,24 @@ namespace R_E_Website.Server.Repository
         {
             var estate = await _context.Estates.FirstOrDefaultAsync
                 (i => i.Id == id);
-            return new EstateDTO()
+            if(estate!= null)
             {
-                Id = estate.Id,
-                EstateAddress = estate.EstateAddress,
-                EstateFloor = estate.EstateFloor,
-                EstateFloorCount = estate.NumberOfFloors,
-                EstateSquare = estate.TotalSquare,
-                ImgUrl = estate.ImgsUrlFolder + $"/{Utils.Utils.AzureConnetionImages(estate.EstateType.ToString().ToLower()).First()}",
-                PriceUah = estate.PriceUah,
-                PriceUsd = estate.PriceUsd
-            };
+                return new EstateDTO()
+                {
+                    Id = estate.Id,
+                    EstateAddress = estate.EstateAddress,
+                    EstateFloor = estate.EstateFloor,
+                    EstateFloorCount = estate.NumberOfFloors,
+                    EstateSquare = estate.TotalSquare,
+                    ImgUrl = estate.ImgsUrlFolder + $"/{Utils.Utils.AzureConnetionImages(estate.EstateType.ToString().ToLower()).First()}",
+                    PriceUah = estate.PriceUah,
+                    PriceUsd = estate.PriceUsd
+                };
+            }
+            else
+            {
+                throw new Exception("Estate not found");
+            }
         }
 
         public async Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType, string sort)
@@ -80,16 +88,18 @@ namespace R_E_Website.Server.Repository
         {
             var estates = await _context.Estates.ToListAsync();
 
-            var firstImages = Utils.Utils.AzureConnetionImages(filterEstate.EstateType.ToString()+"s");
-
+            var firstImages = Utils.Utils.AzureConnetionImages(filterEstate.EstateType.ToString().ToLower());
+            
             var estateDTOs = estates.Where(estate => estate.EstateType ==
-            filterEstate.EstateType && estate.EstateAddress.Contains(filterEstate.EstateLocation)
-            && estate.TotalSquare >= filterEstate.TotalSquareFrom 
-            && estate.TotalSquare <= filterEstate.TotalSquareTo
-            && (estate.PriceUah >= filterEstate.PriceRangeFrom
-            && estate.PriceUah <= filterEstate.PriceRangeTo)
-            && estate.RoomCount >= filterEstate.RoomsCountFrom
-            && estate.RoomCount <= filterEstate.RoomsCountTo)
+            filterEstate.EstateType).Where(estate =>
+            estate.EstateAddress.Contains(filterEstate.EstateLocation)
+            
+            && TestRange(estate.TotalSquare, filterEstate.TotalSquareFrom, filterEstate.TotalSquareTo)
+
+            && TestRange(estate.PriceUah, filterEstate.PriceRangeFrom, filterEstate.PriceRangeTo)
+
+            && TestRange(estate.RoomCount, filterEstate.RoomsCountFrom, filterEstate.RoomsCountTo)
+            )
                 .Select((estate, index) => new EstateDTO
                 {
                     Id = estate.Id,
@@ -114,6 +124,11 @@ namespace R_E_Website.Server.Repository
 
             return estates.Count(e=>e.EstateType==localEstateType);
 
+        }
+
+        bool TestRange(int? numberToCheck, int? bottom, int? top)
+        {
+            return (numberToCheck >= bottom && numberToCheck <= top);
         }
     }
 }

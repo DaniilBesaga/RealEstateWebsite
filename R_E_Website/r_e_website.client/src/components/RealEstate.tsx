@@ -7,20 +7,22 @@ import Commerce from './estate_types_components/Commerce';
 import Land from './estate_types_components/Land';
 import { EstateType } from '../estateManagement/EnumEstateType';
 
-function RealState({ display, estateType, filters }) {
+function RealState({ display, estateType, filters, searchById }) {
     
     function renderSwitch(et: EstateType) {
+        console.log(filters)
         switch (et) {
             case EstateType.Flat:
-                return <Flat filters={filters} />;
+                return <Flat filters={filters} searchById={searchById} />;
             case EstateType.House:
-                return <House filters={filters} />;
+                return <House filters={filters} searchById={searchById} />;
             case EstateType.Land:
-                return <Land filters={filters} />;
+                return <Land filters={filters} searchById={searchById} />;
             case EstateType.Commerce:
-                return <Commerce filters={filters} />;
+                return <Commerce filters={filters} searchById={searchById} />;
         }
     }
+    
     return (
 
         <div>

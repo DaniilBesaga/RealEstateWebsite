@@ -215,3 +215,32 @@
     padding-bottom: 50px;
     margin-top: 50px;
 }
+
+.empty{
+    padding:50px;
+    
+}
+
+.empty > p{
+    font-size:22px;
+    font-weight:600;
+}
+
+.empty p{
+    color:black;
+}
+
+.empty ul{
+    margin-top:30px;
+    margin-left:20px;
+}
+
+.empty li{
+    display:flex;
+    gap:20px;
+    margin-top:20px;
+}
+
+.empty i, .empty ul p{
+    font-size:20px;
+}

@@ -32,8 +32,20 @@ namespace R_E_Website.Server.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetEstateDTO(int id)
         {
-            var requestEstates = await _estateDTORepository.GetEstateShortcutByIdAsync(id);
-            return Ok(requestEstates);
+            try
+            {
+                var requestEstates = await _estateDTORepository.GetEstateShortcutByIdAsync(id);
+
+                if (requestEstates == null)
+                    return NotFound();
+
+                return Ok(requestEstates);
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message + "\n" + ex.StackTrace;
+                return BadRequest(err);
+            }
         }
 
         [HttpGet("catalogType/{catalogType:int}")]

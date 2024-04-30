@@ -25,14 +25,34 @@ function Catalog({ catalogType }) {
 
     const [objectCount, setObjectCount] = useState(0);
 
+    const [searchById, setSearchById] = useState('');
+
     const handleIdSubmit = (event) => {
         event.preventDefault()
+        setSearchById('id')
         getByIdRequest()
     }
-
+    
     const handleSortSelection = (sortType: string) => {
         setSortMethod(sortType)
         getBySortRequest()
+    }
+
+    const handleRedirect = () => {
+        switch (catalogType) {
+            case EstateType.Flat:
+                window.location.replace(`/flat/${id}`);
+                break;
+            case EstateType.House:
+                window.location.replace(`/house/${id}`);
+                break;
+            case EstateType.Land:
+                window.location.replace(`/land/${id}`);
+                break;
+            case EstateType.Commerce:
+                window.location.replace(`/commerce/${id}`);
+                break;
+        }
     }
 
     async function getByIdRequest() {
@@ -41,8 +61,12 @@ function Catalog({ catalogType }) {
             headers: { 'Content-Type': 'application/json' }
         }
         const response = await fetch(`/api/estatedto/${id}`, requestOptions);
-        const data = await response.json();
-        setFilters(data)
+        if (!response.ok) {
+            setId(-1)
+        } else {
+            handleRedirect()
+        }
+        
     }
 
     async function getBySortRequest() {
@@ -56,14 +80,13 @@ function Catalog({ catalogType }) {
     }
 
     useEffect(() => {
-        console.log(catalogType)
         setTimeout(async () => {
             const response = await fetch(`/api/estatedto/catalogType/${catalogType}`);
             const data = await response.json();
             setObjectCount(data);
         }, 1000);
     })
-
+    
     const searchField = () => {
         return (
             <React.Fragment>
@@ -72,7 +95,7 @@ function Catalog({ catalogType }) {
                         <input
                             type="search"
                             placeholder="Знайти по ID номеру"
-                            value={id == 0 ? '' : id}
+                            value={id == -1 ? 'Not found' : (id == 0 ? '' : id)  }
                             onChange={e => setId(parseInt(e.target.value))}
                         />
                         <i className="ri-search-line" onClick={handleIdSubmit}></i>
@@ -90,7 +113,7 @@ function Catalog({ catalogType }) {
                 <Navigation url={"/, /services"} urlTitle={"Головна/Квартири"}
                     objectCount={objectCount} header={"Знайди оселю своєї мрії"}
                     addParams={searchField} />
-                <Search onFilters={setFilters} />
+                <Search onFilters={setFilters} setSearchById={setSearchById} />
             </div>
 
             <div className={display.grid ? "grid-container" : "grid-container"}>
@@ -126,25 +149,15 @@ function Catalog({ catalogType }) {
 
                 {display.block && 
                     <div className="items-block">
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
-                        <RealState display={'block'} estateType={'flat'} filters={filters} />
+                        <RealState display={'block'} estateType={'flat'} filters={filters} searchById={false} />
+                        
                     </div>    
                 }
 
                 {display.grid &&
-                    <RealState display={'grid'} estateType={catalogType != undefined ? catalogType : EstateType.Flat} filters={filters} />
+                    <RealState display={'grid'} estateType={catalogType != undefined ? catalogType : EstateType.Flat} filters={filters} searchById={searchById} />
                 }
-
+                
             </div>
 
             <div style={{ marginTop: -100 }}>
