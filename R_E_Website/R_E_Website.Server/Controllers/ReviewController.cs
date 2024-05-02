@@ -16,65 +16,101 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetReviews()
         {
-            var reviews = await _reviewsRepository.GetAllAsync();
-            return Ok(reviews.ToArray());
+            try
+            {
+                var reviews = await _reviewsRepository.GetAllAsync();
+                return Ok(reviews.ToArray());
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetReviewById(int id)
         {
-            var review = await _reviewsRepository.GetByIdAsync(id);
-
-            if (review == null)
+            try
             {
-                return NotFound();
-            }
+                var review = await _reviewsRepository.GetByIdAsync(id);
 
-            return Ok(review);
+                if (review == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(review);
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateReview([FromBody] Review review)
         {
-            if (review == null)
+            try
             {
-                return BadRequest();
+                if (review == null)
+                {
+                    return BadRequest();
+                }
+
+                await _reviewsRepository.InsertAsync(review);
+
+                return CreatedAtAction(nameof(GetReviewById), new { id = review.Id }, review);
             }
-
-            await _reviewsRepository.InsertAsync(review);
-
-            return CreatedAtAction(nameof(GetReviewById), new { id = review.Id }, review);
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateReview(int id, [FromBody] Review review)
         {
-            if (review == null || id != review.Id)
+            try
             {
-                return BadRequest();
-            }
+                if (review == null || id != review.Id)
+                {
+                    return BadRequest();
+                }
 
-            var existingReview = await _reviewsRepository.GetByIdAsync(id);
-            if (existingReview == null)
+                var existingReview = await _reviewsRepository.GetByIdAsync(id);
+                if (existingReview == null)
+                {
+                    return NotFound();
+                }
+
+                await _reviewsRepository.UpdateAsync(existingReview);
+            }
+            catch 
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            await _reviewsRepository.UpdateAsync(existingReview);
-
+            
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReview(int id)
         {
-            var existingReview = await _reviewsRepository.GetByIdAsync(id);
-            if (existingReview == null)
+            try
             {
-                return NotFound();
+                var existingReview = await _reviewsRepository.GetByIdAsync(id);
+                if (existingReview == null)
+                {
+                    return NotFound();
+                }
+                await _reviewsRepository.DeleteAsync(id);
             }
-            await _reviewsRepository.DeleteAsync(id);
-
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
             return NoContent();
         }
     }

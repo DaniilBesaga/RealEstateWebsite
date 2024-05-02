@@ -31,22 +31,13 @@ namespace R_E_Website.Server.GenericRepository
 
         public async Task DeleteAsync(object id)
         {
-            try
+            var entity = await dbSet.FindAsync(id);
+            if (_context.Entry(entity).State == EntityState.Detached)
             {
-                var entity = await dbSet.FindAsync(id);
-                if (_context.Entry(entity).State == EntityState.Detached)
-                {
-                    dbSet.Attach(entity);
-                }
-                dbSet.Remove(entity);
-                //await SaveAsync();
+                dbSet.Attach(entity);
             }
-            catch (Exception ex)
-            {
-                string errmsg = ex.Message + "\n" + ex.StackTrace;
-            }
-
-            return;
+            dbSet.Remove(entity);
+            //await SaveAsync(); 
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -97,17 +88,8 @@ namespace R_E_Website.Server.GenericRepository
 
         public async Task InsertAsync(T entity)
         {
-            try
-            {
-                dbSet.Add(entity);
-                await SaveAsync();
-            }
-            catch (Exception ex)
-            {
-                string errmsg = ex.Message + "\n" + ex.StackTrace;
-            }
-
-            return;
+            dbSet.Add(entity);
+            //await SaveAsync();
         }
 
         public async Task SaveAsync()
@@ -117,18 +99,9 @@ namespace R_E_Website.Server.GenericRepository
 
         public async Task UpdateAsync(T entity)
         {
-            try
-            {
-                dbSet.Attach(entity);
-                _context.Entry(entity).State = EntityState.Modified;
-                await SaveAsync();
-            }
-            catch (Exception ex)
-            {
-                string errmsg = ex.Message + "\n" + ex.StackTrace;
-            }
-
-            return;
+            dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            //await SaveAsync();
         }
     }
 }

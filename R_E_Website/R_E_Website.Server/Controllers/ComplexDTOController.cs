@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using R_E_Website.Server.Enums;
 using R_E_Website.Server.Interfaces;
 using R_E_Website.Server.Repository;
 
@@ -16,14 +17,28 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllComplexesDTO()
         {
-            var complexesDTO = await _complexDTORepository.GetAllComplexesShortcutAsync();
-            return Ok(complexesDTO);
+            try
+            {
+                var complexesDTO = await _complexDTORepository.GetAllComplexesShortcutAsync();
+                return Ok(complexesDTO);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
         [HttpGet("{name:int}")]
         public async Task<ActionResult> GetComplexDTO(int name)
         {
-            var complexDTO = await _complexDTORepository.GetComplexShortcutByNameAsync(name);
-            return Ok(complexDTO);
+            try
+            {
+                var complexDTO = await _complexDTORepository.GetComplexShortcutByNameAsync(name);
+                return Ok(complexDTO);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

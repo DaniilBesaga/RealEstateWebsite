@@ -5,15 +5,14 @@ import { displayEstates } from '../../estateManagement/estateGetFetch';
 import { EstateDTO } from '../../estateManagement/IEstateDTO';
 import { Link } from 'react-router-dom';
 import { EstateProps } from '../../estateManagement/estateProps';
+import SuccessLabel from '../SuccessLabel';
 function House({ filters, searchById }: EstateProps) {
     
     const [houses, setHouses] = useState<EstateDTO[]>([]);
     const [readyForRender, setReadyForRender] = useState(false);
     const [empty, setEmpty] = useState(false)
     useEffect(() => {
-        console.log(searchById)
-        console.log(filters)
-        console.log('a')
+        
         if (filters instanceof Promise && searchById == 'notid0') {
             setEmpty(true)
         } else if (searchById == 'id') {
@@ -39,6 +38,7 @@ function House({ filters, searchById }: EstateProps) {
         return (
 
             <div>
+                {houses.length > 0 ? <SuccessLabel success={true} /> : null}
                 {!empty && <div className="rl-grid-container">
                     {houses.map((item, index) =>
                         <Link to={`/house/${item.id}`} className="promo-item" key={index}>

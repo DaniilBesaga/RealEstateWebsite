@@ -1,0 +1,41 @@
+.success-label {
+    padding: 20px;
+    position: absolute;
+    top: 60px;
+    font-size: 18px;
+    color: white;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 100000;
+    animation: roll-down 1s ease-in-out;
+}
+
+.success-label.true {
+    background: #11d907;
+}
+
+.success-label .false {
+    background: #d10d0d;
+}
+
+@keyframes roll-down {
+    0% {
+        transform: translateY(-100%);
+        opacity:0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity:1;
+    }
+}
+
+@keyframes roll-up {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}

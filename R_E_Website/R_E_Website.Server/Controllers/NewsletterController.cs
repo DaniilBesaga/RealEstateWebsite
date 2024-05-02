@@ -20,91 +20,129 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetNewsletters()
         {
-            var newsletters = await _newsletterRepository.GetAllAsync();
-            return Ok(newsletters);
+            try
+            {
+                var newsletters = await _newsletterRepository.GetAllAsync();
+                return Ok(newsletters);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetNewsletterById(int id)
         {
-            var newsletter = await _newsletterRepository.GetByIdAsync(id);
-
-            if (newsletter == null)
+            try
             {
-                return NotFound();
-            }
+                var newsletter = await _newsletterRepository.GetByIdAsync(id);
 
-            return Ok(newsletter);
+                if (newsletter == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(newsletter);
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateNewsletter([FromBody] JsonDocument newsletter)
         {
-            var options = new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true
-            };
-            Newsletter? deserializedObject = JsonSerializer.Deserialize<Newsletter>
-                (newsletter.RootElement.GetRawText(), options)!;
-            
-            List<EstateType> est = new List<EstateType>();
-            string name = newsletter.RootElement.GetProperty("estateType").GetString()!;
-            string[] values = name.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            
-            foreach (var value in values)
-            {
-                if (Enum.TryParse(value.Trim(), true, out EstateType parsedEstateType))
+                var options = new JsonSerializerOptions
                 {
-                    est.Add(parsedEstateType);
-                }
-                else
+                    PropertyNameCaseInsensitive = true
+                };
+                Newsletter? deserializedObject = JsonSerializer.Deserialize<Newsletter>
+                    (newsletter.RootElement.GetRawText(), options)!;
+
+                List<EstateType> est = new List<EstateType>();
+                string name = newsletter.RootElement.GetProperty("estateType").GetString()!;
+                string[] values = name.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var value in values)
                 {
+                    if (Enum.TryParse(value.Trim(), true, out EstateType parsedEstateType))
+                    {
+                        est.Add(parsedEstateType);
+                    }
+                    else
+                    {
+                    }
                 }
-            }
 
-            deserializedObject.EstateTypes = est.ToArray();
-           
-            if (newsletter == null)
+                deserializedObject.EstateTypes = est.ToArray();
+
+                if (newsletter == null)
+                {
+                    return BadRequest();
+                }
+
+                await _newsletterRepository.InsertAsync(deserializedObject);
+
+                Utils.Utils.SendEmail(deserializedObject);
+
+                return CreatedAtAction(nameof(GetNewsletterById), new { id = deserializedObject.Id }, deserializedObject);
+
+            }
+            catch 
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            await _newsletterRepository.InsertAsync(deserializedObject);
-
-            Utils.Utils.SendEmail(deserializedObject);
-
-            return CreatedAtAction(nameof(GetNewsletterById), new { id = deserializedObject.Id }, deserializedObject);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateNewsletter(int id, [FromBody] Newsletter newsletter)
         {
-            if (newsletter == null || id != newsletter.Id)
+            try
             {
-                return BadRequest();
-            }
+                if (newsletter == null || id != newsletter.Id)
+                {
+                    return BadRequest();
+                }
 
-            var existingNewsletter = await _newsletterRepository.GetByIdAsync(id);
-            if (existingNewsletter == null)
+                var existingNewsletter = await _newsletterRepository.GetByIdAsync(id);
+                if (existingNewsletter == null)
+                {
+                    return NotFound();
+                }
+
+                await _newsletterRepository.UpdateAsync(existingNewsletter);
+            }
+            catch 
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            await _newsletterRepository.UpdateAsync(existingNewsletter);
-
+           
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNewsletter(int id)
         {
-            var existingCategory = await _newsletterRepository.GetByIdAsync(id);
-            if (existingCategory == null)
+            try
             {
-                return NotFound();
+                var existingCategory = await _newsletterRepository.GetByIdAsync(id);
+                if (existingCategory == null)
+                {
+                    return NotFound();
+                }
+                await _newsletterRepository.DeleteAsync(id);
             }
-            await _newsletterRepository.DeleteAsync(id);
-
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
             return NoContent();
         }
     }

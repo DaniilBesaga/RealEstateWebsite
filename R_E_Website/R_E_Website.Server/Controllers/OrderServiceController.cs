@@ -18,71 +18,110 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetOrdersInfo()
         {
-            var orders = await _orderServiceRepository.GetAllAsync();
-            return Ok(orders);
+            try
+            {
+                var orders = await _orderServiceRepository.GetAllAsync();
+                return Ok(orders);
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetOrderById(int id)
         {
-            var order = await _orderServiceRepository.GetByIdAsync(id);
-
-            if (order == null)
+            try
             {
-                return NotFound();
-            }
+                var order = await _orderServiceRepository.GetByIdAsync(id);
 
-            return Ok(order);
+                if (order == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(order);
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+           
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateOrder([FromBody] JsonDocument order)
         {
-            var options = new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true
-            };
-            OrderService? deserializedObject = JsonSerializer.Deserialize<OrderService>
-                (order.RootElement.GetRawText(), options);
-            if (deserializedObject == null)
-            {
-                return BadRequest();
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                OrderService? deserializedObject = JsonSerializer.Deserialize<OrderService>
+                    (order.RootElement.GetRawText(), options);
+                if (deserializedObject == null)
+                {
+                    return BadRequest();
+                }
+
+                await _orderServiceRepository.InsertAsync(deserializedObject);
+
+                return CreatedAtAction(nameof(GetOrderById), new { id = deserializedObject.Id }, order);
+
             }
-
-            await _orderServiceRepository.InsertAsync(deserializedObject);
-
-            return CreatedAtAction(nameof(GetOrderById), new { id = deserializedObject.Id }, order);
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateOrder(int id, [FromBody] OrderService order)
         {
-            if (order == null || id != order.Id)
+            try
             {
-                return BadRequest();
-            }
+                if (order == null || id != order.Id)
+                {
+                    return BadRequest();
+                }
 
-            var existingOrder = await _orderServiceRepository.GetByIdAsync(id);
-            if (existingOrder == null)
+                var existingOrder = await _orderServiceRepository.GetByIdAsync(id);
+                if (existingOrder == null)
+                {
+                    return NotFound();
+                }
+
+                await _orderServiceRepository.UpdateAsync(existingOrder);
+            }
+            catch
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            await _orderServiceRepository.UpdateAsync(existingOrder);
-
+            
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)
         {
-            var existingOrder = await _orderServiceRepository.GetByIdAsync(id);
-            if (existingOrder == null)
+            try
             {
-                return NotFound();
-            }
-            await _orderServiceRepository.DeleteAsync(id);
+                var existingOrder = await _orderServiceRepository.GetByIdAsync(id);
+                if (existingOrder == null)
+                {
+                    return NotFound();
+                }
+                await _orderServiceRepository.DeleteAsync(id);
 
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+           
             return NoContent();
         }
     }

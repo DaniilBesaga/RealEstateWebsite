@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using R_E_Website.Server.Enums;
 using R_E_Website.Server.Interfaces;
 using R_E_Website.Server.Models;
 using R_E_Website.Server.Repository;
@@ -18,15 +19,30 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllEstatesDTO([FromHeader] string EstateType, [FromHeader] string sort)
         {
-            var requestEstates = await _estateDTORepository.GetAllEstatesShortcutAsync(EstateType, sort);
-            return Ok(requestEstates);
+            try
+            {
+                var requestEstates = await _estateDTORepository.GetAllEstatesShortcutAsync(EstateType, sort);
+                return Ok(requestEstates);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPost("getByFilter")]
         public async Task<IActionResult> GetAllEstatesDTOByFilter([FromBody] FilterEstate filterEstate)
         {
-            var requestEstates = await _estateDTORepository.GetAllEstatesFilterAsync(filterEstate);
-            return Ok(requestEstates);
+            try
+            {
+                var requestEstates = await _estateDTORepository.GetAllEstatesFilterAsync(filterEstate);
+                return Ok(requestEstates);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpGet("{id:int}")]
@@ -41,10 +57,9 @@ namespace R_E_Website.Server.Controllers
 
                 return Ok(requestEstates);
             }
-            catch (Exception ex)
+            catch
             {
-                string err = ex.Message + "\n" + ex.StackTrace;
-                return BadRequest(err);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 

@@ -17,72 +17,109 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetRequests()
         {
-            var requests = await _requestRepository.GetAllAsync();
-            return Ok(requests);
+            try
+            {
+                var requests = await _requestRepository.GetAllAsync();
+                return Ok(requests);
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetRequestById(int id)
         {
-            var request = await _requestRepository.GetByIdAsync(id);
-
-            if (request == null)
+            try
             {
-                return NotFound();
-            }
+                var request = await _requestRepository.GetByIdAsync(id);
 
-            return Ok(request);
+                if (request == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(request);
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateRequest([FromBody] JsonDocument request)
         {
-            var options = new JsonSerializerOptions
+            try
             {
-                PropertyNameCaseInsensitive = true
-            };
-            Request? deserializedObject = JsonSerializer.Deserialize<Request>
-                (request.RootElement.GetRawText(), options);
-            if (deserializedObject == null)
-            {
-                return BadRequest();
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                Request? deserializedObject = JsonSerializer.Deserialize<Request>
+                    (request.RootElement.GetRawText(), options);
+                if (deserializedObject == null)
+                {
+                    return BadRequest();
+                }
+
+                await _requestRepository.InsertAsync(deserializedObject);
+
+                Utils.Utils.SendRequestEmail(deserializedObject);
+
+                return CreatedAtAction(nameof(GetRequestById), new { id = deserializedObject.Id }, deserializedObject);
             }
-
-            await _requestRepository.InsertAsync(deserializedObject);
-
-            Utils.Utils.SendRequestEmail(deserializedObject);
-
-            return CreatedAtAction(nameof(GetRequestById), new { id = deserializedObject.Id }, deserializedObject);
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateRequest(int id, [FromBody] Request request)
         {
-            if (request == null || id != request.Id)
+            try
             {
-                return BadRequest();
-            }
+                if (request == null || id != request.Id)
+                {
+                    return BadRequest();
+                }
 
-            var existingRequest = await _requestRepository.GetByIdAsync(id);
-            if (existingRequest == null)
+                var existingRequest = await _requestRepository.GetByIdAsync(id);
+                if (existingRequest == null)
+                {
+                    return NotFound();
+                }
+
+                await _requestRepository.UpdateAsync(existingRequest);
+            }
+            catch 
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            await _requestRepository.UpdateAsync(existingRequest);
-
+            
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRequest(int id)
         {
-            var existingRequest = await _requestRepository.GetByIdAsync(id);
-            if (existingRequest == null)
+            try
             {
-                return NotFound();
+                var existingRequest = await _requestRepository.GetByIdAsync(id);
+                if (existingRequest == null)
+                {
+                    return NotFound();
+                }
+                await _requestRepository.DeleteAsync(id);
             }
-            await _requestRepository.DeleteAsync(id);
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
 
             return NoContent();
         }

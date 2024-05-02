@@ -16,65 +16,97 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetEstates()
         {
-            var estates = await _estateRepository.GetAllAsync();
-            return Ok(estates);
+            try
+            {
+                var estates = await _estateRepository.GetAllAsync();
+                return Ok(estates);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetEstateById(int id)
         {
-            var estate = await _estateRepository.GetByIdAsync(id);
-
-            if (estate == null)
+            try
             {
-                return NotFound();
-            }
+                var estate = await _estateRepository.GetByIdAsync(id);
 
-            return Ok(estate);
+                if (estate == null)
+                {
+                    return NotFound();
+                }
+                var estates = await _estateRepository.GetAllAsync();
+                return Ok(estate);
+            }
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateEstate([FromBody] Estate estate)
         {
-            if (estate == null)
+            try
             {
-                return BadRequest();
+                if (estate == null)
+                {
+                    return BadRequest();
+                }
+
+                await _estateRepository.InsertAsync(estate);
             }
-
-            await _estateRepository.InsertAsync(estate);
-
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
             return CreatedAtAction(nameof(GetEstateById), new { id = estate.Id }, estate);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateEstate(int id, [FromBody] Estate estate)
         {
-            if (estate == null || id != estate.Id)
+            try
             {
-                return BadRequest();
-            }
+                if (estate == null || id != estate.Id)
+                {
+                    return BadRequest();
+                }
 
-            var existingEstate = await _estateRepository.GetByIdAsync(id);
-            if (existingEstate == null)
+                var existingEstate = await _estateRepository.GetByIdAsync(id);
+                if (existingEstate == null)
+                {
+                    return NotFound();
+                }
+                await _estateRepository.UpdateAsync(existingEstate);
+            }
+            catch
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            await _estateRepository.UpdateAsync(existingEstate);
-
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEstate(int id)
         {
-            var existingEstate = await _estateRepository.GetByIdAsync(id);
-            if (existingEstate == null)
+            try
             {
-                return NotFound();
+                var existingEstate = await _estateRepository.GetByIdAsync(id);
+                if (existingEstate == null)
+                {
+                    return NotFound();
+                }
+                await _estateRepository.DeleteAsync(id);
             }
-            await _estateRepository.DeleteAsync(id);
-
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
             return NoContent();
         }
     }

@@ -18,64 +18,99 @@ namespace R_E_Website.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetComplexes()
         {
-            var complexes = await _complexRepository.GetAllAsync();
-            return Ok(complexes);
+            try
+            {
+                var complexes = await _complexRepository.GetAllAsync();
+                return Ok(complexes);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetComplexById(int id)
         {
-            var complex = await _complexRepository.GetByIdAsync(id);
-
-            if (complex == null)
+            try
             {
-                return NotFound();
-            }
+                var complex = await _complexRepository.GetByIdAsync(id);
 
-            return Ok(complex);
+                if (complex == null)
+                {
+                    return NotFound();
+                }
+                return Ok(complex);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateComplex([FromBody] Models.Complex complex)
         {
-            if (complex == null)
+            try
             {
-                return BadRequest();
+                if (complex == null)
+                {
+                    return BadRequest();
+                }
+
+                await _complexRepository.InsertAsync(complex);
+
+                return CreatedAtAction(nameof(GetComplexById), new { id = complex.Id }, complex);
             }
-
-            await _complexRepository.InsertAsync(complex);
-
-            return CreatedAtAction(nameof(GetComplexById), new { id = complex.Id }, complex);
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateComplex(int id, [FromBody] Models.Complex complex)
         {
-            if (complex == null || id != complex.Id)
+            try
             {
-                return BadRequest();
-            }
+                if (complex == null || id != complex.Id)
+                {
+                    return BadRequest();
+                }
 
-            var existingComplex = await _complexRepository.GetByIdAsync(id);
-            if (existingComplex == null)
+                var existingComplex = await _complexRepository.GetByIdAsync(id);
+                if (existingComplex == null)
+                {
+                    return NotFound();
+                }
+
+                await _complexRepository.UpdateAsync(existingComplex);
+            }
+            catch
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
-            await _complexRepository.UpdateAsync(existingComplex);
-
+            
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteComplex(int id)
         {
-            var existingComplex = await _complexRepository.GetByIdAsync(id);
-            if (existingComplex == null)
+            try
             {
-                return NotFound();
+                var existingComplex = await _complexRepository.GetByIdAsync(id);
+                if (existingComplex == null)
+                {
+                    return NotFound();
+                }
+                await _complexRepository.DeleteAsync(id);
             }
-            await _complexRepository.DeleteAsync(id);
+            catch 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
 
             return NoContent();
         }
