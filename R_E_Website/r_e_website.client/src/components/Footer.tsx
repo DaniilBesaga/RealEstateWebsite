@@ -3,7 +3,7 @@ import '../style/Footer.css';
 import 'remixicon/fonts/remixicon.css';
 import SuccessLabel from './SuccessLabel';
 import { Link } from 'react-router-dom';
-
+import { HashLink } from 'react-router-hash-link';
 interface Newsletter {
     email: string,
     estateType: string,
@@ -190,15 +190,15 @@ function Footer() {
                                 <li><Link to="/pokupka-neruhomosti">
                                     Купуємо
                                 </Link></li>
-                                <li><Link to="/services#consult">
+                                <li><HashLink to="/services#consult">
                                     Консультуємо
-                                </Link></li>
-                                <li><Link to="/services#exchange">
+                                </HashLink></li>
+                                <li><HashLink to="/services#exchange">
                                     Міняємо
-                                </Link></li>
-                                <li><Link to="/services#help">
+                                </HashLink></li>
+                                <li><HashLink to="/services#help">
                                     Допомагаємо
-                                </Link></li>
+                                </HashLink></li>
                             </ul>
                         </li>
                         <li>
@@ -207,12 +207,12 @@ function Footer() {
                                 <li><Link to="/prodazh-neruhomosti">
                                     Продаємо
                                 </Link></li>
-                                <li><Link to="/services#invest">
+                                <li><HashLink to="/services#invest">
                                     Iнвестуємо
-                                </Link></li>
-                                <li><Link to="/services#credit">
+                                </HashLink></li>
+                                <li><HashLink to="/services#credit">
                                     Кредитуємо
-                                </Link></li>
+                                </HashLink></li>
                                 <li><Link to="/compendium">
                                     Корисна інформація
                                 </Link></li>

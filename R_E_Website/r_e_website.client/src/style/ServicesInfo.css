@@ -43,13 +43,17 @@
     fill: white !important;
 }
 
+.opened_svg:hover{
+    fill: white !important;
+}
+
 .service-title {
     display: flex;
     align-items: center !important;
 }
 
 .service-title:hover svg{
-    fill: #a52822 !important;
+    fill: #a52822;
 }
 
 .service-title:hover span{

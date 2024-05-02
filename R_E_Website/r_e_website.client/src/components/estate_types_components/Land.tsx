@@ -3,47 +3,82 @@ import '../../style/RealEstate.css';
 import 'remixicon/fonts/remixicon.css';
 import { displayEstates } from '../../estateManagement/estateGetFetch';
 import { EstateDTO } from '../../estateManagement/IEstateDTO';
+import { EstateProps } from '../../estateManagement/estateProps';
 
-function Land({ filters }) {
+function Land({ filters, searchById }: EstateProps) {
 
-    const [houses, setHouses] = useState<EstateDTO[]>([]);
+    const [lands, setLands] = useState<EstateDTO[]>([]);
+    const [readyForRender, setReadyForRender] = useState(false);
 
-    useEffect(() => { displayEstates('land').then((data) => { setHouses(data) }) }, []);
+    const [empty, setEmpty] = useState(false)
+    useEffect(() => {
 
-    return (
+        if (filters instanceof Promise && searchById == 'notid0') {
+            setEmpty(true)
+        } else if (searchById == 'id') {
+            (async () => {
+                const response = await fetch(`/api/estatedto/${filters[0].id}`);
+                const data = await response.json();
+                setLands([data]);
+            })();
+        } else if (filters.length == 0 && searchById == '') {
+            displayEstates('land')
+                .then((data) => {
+                    setLands(data);
+                });
+        }
+        else if (searchById == 'notid') {
+            setLands(filters);
+        }
+        setReadyForRender(true);
+    });
 
-        <div className="rl-grid-container">
-            {houses.map((item, index) =>
-                <a className="promo-item" key={index}>
-                    <div className="box-img" style={{ backgroundImage: `url(${item.imgUrl})` }}>
-                        <div className="label label-exclusive"><span>ексклюзив</span></div>
-                    </div>
+    if (readyForRender) {
+        return (
+            <div>
+                {!empty && <div className="rl-grid-container">
+                    {lands.map((item, index) =>
+                        <a className="promo-item" key={index}>
+                            <div className="box-img" style={{ backgroundImage: `url(${item.imgUrl})` }}>
+                                <div className="label label-exclusive"><span>ексклюзив</span></div>
+                            </div>
 
-                    <div className="info">
-                        <div className="info1">
-                            <i className="ri-building-line"></i>
-                            {item.estateAddress}
-                        </div>                  
-                        <div className="info2">
-                            <span className="sq">
-                                <i className="ri-crop-line"></i>
-                                {item.estateSquare} кв.м.
-                            </span>
-                        </div>
-                        <div className="info3">
-                            <i className="ri-money-dollar-circle-line"></i>
-                            {item.priceUah} ₴
-                            <span className="sep">|</span>
-                            {item.priceUsd} $
-                        </div>
-                        <div className="info4">
+                            <div className="info">
+                                <div className="info1">
+                                    <i className="ri-building-line"></i>
+                                    {item.estateAddress}
+                                </div>
+                                <div className="info2">
+                                    <span className="sq">
+                                        <i className="ri-crop-line"></i>
+                                        {item.estateSquare} кв.м.
+                                    </span>
+                                </div>
+                                <div className="info3">
+                                    <i className="ri-money-dollar-circle-line"></i>
+                                    {item.priceUah} ₴
+                                    <span className="sep">|</span>
+                                    {item.priceUsd} $
+                                </div>
+                                <div className="info4">
 
-                        </div>
-                    </div>
-                </a>
-            )}
-        </div>
-    )
+                                </div>
+                            </div>
+                        </a>
+                    )}
+                </div>
+                }
+                {empty && <div className="empty">
+                    <p>Вибачте, але по Вашому запиту нічого не знайдено. Спробуйте наступне:</p>
+                    <ul>
+                        <li><i className="ri-check-line"></i><p>Введіть вулицю без номера (тільки назву);</p></li>
+                        <li><i className="ri-check-line"></i><p>Спробуйте пошук по району, без вказівки вулиці;</p></li>
+                        <li><i className="ri-check-line"></i><p>Заповніть заявку або зв'яжіться з нами, і ми знайдемо для Вас цікаву пропозицію.</p></li>
+                    </ul>
+                </div>}
+            </div>
+        )
+    }
 }
 
 export default Land;
