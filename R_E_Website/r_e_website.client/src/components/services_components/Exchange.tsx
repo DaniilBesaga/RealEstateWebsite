@@ -3,7 +3,7 @@ import '../../style/services_style/Help.css';
 
 function Exchange() {
     return (
-        <div className="exhcange-container">
+        <div className="exhcange-container" id="exchange">
             <p className="inner-title-ul">1. ЗНАЙОМСТВО </p>
             <ul className="ul-buy-for">
                 <li>

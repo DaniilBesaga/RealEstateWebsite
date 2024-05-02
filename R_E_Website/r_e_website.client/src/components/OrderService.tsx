@@ -1,6 +1,6 @@
 ﻿import { useState } from 'react';
 import '../style/OrderService.css'
-import { IEstate } from '../estateManagement/IEstate';
+import SuccessLabel from './SuccessLabel';
 
 interface IOrderService {
     name: string,
@@ -10,7 +10,7 @@ interface IOrderService {
 }
 
 function OrderService({estateId}) {
-
+    const [success, setSuccess] = useState(false);
     async function postOrderService() {
 
         const requestData: IOrderService = {
@@ -19,15 +19,13 @@ function OrderService({estateId}) {
             email: formData.email,
             estateId: estateId
         }
-        console.log(requestData)
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(requestData)
         }
         const response = await fetch('/api/orderservice', requestOptions);
-        const data = response.json();
-        
+        setSuccess(response.ok ? true : false)
     }
 
     const [formData, setFormData] = useState({
@@ -43,6 +41,7 @@ function OrderService({estateId}) {
 
     return (
         <div className="order-service-container">
+            {success ? <SuccessLabel success={success} /> : null}
             <h2>Замовити послугу</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Ваше ім'я *"

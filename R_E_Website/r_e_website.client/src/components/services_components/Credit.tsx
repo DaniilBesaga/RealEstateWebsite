@@ -3,7 +3,7 @@ import '../../style/services_style/Help.css';
 
 function Credit() {
     return (
-        <div className="credit-container">
+        <div className="credit-container" id="credit">
             <p className="inner-title-ul">Залиште заявку і ми допоможемо:</p>
             <ul className="ul-buy-for">
                 <li>

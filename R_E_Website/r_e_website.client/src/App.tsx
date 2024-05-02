@@ -27,20 +27,20 @@ function App() {
                 <Route path='/services' element={<Services />} />
                 <Route path='/about' element={<AboutUs_Info />} />
                 <Route path='/contact' element={<Contacts />} />
-                <Route path='/conpendium' element={<Helfpful_Info />} />
+                <Route path='/compendium' element={<Helfpful_Info />} />
                 <Route path='/request' element={<Request />} />
                 <Route path='/residential-complexes' element={<ResidentialComplexesList />} />
                 <Route path='/residential-complex/:id' element={<ResidentialComplex />} />
                 <Route path='/catalog-house' element={<Catalog catalogType={EstateType.House} />} />
                 <Route path='/catalog-land' element={<Catalog catalogType={EstateType.Land} />} />
                 <Route path='/catalog-commerce' element={<Catalog catalogType={EstateType.Commerce} />} />
-                <Route path='/flat' element={<RealEstate display='grid' filters={undefined} estateType='flat' />} />
+                <Route path='/flat' element={<RealEstate display='grid' filters={undefined} estateType='flat' searchById='' />} />
                 <Route path='/flat/:id' element={<Estate />} />
-                <Route path='/house' element={<RealEstate display='grid' filters={undefined} estateType='house' />} />
+                <Route path='/house' element={<RealEstate display='grid' filters={undefined} estateType='house' searchById='' />} />
                 <Route path='/house/:id' element={<Estate />} />
-                <Route path='/land' element={<RealEstate display='grid' filters={undefined} estateType='land' />} />
+                <Route path='/land' element={<RealEstate display='grid' filters={undefined} estateType='land' searchById='' />} />
                 <Route path='/land/:id' element={<Estate />} />
-                <Route path='/commerce' element={<RealEstate display='grid' filters={undefined} estateType='commerce' />} />
+                <Route path='/commerce' element={<RealEstate display='grid' filters={undefined} estateType='commerce' searchById='' />} />
                 <Route path='/commerce/:id' element={<Estate />} />
                 <Route path="*" element={<NotFoundPage/> } />
             </Routes>

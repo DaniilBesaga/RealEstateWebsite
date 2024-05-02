@@ -2,7 +2,7 @@
 
 function Help() {
     return (
-        <div className="help-container">
+        <div className="help-container" id="help">
             <ul className="ul-buy-for">
                 <li>
                     <p>1. Зателефонуйте або напишіть нам.</p>

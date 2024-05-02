@@ -4,7 +4,7 @@ import '../../style/services_style/Help.css';
 
 function Invest() {
     return (
-        <div className="invest-container">
+        <div className="invest-container" id="credit">
             <p className="inner-title-ul"><b>Інвестиція самостійно</b> - це:</p>
             <ul className="ul-buy-for">
                 <li>

@@ -36,9 +36,7 @@ function House({ filters, searchById }: EstateProps) {
     
     if (readyForRender) {
         return (
-
             <div>
-                {houses.length > 0 ? <SuccessLabel success={true} /> : null}
                 {!empty && <div className="rl-grid-container">
                     {houses.map((item, index) =>
                         <Link to={`/house/${item.id}`} className="promo-item" key={index}>

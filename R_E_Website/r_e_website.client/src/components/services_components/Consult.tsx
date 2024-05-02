@@ -4,7 +4,7 @@ import '../../style/services_style/Help.css';
 
 function Consult() {
     return (
-        <div className="consult-container">
+        <div className="consult-container" id="consult">
             <section style={{ backgroundImage:'url(https://profirealt.com.ua/wp-content/uploads/2020/09/service3.1-500x500.jpg)' }}></section>
             <div>
                 <div className="consult-title">

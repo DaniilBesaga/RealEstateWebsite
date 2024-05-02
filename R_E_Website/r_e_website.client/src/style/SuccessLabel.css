@@ -1,13 +1,11 @@
 .success-label {
     padding: 20px;
     position: absolute;
-    top: 60px;
     font-size: 18px;
     color: white;
-    left: 50%;
-    transform: translate(-50%, 50%);
+    left: 42%;
     z-index: 100000;
-    animation: roll-down 1s ease-in-out;
+    animation: roll-down 5s forwards;
 }
 
 .success-label.true {
@@ -24,18 +22,13 @@
         opacity:0;
     }
 
-    100% {
+    50% {
         transform: translateY(0);
         opacity:1;
-    }
-}
-
-@keyframes roll-up {
-    0% {
-        transform: translateY(0);
     }
 
     100% {
         transform: translateY(-100%);
+        opacity: 0;
     }
 }

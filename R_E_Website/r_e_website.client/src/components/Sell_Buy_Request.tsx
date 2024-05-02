@@ -3,6 +3,7 @@ import '../style/Search.css';
 import { EstateType } from '../estateManagement/EnumEstateType'
 import { useState } from 'react';
 import Request from '../pages/Request';
+import SuccessLabel from './SuccessLabel';
 
 interface Request {
     id?: number,
@@ -66,6 +67,8 @@ function Sell_Buy_Request({ type }) {
     };
 
     const [displayAddInfo, setDisplayAddInfo] = useState(false);
+
+    const [success, setSuccess] = useState(false);
 
     const [formData, setFormData] = useState({
         requestId: 0,
@@ -136,11 +139,12 @@ function Sell_Buy_Request({ type }) {
             body: JSON.stringify(requestData)
         }
         const response = await fetch('/api/request', requestOptions);
-        const data = response.json();
+        setSuccess(response.ok ? true : false)
     }
 
     return (
         <div className={type != '' ? "form-container open" : "form-container"}>
+            {success ? <SuccessLabel success={success} /> : null}
             <form onSubmit={handleSubmit}>
                 <div className="first-col">
                     <span>Ваші дані</span>

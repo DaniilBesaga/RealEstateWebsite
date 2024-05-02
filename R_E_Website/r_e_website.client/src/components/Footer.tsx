@@ -1,6 +1,8 @@
 ﻿import { useState } from 'react';
 import '../style/Footer.css';
 import 'remixicon/fonts/remixicon.css';
+import SuccessLabel from './SuccessLabel';
+import { Link } from 'react-router-dom';
 
 interface Newsletter {
     email: string,
@@ -24,6 +26,8 @@ function Footer() {
     const [showAdd, setShowAdd] = useState(false);
 
     const [estateType, setEstateType] = useState<EstateType[]>([]);
+
+    const [success, setSuccess] = useState(false);
 
     
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>,
@@ -67,7 +71,7 @@ function Footer() {
             body: JSON.stringify(requestData)
         }
         const response = await fetch('/api/newsletter', requestOptions);
-        const data = response.json();
+        setSuccess(response.ok ? true : false)
     }
 
     const handleSubmit = (event) => {
@@ -88,6 +92,7 @@ function Footer() {
     
     return (
         <footer className="footer">
+            {success ? <SuccessLabel success={success} /> : null}
             <div className="section-subsc">
                 <span>Підпишіться на нашу розсилку</span>
                 <div className="subsc-form">
@@ -165,37 +170,61 @@ function Footer() {
                     <ul>
                         <li>
                             <ul className="menu-item">
-                                <li><a>Квартири</a></li>
-                                <li><a>Будинки</a></li>
-                                <li><a>Земля</a></li>
-                                <li><a>Комерційна нерухомість</a></li>
+                                <li><Link to="/catalog">
+                                    Квартири
+                                </Link></li>
+                                <li><Link to="/catalog-house">
+                                    Будинки
+                                </Link></li>
+                                <li><Link to="/catalog-land">
+                                    Земля
+                                </Link></li>
+                                <li><Link to="/catalog-commerce">
+                                    Комерційна нерухомість
+                                </Link></li>
                             </ul>
                         </li>
                         <li>
                             <ul className="menu-item">
                                 <li><span><b>Послуги</b></span></li>
-                                <li><a>Купуємо</a></li>
-                                <li><a>Консультуємо</a></li>
-                                <li><a>Міняємо</a></li>
-                                <li><a>Допомагаємо</a></li>
+                                <li><Link to="/pokupka-neruhomosti">
+                                    Купуємо
+                                </Link></li>
+                                <li><Link to="/services#consult">
+                                    Консультуємо
+                                </Link></li>
+                                <li><Link to="/services#exchange">
+                                    Міняємо
+                                </Link></li>
+                                <li><Link to="/services#help">
+                                    Допомагаємо
+                                </Link></li>
                             </ul>
                         </li>
                         <li>
                             <ul className="menu-item">
                                 <li style={{ opacity:0 }}><span><b>Послуги</b></span></li>
-                                <li><a>Продаємо</a></li>
-                                <li><a>Інвестуємо</a></li>
-                                <li><a>Кредитуємо</a></li>
-                                <li><a>Корисна інформація</a></li>
+                                <li><Link to="/prodazh-neruhomosti">
+                                    Продаємо
+                                </Link></li>
+                                <li><Link to="/services#invest">
+                                    Iнвестуємо
+                                </Link></li>
+                                <li><Link to="/services#credit">
+                                    Кредитуємо
+                                </Link></li>
+                                <li><Link to="/compendium">
+                                    Корисна інформація
+                                </Link></li>
                             </ul>
                         </li>
                         <li>
                             <ul className="menu-item">
                                 <li><span><b>Про компанію</b></span></li>
-                                <li><a>Контакти</a></li>
-                                <li><a>Про нас</a></li>
-                                <li><a>Вакансії</a></li>
-                                <li><a>Відгуки</a></li>
+                                <li><Link to="/contact">Контакти</Link></li>
+                                <li><Link to="/about">Про нас</Link></li>
+                                <li><Link to="/vakansii">Вакансії</Link></li>
+                                <li><Link to="/reviews">Відгуки</Link></li>
                             </ul>
                         </li>
                     </ul>
@@ -235,7 +264,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="section-other-part-2">
-                    <p>ProfiRealt © 2019 - 2024, <a>Угода користувача</a></p>
+                    <p>ProfiRealt © 2019 - 2024, <Link to="ugoda">Угода користувача</Link></p>
                 </div>
             </div>
 
