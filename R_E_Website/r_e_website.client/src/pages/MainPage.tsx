@@ -6,6 +6,7 @@ import InstPosts from '../components/InstPosts.tsx'
 import Footer from '../components/Footer.tsx'
 import RealEstate from '../components/RealEstate.tsx'
 import { EstateType } from '../estateManagement/EnumEstateType.tsx'
+import { EstateDTO } from '../estateManagement/IEstateDTO.tsx'
 
 
 function MainPage() {
@@ -13,7 +14,7 @@ function MainPage() {
         <div>
             <Header></Header>
             <SlideShow></SlideShow>
-            <RealEstate display="grid" estateType={EstateType.Flat} filters={""} searchById={''}></RealEstate>
+            <RealEstate display="grid" estateType={EstateType.Flat} filters={(undefined as unknown as EstateDTO[])} searchById={''} sort='any'></RealEstate>
             <SellAd></SellAd>
             <Reviews></Reviews>
             <InstPosts></InstPosts>

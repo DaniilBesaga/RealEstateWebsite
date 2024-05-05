@@ -44,7 +44,7 @@ namespace R_E_Website.Server.Repository
             }
         }
 
-        public async Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType, string sort)
+        public async Task<IEnumerable<EstateDTO>> GetAllEstatesShortcutAsync(string estateType)
         {
             var estates = await _context.Estates.ToListAsync();
 
@@ -66,20 +66,6 @@ namespace R_E_Website.Server.Repository
                 PriceUah = estate.PriceUah,
                 PriceUsd = estate.PriceUsd
             }).ToList();
-
-            switch (sort)
-            {
-                case "any":
-                    break;
-                case "descending":
-                    estateDTOs.Sort((a, b) => b.PriceUah - a.PriceUah);
-                    break;
-                case "ascending":
-                    estateDTOs.Sort((a, b) => a.PriceUah - b.PriceUah);
-                    break;
-                case "":
-                    break;
-            }
 
             return estateDTOs;
         }

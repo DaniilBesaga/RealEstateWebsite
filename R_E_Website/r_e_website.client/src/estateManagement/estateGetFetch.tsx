@@ -6,8 +6,7 @@ export function displayEstates(estateType: string) {
             try {
                 const response = await fetch('/api/estatedto', {
                     headers: new Headers({
-                        'estateType': `${estateType}`,
-                        'sort': 'any'
+                        'estateType': `${estateType}`
                     })
                 });
                 const data = await response.json();

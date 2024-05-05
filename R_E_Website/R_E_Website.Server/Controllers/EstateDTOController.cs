@@ -17,11 +17,11 @@ namespace R_E_Website.Server.Controllers
             _estateDTORepository = estateDTORepository;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllEstatesDTO([FromHeader] string EstateType, [FromHeader] string sort)
+        public async Task<IActionResult> GetAllEstatesDTO([FromHeader] string EstateType)
         {
             try
             {
-                var requestEstates = await _estateDTORepository.GetAllEstatesShortcutAsync(EstateType, sort);
+                var requestEstates = await _estateDTORepository.GetAllEstatesShortcutAsync(EstateType);
                 return Ok(requestEstates);
             }
             catch

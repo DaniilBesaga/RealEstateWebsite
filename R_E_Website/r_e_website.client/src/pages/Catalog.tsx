@@ -87,33 +87,6 @@ function Catalog({ catalogType }) {
         
     }
 
-    async function getBySortRequest(sortType: string) {
-        let estateType = '';
-        switch (catalogType) {
-            case EstateType.Flat:
-                estateType = 'flat'
-                break;
-            case EstateType.House:
-                estateType = 'house'
-                break;
-            case EstateType.Land:
-                estateType = 'land'
-                break;
-            case EstateType.Commerce:
-                estateType = 'commerce'
-                break;
-        }
-        const response = await fetch(`/api/estatedto`, {
-            headers: new Headers({
-                'estateType': `${estateType}`,
-                'sort': `${sortType}` 
-            })
-        });
-        const data = await response.json();
-        setFilters(data)
-        setSearchById('notidsort')
-    }
-
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(`/api/estatedto/catalogType/${catalogType}`);
