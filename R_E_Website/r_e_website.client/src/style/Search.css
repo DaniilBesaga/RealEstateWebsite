@@ -58,7 +58,6 @@
     height: 50px;
     border-radius: 10px;
     border: 1px solid #d5d5d5;
-    
     font-size: 15px;
     padding-left: 10px;
 }
@@ -154,6 +153,7 @@
     width: 170px;
     height: 46px;
     border-radius: 10px;
+    cursor:pointer;
 }
 
 .active-svg {
@@ -165,5 +165,48 @@
 }
 
 .active-svg p{
+    color:white;
+}
+
+.search-container-s .districts-list {
+    margin-top: 0;
+    display: block;
+    background: #f1f1f0;
+    padding: 50px 0px;
+    text-align: center;
+    width: 205px;
+    border-radius: 10px;
+    border: 2px solid #d5d5d5;
+    position:absolute;
+    z-index:100000;
+}
+
+.search-container-s .districts-list span{
+    display:block;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.search-container-s .districts-list span:not(:last-child){
+    margin-bottom:10px;
+}
+
+.search-container-s .districts-list span:hover{
+    color:#a52722;
+}
+
+.square{
+    margin-top:15px;
+    gap:15px;
+    position:absolute;
+    background:transparent;
+}
+
+.square input{
+    width:95px;
+}
+
+.invalid {
+    background: #a52722;
     color:white;
 }

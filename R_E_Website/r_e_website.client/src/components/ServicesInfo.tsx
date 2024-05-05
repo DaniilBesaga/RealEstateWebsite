@@ -18,7 +18,6 @@ function ServicesInfo() {
             showCreditComponent: window.location.href.includes("credit") ? true : false,
             showHelpComponent: window.location.href.includes("help") ? true : false
         });
-    console.log(window.location.href)
     const handleShowComponent = (property: string) => {
         for (const key in showComponent) {
             if (key != property) {

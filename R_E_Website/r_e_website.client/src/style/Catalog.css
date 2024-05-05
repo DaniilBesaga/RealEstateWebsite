@@ -14,6 +14,10 @@
 
 .sort-menu {
     margin-left: 20px;
+    display:inline-block;
+    padding:5px 20px;
+    display:flex;
+    align-items:center;
 }
 
 .sort-menu span {
@@ -28,10 +32,12 @@
 .grid-header h1{
     font-weight:400;
     font-size:40px;
+    margin-left:-200px;
 }
 
 .display-menu{
     gap:20px;
+    display:flex !important;
 }
 
 .display-menu i{
@@ -54,6 +60,7 @@
 
 .active {
     color: #d4a5a2;
+    background: #f1f1f0 !important;
 }
 
 .info {
@@ -62,4 +69,36 @@
 
 .items-block{
     display:block !important;
+}
+
+.sort-selection {
+    background: #f1f1f0;
+    padding: 15px 10px;
+    text-align: center;
+    width: auto;
+    border-radius: 10px;
+    border: 2px solid #d5d5d5;
+    position: absolute;
+    z-index: 100000;
+}
+
+.sort-selection li{
+    display:block;
+    font-size:22px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.sort-selection li:first-of-type{
+    margin-top:0;
+}
+
+.sort-selection li:hover {
+    color: #a52722;
+}
+
+#sort{
+    color:black;
+    display:inline-block;
+    font-size:19px;
 }

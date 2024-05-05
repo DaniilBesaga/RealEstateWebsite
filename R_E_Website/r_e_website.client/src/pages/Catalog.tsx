@@ -14,18 +14,22 @@ import { EstateType } from '../estateManagement/EnumEstateType';
 function Catalog({ catalogType }) {
 
     const [display, setDisplay] = React.useState({
-        grid: true, block: false, map: false
+        grid: true, block: false
     })
 
     const [id, setId] = useState(0)
 
     const [filters, setFilters] = useState<EstateDTO[]>([]);
 
-    const [sortMethod, setSortMethod] = useState("")
+    const [sort, setSort] = useState('any')
 
     const [objectCount, setObjectCount] = useState(0);
 
     const [searchById, setSearchById] = useState('');
+
+    const [sortMethod, setSortMethod] = useState('Будь-яке')
+
+    const [showSortSelection, setshowSortSelection] = useState(false)
 
     const handleIdSubmit = (event) => {
         event.preventDefault()
@@ -34,8 +38,22 @@ function Catalog({ catalogType }) {
     }
     
     const handleSortSelection = (sortType: string) => {
-        setSortMethod(sortType)
-        getBySortRequest()
+        
+        if (sortType != sort) {
+            setSort(sortType)
+            setshowSortSelection(false)
+            switch (sortType) {
+                case 'any':
+                    setSortMethod('будь-яке')
+                    break
+                case 'descending':
+                    setSortMethod('за ціною(зменшення)')
+                    break
+                case 'ascending':
+                    setSortMethod('за ціною(збільшення)')
+                    break
+            }
+        }
     }
 
     const handleRedirect = () => {
@@ -69,23 +87,41 @@ function Catalog({ catalogType }) {
         
     }
 
-    async function getBySortRequest() {
+    async function getBySortRequest(sortType: string) {
+        let estateType = '';
+        switch (catalogType) {
+            case EstateType.Flat:
+                estateType = 'flat'
+                break;
+            case EstateType.House:
+                estateType = 'house'
+                break;
+            case EstateType.Land:
+                estateType = 'land'
+                break;
+            case EstateType.Commerce:
+                estateType = 'commerce'
+                break;
+        }
         const response = await fetch(`/api/estatedto`, {
             headers: new Headers({
-                'sortMethod': `${sortMethod}`
+                'estateType': `${estateType}`,
+                'sort': `${sortType}` 
             })
         });
         const data = await response.json();
         setFilters(data)
+        setSearchById('notidsort')
     }
 
     useEffect(() => {
-        setTimeout(async () => {
+        const fetchData = async () => {
             const response = await fetch(`/api/estatedto/catalogType/${catalogType}`);
             const data = await response.json();
             setObjectCount(data);
-        }, 1000);
-    })
+        }
+        fetchData();
+    }, [catalogType])
     
     const searchField = () => {
         return (
@@ -119,43 +155,36 @@ function Catalog({ catalogType }) {
             <div className={display.grid ? "grid-container" : "grid-container"}>
                 <div className="grid-header">
                     <div>
-                        <p>Сортування</p>
-                        <div className="search-item-body sort-menu">
-                            <span>Будь-яке</span>
+                        <p id="sort">Сортування</p>
+                        <div className="search-item-body sort-menu" onClick={() => setshowSortSelection(!showSortSelection)}>
+                            <span>{sortMethod}</span>
                             <i className="ri-arrow-down-s-line"></i>
-                            <ul>
-                                <li onClick={() => handleSortSelection("any")}>будь-яке</li>
-                                <li onClick={() => handleSortSelection("descending")}>за ціною(зменшення)</li>
-                                <li onClick={() => handleSortSelection("ascending")}>за ціною(збільшення)</li>
-                            </ul>
                         </div>
+                        <ul className="sort-selection" style={{ display: showSortSelection ? "block" : "none" }}>
+                            <li onClick={() => handleSortSelection('any')}>будь-яке</li>
+                            <li onClick={() => handleSortSelection('descending')}>за ціною (зменшення)</li>
+                            <li onClick={() => handleSortSelection('ascending')}>за ціною (збільшення)</li>
+                        </ul>
                     </div>
                     <h1>Каталог Нерухомості</h1>
                     <div className="display-menu">
                         <i className={display.grid ? "ri-layout-grid-fill active" : "ri-layout-grid-fill"}
                             onClick={() => setDisplay(prevState => ({
-                            ...prevState, grid: true, block: false, map: false
+                            ...prevState, grid: true, block: false
                         }))}></i>
                         <i className={display.block ? "ri-layout-top-fill active" : "ri-layout-top-fill"}
                             onClick={() => setDisplay(prevState => ({
-                            ...prevState, block: true, grid: false, map: false
+                            ...prevState, block: true, grid: false
                         }))}></i>
-                        <div>
-                            <i className="ri-road-map-fill"></i>
-                            <p>на карті</p>
-                        </div>
                     </div>
                 </div>
 
-                {display.block && 
-                    <div className="items-block">
-                        <RealState display={'block'} estateType={'flat'} filters={filters} searchById={false} />
-                        
-                    </div>    
+                {display.block &&
+                    <RealState display={'block'} estateType={catalogType != undefined ? catalogType : EstateType.Flat} filters={filters} searchById={searchById} sort={sort} /> 
                 }
 
                 {display.grid &&
-                    <RealState display={'grid'} estateType={catalogType != undefined ? catalogType : EstateType.Flat} filters={filters} searchById={searchById} />
+                    <RealState display={'grid'} estateType={catalogType != undefined ? catalogType : EstateType.Flat} filters={filters} searchById={searchById} sort={sort} />
                 }
                 
             </div>

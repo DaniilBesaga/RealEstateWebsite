@@ -6,15 +6,11 @@ import { Link } from 'react-router-dom';
 
 function Search({ onFilters, setSearchById }) {
 
-    const [divColor, setDivColor] = useState({
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false
-    });
+    const [roomCount, setroomCount] = useState<number[]>([]);
 
     const [districtsList, setDisctrictsList] = useState(false);
+
+    const [showSquare, setShowSquare] = useState(false);
 
     const [selectedType, setSelectedType] = useState(EstateType.Flat);
 
@@ -50,21 +46,26 @@ function Search({ onFilters, setSearchById }) {
 
     const handleNumberSelection = (value: number) => {
         setSelectedNumber(value);
-        setDivColor((prev) => ({ ...prev, [value]: !prev[value] }));
-
-        const chosenNumbers = Object.entries(divColor)
-            .filter(([key, value]) => value)
-            .map(([key]) => parseInt(key, 10));
-        const minChosen = Math.min(...chosenNumbers);
-        const maxChosen = Math.max(...chosenNumbers);
-
-        setFormData(data => ({ ...data, roomsCountFrom: 1 }))
-        setFormData(data => ({ ...data, roomsCountTo: 4 }))
+        if (roomCount.includes(value)) {
+            setroomCount(prevArray => {
+                const newArray = [...prevArray];
+                const index = newArray.findIndex(number => number === value);
+                if (index !== -1) {
+                    newArray.splice(index, 1);
+                }
+                return newArray;
+            });
+        }
+        else {
+            setroomCount(prevArray => [...prevArray, value]);
+            setFormData(data => ({ ...data, roomsCountFrom: Math.min(...roomCount) }))
+            setFormData(data => ({ ...data, roomsCountTo: Math.max(...roomCount) }))
+        }
     };
 
     const [formData, setFormData] = useState({
         estateType: selectedType,
-        estateLocation: '',
+        estateLocation: 'Будь-який',
         roomsCountFrom: 0,
         roomsCountTo: 0,
         totalSquareFrom: 0,
@@ -74,14 +75,18 @@ function Search({ onFilters, setSearchById }) {
     })
 
     async function postRequest() {
+
+        if (formData.totalSquareFrom >= formData.totalSquareTo ||
+            formData.priceRangeFrom >= formData.priceRangeTo)
+            return
         
         const filterEstate: IEstateFilter = {
             estateType: selectedType,
             estateLocation: formData.estateLocation,
             roomsCountFrom: formData.roomsCountFrom,
             roomsCountTo: formData.roomsCountTo,
-            totalSquareFrom: 50,
-            totalSquareTo: 300,
+            totalSquareFrom: formData.totalSquareFrom,
+            totalSquareTo: formData.totalSquareTo,
             priceRangeFrom: selectedCur ? formData.priceRangeFrom / 39 : formData.priceRangeFrom,
             priceRangeTo: selectedCur ? formData.priceRangeTo / 39 : formData.priceRangeTo,
         }
@@ -100,15 +105,19 @@ function Search({ onFilters, setSearchById }) {
             else {
                 setSearchById('notid0')
             }
-           
+            onFilters(data);  
         })
-        onFilters(data);  
+        
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        
         postRequest()
+    }
+
+    const handleSpanClick = (value: string) => {
+        setFormData(prev => ({ ...prev, estateLocation: value }))
+        setDisctrictsList(!districtsList)
     }
 
     return (
@@ -158,11 +167,19 @@ function Search({ onFilters, setSearchById }) {
                         <p>Місце розташування</p>
                     </div>
 
-                    <div className="search-item-body-s">
-                        <span>Будь-яке</span>
+                    <div className="search-item-body-s" onClick={() => setDisctrictsList(!districtsList)}>
+                        <span>{formData.estateLocation}</span>
                         <i className="ri-arrow-down-s-line"></i>
                     </div>
-
+                    <div className="districts-list" style={{ display: districtsList ? "block" : "none" }}>
+                        {
+                            districtsArray.map((item, index) => (
+                                <span key={index} onClick={()=>handleSpanClick(item)}>
+                                    {item}
+                                </span>
+                            ))
+                        }
+                    </div>
                 </div>
 
                 <div className="search-item">
@@ -172,11 +189,11 @@ function Search({ onFilters, setSearchById }) {
                     </div>
 
                     <div className="search-item-body-s rooms-container-s">
-                        <div onClick={() => handleNumberSelection(1)} style={{ backgroundColor: divColor[1] ? '#a52722' : 'white', color: divColor[1] ? 'white' : 'black' }}>1</div>
-                        <div onClick={() => handleNumberSelection(2)} style={{ backgroundColor: divColor[2] ? '#a52722' : 'white', color: divColor[2] ? 'white' : 'black' }}>2</div>
-                        <div onClick={() => handleNumberSelection(3)} style={{ backgroundColor: divColor[3] ? '#a52722' : 'white', color: divColor[3] ? 'white' : 'black' }}>3</div>
-                        <div onClick={() => handleNumberSelection(4)} style={{ backgroundColor: divColor[4] ? '#a52722' : 'white', color: divColor[4] ? 'white' : 'black' }}>4</div>
-                        <div onClick={() => handleNumberSelection(5)} style={{ backgroundColor: divColor[5] ? '#a52722' : 'white', color: divColor[5] ? 'white' : 'black' }}>5+</div>
+                        <div onClick={() => handleNumberSelection(1)} style={{ backgroundColor: roomCount.findIndex(i => i === 1) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 1) != -1 ? 'white' : 'black' }}>1</div>
+                        <div onClick={() => handleNumberSelection(2)} style={{ backgroundColor: roomCount.findIndex(i => i === 2) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 2) != -1 ? 'white' : 'black' }}>2</div>
+                        <div onClick={() => handleNumberSelection(3)} style={{ backgroundColor: roomCount.findIndex(i => i === 3) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 3) != -1 ? 'white' : 'black' }}>3</div>
+                        <div onClick={() => handleNumberSelection(4)} style={{ backgroundColor: roomCount.findIndex(i => i === 4) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 4) != -1 ? 'white' : 'black' }}>4</div>
+                        <div onClick={() => handleNumberSelection(5)} style={{ backgroundColor: roomCount.findIndex(i => i === 5) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 5) != -1 ? 'white' : 'black' }}>5+</div>
                     </div>
 
                 </div>
@@ -187,9 +204,21 @@ function Search({ onFilters, setSearchById }) {
                         <p>Площа кв.м</p>
                     </div>
 
-                    <div className="search-item-body-s">
+                    <div className="search-item-body-s" onClick={() => setShowSquare(!showSquare)}>
                         <span>Будь-яка</span>
                         <i className="ri-arrow-down-s-line"></i>
+                    </div>
+
+                    <div className="search-item-body-s square"
+                        style={{ display: showSquare ? 'flex' : 'none' }}>
+                        <input type="number" placeholder="від"
+                            value={formData.totalSquareFrom}
+                            onChange={e => setFormData(filter => ({ ...filter, totalSquareFrom: parseInt(e.target.value) }))}
+                            className={formData.totalSquareTo < formData.totalSquareFrom ? 'invalid' : 'initial'}                        ></input>
+                        <input type="number" placeholder="до"
+                            value={formData.totalSquareTo}
+                            onChange={e => setFormData(filter => ({ ...filter, totalSquareTo: parseInt(e.target.value) }))}
+                            className={formData.totalSquareTo < formData.totalSquareFrom ? 'invalid' : 'initial' }></input>
                     </div>
 
                 </div>
@@ -213,10 +242,12 @@ function Search({ onFilters, setSearchById }) {
                     <div className="search-item-body-s" style={{ background: '#f1f1f0', border: 0, gap: 10 }}>
                         <input type="number" placeholder="від"
                             value={formData.priceRangeFrom}
-                            onChange={e => setFormData(filter => ({ ...filter, priceRangeFrom: parseInt(e.target.value) }))}></input>
+                            onChange={e => setFormData(filter => ({ ...filter, priceRangeFrom: parseInt(e.target.value) }))}
+                            className={formData.priceRangeTo < formData.priceRangeFrom ? 'invalid' : 'initial'}></input>
                         <input type="number" placeholder="до"
                             value={formData.priceRangeTo}
-                            onChange={e => setFormData(filter => ({ ...filter, priceRangeTo: parseInt(e.target.value) }))}></input>
+                            onChange={e => setFormData(filter => ({ ...filter, priceRangeTo: parseInt(e.target.value) }))}
+                            className={formData.priceRangeTo < formData.priceRangeFrom ? 'invalid' : 'initial'}></input>
                     </div>
 
                 </div>
@@ -231,6 +262,6 @@ function Search({ onFilters, setSearchById }) {
 }
 
 const districtsArray = ['Голосіївський', 'Дарницький', 'Деснянський', 'Дніпровський', 'Оболонський',
-    'Печерський', 'Подільський', 'Святошинський', 'Солом`янський', 'Шевченківський'];
+    'Печерський', 'Подільський', 'Святошинський', 'Солом`янський', 'Шевченківський', 'Будь-який'];
 
 export default Search;

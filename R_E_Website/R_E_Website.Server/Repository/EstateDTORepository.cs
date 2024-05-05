@@ -72,10 +72,10 @@ namespace R_E_Website.Server.Repository
                 case "any":
                     break;
                 case "descending":
-                    estateDTOs.OrderByDescending(x => x.PriceUah);
+                    estateDTOs.Sort((a, b) => b.PriceUah - a.PriceUah);
                     break;
                 case "ascending":
-                    estateDTOs.OrderBy(x => x.PriceUah);
+                    estateDTOs.Sort((a, b) => a.PriceUah - b.PriceUah);
                     break;
                 case "":
                     break;
@@ -92,9 +92,7 @@ namespace R_E_Website.Server.Repository
             
             var estateDTOs = estates.Where(estate => estate.EstateType ==
             filterEstate.EstateType).Where(estate =>
-            estate.EstateAddress.Contains(filterEstate.EstateLocation)
-            
-            && TestRange(estate.TotalSquare, filterEstate.TotalSquareFrom, filterEstate.TotalSquareTo)
+            TestRange(estate.TotalSquare, filterEstate.TotalSquareFrom, filterEstate.TotalSquareTo)
 
             && TestRange(estate.PriceUah, filterEstate.PriceRangeFrom, filterEstate.PriceRangeTo)
 
