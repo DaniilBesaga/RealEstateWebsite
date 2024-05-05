@@ -15,6 +15,10 @@ function EstateItem({ estate }) {
 
     const [firstReviewNumber, setFirstReviewNumber] = useState(0);
 
+    const [showDetails, setShowDetails] = useState(false)
+
+    const [showDescription, setShowDescription] = useState(false)
+
     const handleSlideButton = (num: number) => {
         setFirstReviewNumber(num);
     }
@@ -62,14 +66,19 @@ function EstateItem({ estate }) {
             </div>
             <div className="r-c-item-2">
                 <div>
-                    <span className="title">Деталі<i className="ri-add-line"></i></span>
-                    {(renderSwitch(estate.estateType))}
+                    <span className="title" onClick={() => setShowDetails(!showDetails)}
+                    >Деталі<i className="ri-add-line"></i></span>
+                    <div style={{ display: showDetails ? 'initial' : 'none' }}>
+                        {(renderSwitch(estate.estateType))}
+                    </div>
                 </div>
-                <div style={{marginTop:10} }>
-                    <span className="title">Опис<i className="ri-add-line"></i></span>
-                    <div className="prghps-container">
-                        <p style={{ fontSize: 19 }}>{estate.description}
-                            ID: {estate.id}</p>
+                <div style={{ marginTop: 10 }}>
+                    <span className="title" onClick={() => setShowDescription(!showDescription)}
+                    >Опис<i className="ri-add-line"></i></span>
+                    <div className="prghps-container"
+                        style={{ display: showDescription ? '' : 'none' }}>
+                        <p style={{ fontSize: 19}}>{estate.description}
+                            <br/>ID: {estate.id}</p>
                     </div>
                 </div>
             </div>
