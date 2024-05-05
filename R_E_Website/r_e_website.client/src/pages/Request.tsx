@@ -7,6 +7,7 @@ import '../style/Catalog.css';
 import '../style/Request.css';
 import { useState } from 'react';
 import Sell_Buy_Request from '../components/Sell_Buy_Request';
+import Navigation from '../components/Navigation';
 
 function Request() {
 
@@ -16,14 +17,7 @@ function Request() {
         <div className="request-container">
             <Header />
             <div className="list-container">
-                <div className="page-nav">
-                    <div>
-                        <i className="ri-arrow-left-s-line"></i>
-                        <a>Головна</a>
-                        <span>/</span>
-                        <a>Подати заявку</a>
-                    </div>
-                </div>
+                <Navigation url={"/, /request"} urlTitle={"Головна/Подати заявку"}/>
                 <div className="request-grid">
                     <div className="info">
                         <h2>Подати заявку</h2>

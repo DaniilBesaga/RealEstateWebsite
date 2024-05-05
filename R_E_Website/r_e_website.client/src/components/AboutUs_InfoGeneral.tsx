@@ -1,5 +1,6 @@
 ﻿import '../style/AboutUs_InfoGeneral.css';
 import '../style/BuyEstateInfo.css';
+import Navigation from './Navigation';
 
 function AboutUs_InfoGeneral() {
     return (
@@ -12,6 +13,7 @@ function AboutUs_InfoGeneral() {
                 <span>/</span>
                 <p>Про нас</p>
             </div>
+            <Navigation url={"/, /about"} urlTitle={"Головна/Про нас"}/>
             <div className="aboutus_info">
                 <div>
                     <img className="image_1" src="https://profirealt.com.ua/wp-content/uploads/2020/07/shutterstock_428869780.png" />

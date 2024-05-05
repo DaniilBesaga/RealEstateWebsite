@@ -2,18 +2,12 @@
 import '../style/BuyEstateInfo.css';
 import 'remixicon/fonts/remixicon.css';
 import OrderService from '../components/OrderService'
+import Navigation from './Navigation';
 
 function SellEstateInfo() {
     return (
         <div className="sell-estate-container">
-            <div className="page-nav">
-                <div>
-                    <i className="ri-arrow-left-s-line"></i>
-                    <a>Головна</a>
-                </div>
-                <span>/</span>
-                <p>Продаж нерухомості</p>
-            </div>
+            <Navigation url={"/, /prodazh-neruhomosti"} urlTitle={"Головна/Продаж нерухомості"} />
             <div className="buy-estate-grid" style={{ marginTop: 0 }}>
                 
                 <div className="buy-estate-grid-item">

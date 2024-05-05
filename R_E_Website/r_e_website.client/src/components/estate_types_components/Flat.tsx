@@ -31,11 +31,6 @@ function Flat({ filters, searchById, display, sort }: EstateProps) {
             setFlats(filters);
         }
         setReadyForRender(true);
-        if (sort == 'descending') {
-            setFlats(flats.sort((a, b) => b.priceUah - a.priceUah))
-            
-        }
-        console.log(sort)
     }, [filters, searchById, sort]);
 
     if (readyForRender) {

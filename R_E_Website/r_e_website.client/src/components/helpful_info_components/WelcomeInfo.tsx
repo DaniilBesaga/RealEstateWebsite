@@ -2,6 +2,7 @@
 import '../../style/BuyEstateInfo.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from '../Navigation';
 
 function WelcomeInfo() {
 
@@ -9,14 +10,8 @@ function WelcomeInfo() {
 
     return (
         <div className="welcome_info_container">
-            <div className="page-nav">
-                <div>
-                    <i className="ri-arrow-left-s-line"></i>
-                    <a>Головна</a>
-                </div>
-                <span>/</span>
-                <p>Корисна інформація</p>
-            </div>
+
+            <Navigation url={"/, /compendium"} urlTitle={"Головна/Корисна інформація"} />
             <div className="welcome_info_content">
                 <div className="inpage-nav">
                     <a onMouseEnter={() => setShowSubmenu(true)}>Серії житлових будинків</a>

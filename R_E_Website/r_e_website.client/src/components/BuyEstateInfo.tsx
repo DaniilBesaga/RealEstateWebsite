@@ -2,17 +2,12 @@
 import 'remixicon/fonts/remixicon.css';
 import OrderService from '../components/OrderService'
 import Footer from './Footer';
+import Navigation from './Navigation';
 function BuyEstateInfo() {
     return (
         <div className="buy-estate-container">
-            <div className="page-nav">
-                <div>
-                    <i className="ri-arrow-left-s-line"></i>
-                    <a>Головна</a>
-                </div>
-                <span>/</span>
-                <p>Покупка нерухомості</p>
-            </div>
+            
+            <Navigation url={"/, /pokupka-neruhomosti"} urlTitle={"Головна/Покупка нерухомості"} />
             <div className="buy-estate-grid">
                 <div className="buy-estate-grid-item">
                     <h2>Ми надамо Вам послуги БЕЗКОШТОВНО!</h2>

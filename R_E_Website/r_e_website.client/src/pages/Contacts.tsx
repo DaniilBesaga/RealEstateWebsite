@@ -1,6 +1,7 @@
 ﻿import Header from '../components/Header';
 import '../style/Contacts.css';
 import Footer from '../components/Footer';
+import Navigation from '../components/Navigation';
 
 function Contacts() {
     return (
@@ -8,15 +9,9 @@ function Contacts() {
             <Header />
 
             <div className="contacts-container">
-                <div className="page-nav">
-                    <div>
-                        <i className="ri-arrow-left-s-line"></i>
-                        <a>Головна</a>
-                    </div>
-                    <span>/</span>
-                    <p>Контакти</p>
-                    <h2>Наш офіс на карті</h2>
-                </div>
+                
+                <Navigation url={"/, /contact"} urlTitle={"Головна/Контакти"}
+                    header={"Наш офіс на карті"} />
 
                 <article className="info-contact-container">
                     <div>

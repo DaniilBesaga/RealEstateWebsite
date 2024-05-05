@@ -7,6 +7,7 @@ import Invest from './services_components/Invest';
 import Exchange from './services_components/Exchange';
 import Credit from './services_components/Credit';
 import Help from './services_components/Help';
+import Navigation from './Navigation';
 
 function ServicesInfo() {
 
@@ -71,14 +72,8 @@ function ServicesInfo() {
 
     return (
         <div className="services-container">
-            <div className="page-nav">
-                <div>
-                    <i className="ri-arrow-left-s-line"></i>
-                    <a>Головна</a>
-                </div>
-                <span>/</span>
-                <p>Продаж нерухомості</p>
-            </div>
+            
+            <Navigation url={"/, /services"} urlTitle={"Головна/Продаж нерухомості"}/>
 
             <div className="services-list-container">
                 <h2 className="not-style-h2" style={{ textAlign: 'center', marginTop: 100 }}>Агентство нерухомості «Profi Realt» надає своїм клієнтам такі послуги:</h2>
