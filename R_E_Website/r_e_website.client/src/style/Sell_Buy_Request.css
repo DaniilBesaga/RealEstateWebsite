@@ -6,6 +6,10 @@
     opacity: 0;
 }
 
+.form-container p{
+    color:black;
+}
+
 .open {
     height: 100%;
     opacity: 1;
@@ -85,37 +89,38 @@
     display:inline-block;
 }
 
-.svg-container{
-    margin-top:10px;
-    margin-left:10px;
-    margin-right:10px;
+.form-container .svg-container-s {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     gap: 20px !important;
+    
 }
 
-.svg-container > div > div {
+.form-container .svg-container-s > div > div {
     padding-left:10px;
     padding-right:10px;
     margin-bottom:5px;
 }
 
-.svg-container svg{
-    width:33px !important;
-    height:33px !important;
+.form-container .svg-container-s svg {
+    width: 33px !important;
+    height: 33px !important;
 }
 
-.svg-container span{
-    font-weight:500 !important;
-    font-size:13px !important;
+.form-container .svg-container-s span {
+    font-weight: 500 !important;
+    font-size: 13px !important;
 }
 
-.rooms-container {
+.form-container .rooms-container-s {
     grid-template-columns: repeat(5, 1fr) !important;
     background: white !important;
     gap: 15px !important;
     padding: 0 !important;
 }
 
-.rooms-container div{
+.form-container .rooms-container-s div{
     padding: 10px 15px !important;
 }
 
@@ -170,6 +175,7 @@
     border-radius: 10px;
     height: 550px;
     width: 100%;
+    margin-top:20px;
 }
 
 .send-button {
@@ -179,6 +185,7 @@
     color:white;
     padding:15px 10px;
     font-size:14px;
+    border-radius:10px;
 }
 
 @keyframes expandAnimation {
@@ -194,11 +201,12 @@
 }
 
 .opened {
-    max-height: 0;
-    overflow: hidden;
-    transition-property: max-height;
-    transition: all 1s ease-in-out;
+    animation: expandAnimation-i .8s backwards;
     pointer-events: auto;
+}
+
+.opened span{
+    margin-top:-20px;
 }
 
 @keyframes expandAnimation-i {

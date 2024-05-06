@@ -33,7 +33,9 @@ namespace R_E_Website.Server.Repository
                     EstateFloor = estate.EstateFloor,
                     EstateFloorCount = estate.NumberOfFloors,
                     EstateSquare = estate.TotalSquare,
-                    ImgUrl = estate.ImgsUrlFolder + $"/{Utils.Utils.AzureConnetionImages(estate.EstateType.ToString().ToLower()).First()}",
+                    ImgUrl = estate.ImgsUrlFolder + "/" + Utils.Utils.AzureConnetionImages
+                    (estate.EstateType.ToString().ToLower()).Where(x => x.Contains(estate.EstateAddressEng))
+                    .First().Split("/")[1],
                     PriceUah = estate.PriceUah,
                     PriceUsd = estate.PriceUsd
                 };
@@ -62,7 +64,7 @@ namespace R_E_Website.Server.Repository
                 EstateFloorCount = estate.NumberOfFloors,
                 EstateSquare = estate.TotalSquare,
                 EstateRoomCount = estate.RoomCount,
-                ImgUrl = estate.ImgsUrlFolder + $"/{firstImages[index]}",
+                ImgUrl = estate.ImgsUrlFolder + "/" + firstImages.Where(x => x.Contains(estate.EstateAddressEng)).First().Split("/")[1],
                 PriceUah = estate.PriceUah,
                 PriceUsd = estate.PriceUsd
             }).ToList();
@@ -75,27 +77,35 @@ namespace R_E_Website.Server.Repository
             var estates = await _context.Estates.ToListAsync();
 
             var firstImages = Utils.Utils.AzureConnetionImages(filterEstate.EstateType.ToString().ToLower());
-            
-            var estateDTOs = estates.Where(estate => estate.EstateType ==
-            filterEstate.EstateType).Where(estate =>
-            TestRange(estate.TotalSquare, filterEstate.TotalSquareFrom, filterEstate.TotalSquareTo)
 
-            && TestRange(estate.PriceUah, filterEstate.PriceRangeFrom, filterEstate.PriceRangeTo)
 
-            && TestRange(estate.RoomCount, filterEstate.RoomsCountFrom, filterEstate.RoomsCountTo)
-            )
-                .Select((estate, index) => new EstateDTO
+            var estateDTOs = estates.Where(estate => estate.EstateType == filterEstate.EstateType)
+            .Where(estate => {
+                if (estate.EstateType == EstateType.Flat || estate.EstateType == EstateType.House)
                 {
-                    Id = estate.Id,
-                    EstateAddress = estate.EstateAddress,
-                    EstateFloor = estate.EstateFloor,
-                    EstateFloorCount = estate.NumberOfFloors,
-                    EstateSquare = estate.TotalSquare,
-                    EstateRoomCount = estate.RoomCount,
-                    ImgUrl = estate.ImgsUrlFolder + $"/{firstImages[estate.Id - 1]}",
-                    PriceUah = estate.PriceUah,
-                    PriceUsd = estate.PriceUsd
-                }).ToList();
+                    return TestRange(estate.TotalSquare, filterEstate.TotalSquareFrom, filterEstate.TotalSquareTo)
+                        && TestRange(estate.PriceUah, filterEstate.PriceRangeFrom, filterEstate.PriceRangeTo)
+                        && TestRange(estate.RoomCount, filterEstate.RoomsCountFrom, filterEstate.RoomsCountTo);
+                }
+                else
+                {
+                    return TestRange(estate.PriceUah, filterEstate.PriceRangeFrom, filterEstate.PriceRangeTo)
+                        && TestRange(estate.TotalSquare, filterEstate.TotalSquareFrom, filterEstate.TotalSquareTo);
+                }
+            })
+            .Select((estate, index) => new EstateDTO
+            {
+                Id = estate.Id,
+                EstateAddress = estate.EstateAddress,
+                EstateFloor = estate.EstateFloor,
+                EstateFloorCount = estate.NumberOfFloors,
+                EstateSquare = estate.TotalSquare,
+                EstateRoomCount = estate.RoomCount,
+                ImgUrl = estate.ImgsUrlFolder + "/" + firstImages.Where(x => x.Contains(estate.EstateAddressEng)).First().Split("/")[1],
+                PriceUah = estate.PriceUah,
+                PriceUsd = estate.PriceUsd
+            })
+            .ToList();
 
             return estateDTOs;
         }

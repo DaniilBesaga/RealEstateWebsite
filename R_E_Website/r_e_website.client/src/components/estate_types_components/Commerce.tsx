@@ -5,39 +5,43 @@ import { displayEstates } from '../../estateManagement/estateGetFetch';
 import { EstateDTO } from '../../estateManagement/IEstateDTO';
 import { EstateProps } from '../../estateManagement/estateProps';
 import { Link } from 'react-router-dom';
-function Commerce({ filters, searchById }: EstateProps) {
+function Commerce({ filters, searchById, display, sort }: EstateProps) {
 
     const [commerce, setCommerce] = useState<EstateDTO[]>([]);
     const [readyForRender, setReadyForRender] = useState(false);
 
     const [empty, setEmpty] = useState(false)
+    
     useEffect(() => {
 
-        if (filters instanceof Promise && searchById == 'notid0') {
+        if (searchById == 'notid0') {
             setEmpty(true)
-        } else if (searchById == 'id') {
-            (async () => {
-                const response = await fetch(`/api/estatedto/${filters[0].id}`);
-                const data = await response.json();
-                setCommerce([data]);
-            })();
         } else if (filters.length == 0 && searchById == '') {
             displayEstates('commerce')
                 .then((data) => {
                     setCommerce(data);
                 });
         }
-        else if (searchById == 'notid') {
+        else if (searchById == 'id') {
+            (async () => {
+                const response = await fetch(`/api/estatedto/${filters[0].id}`);
+                const data = await response.json();
+                setCommerce([data]);
+            })();
+        }
+        else if (searchById == 'notid' || searchById == 'notidsort') {
             setCommerce(filters);
+            setEmpty(false)
         }
         setReadyForRender(true);
-    });
+    }, [filters, searchById, sort, readyForRender]);
 
     if (readyForRender) {
         return (
             <div>
-                {!empty && <div className="rl-grid-container">
-                    {commerce.map((item, index) =>
+                {!empty && <div className={display == 'grid' ? "rl-grid-container" : "block-container"}>
+                    {commerce.sort((a, b) => sort == 'descending' ? b.priceUah - a.priceUah : sort == 'any' ? 0 : a.priceUah - b.priceUah)
+                        .map((item, index) =>
                         <Link to={`/commerce/${item.id}`} className="promo-item" key={index}>
                             <div className="box-img" style={{ backgroundImage: `url(${item.imgUrl})` }}>
                                 <div className="label label-exclusive"><span>ексклюзив</span></div>

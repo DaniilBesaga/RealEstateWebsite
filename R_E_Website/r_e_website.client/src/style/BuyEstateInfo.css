@@ -9,7 +9,7 @@
     text-decoration: none;
 }
 
-.buy-estate-container {
+.buy-estate-container h2{
     
 }
 
@@ -100,9 +100,8 @@
     gap:30px;
 }
 
-.grid-4 p:first-child{
-    color: #a52822;
-    margin-bottom:15px;
+.service-title{
+    color: #a52822 !important;
     font-size:1.15em;
 }
 

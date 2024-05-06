@@ -69,6 +69,8 @@ namespace R_E_Website.Server.Controllers
 
                 await _orderServiceRepository.InsertAsync(deserializedObject);
 
+                Utils.Utils.SendOrderServiceRequest(deserializedObject);
+
                 return CreatedAtAction(nameof(GetOrderById), new { id = deserializedObject.Id }, order);
 
             }

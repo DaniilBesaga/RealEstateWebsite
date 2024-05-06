@@ -18,7 +18,7 @@ function WelcomePage() {
 
     return (
         <header>
-            <a className="logo" href="#">
+            <a className="logo" href="/">
                 <img src="https://profirealt.com.ua/wp-content/themes/profirealt_child/access/images/Logo_PR_Profi_Realt_Colors.svg" />
             </a>
             <ul className="navlist">

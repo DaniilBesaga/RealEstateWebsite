@@ -15,17 +15,20 @@ function Flat({ filters, searchById, display, sort }: EstateProps) {
 
         if (searchById == 'notid0') {
             setEmpty(true)
-        } else if (searchById == 'id') {
+        } 
+        else if (searchById == 'id') {
             (async () => {
                 const response = await fetch(`/api/estatedto/${filters[0].id}`);
                 const data = await response.json();
                 setFlats([data]);
             })();
-        } else if (filters.length == 0 && searchById == '') {
+        }
+        else if (filters.length == 0 && searchById == '') {
             displayEstates('flat')
                 .then((data) => {
                     setFlats(data);
                 });
+            setEmpty(false)
         }
         else if (searchById == 'notid' || searchById == 'notidsort') {
             setFlats(filters);

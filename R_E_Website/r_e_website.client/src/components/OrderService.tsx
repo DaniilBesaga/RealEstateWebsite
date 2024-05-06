@@ -12,13 +12,13 @@ interface IOrderService {
 function OrderService({estateId}) {
     const [success, setSuccess] = useState(false);
     async function postOrderService() {
-
         const requestData: IOrderService = {
             name: formData.name,
             phoneNumber: formData.phone,
             email: formData.email,
-            estateId: estateId
+            estateId: estateId == -1 ? null : estateId
         }
+
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -42,7 +42,7 @@ function OrderService({estateId}) {
     return (
         <div className="order-service-container">
             {success ? <SuccessLabel success={success} /> : null}
-            <h2>Замовити послугу</h2>
+            <h2 className="not-style-h2">Замовити послугу</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Ваше ім'я *"
                     value={formData.name}

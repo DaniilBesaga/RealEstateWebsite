@@ -6,7 +6,7 @@ import Search from '../components/Search';
 import '../style/ResidentialComplexesList.css';
 import '../style/Catalog.css';
 import RealState from '../components/RealEstate';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { EstateDTO } from '../estateManagement/IEstateDTO';
 import Navigation from '../components/Navigation';
 import { EstateType } from '../estateManagement/EnumEstateType';
@@ -22,8 +22,6 @@ function Catalog({ catalogType }) {
     const [filters, setFilters] = useState<EstateDTO[]>([]);
 
     const [sort, setSort] = useState('any')
-
-    const [objectCount, setObjectCount] = useState(0);
 
     const [searchById, setSearchById] = useState('');
 
@@ -87,9 +85,9 @@ function Catalog({ catalogType }) {
         
     }
 
-    useEffect(() => {
+    //useEffect(() => {
         
-    }, [catalogType])
+    //}, [catalogType])
     
     const searchField = () => {
         return (
@@ -114,7 +112,11 @@ function Catalog({ catalogType }) {
             <Header />
 
             <div className="list-container">
-                <Navigation url={"/, /services"} urlTitle={"Головна/Квартири"}
+                <Navigation url={"/, /services"} urlTitle={
+                    catalogType == EstateType.Flat ? "Головна/Квартири" :
+                    catalogType == EstateType.House ? "Головна/Будинки" :
+                    catalogType == EstateType.Land ? "Головна/Земля" :
+                    catalogType == EstateType.Commerce ? "Головна/Комерція" : ""}
                     header={"Знайди оселю своєї мрії"}
                     addParams={searchField} />
                 <Search onFilters={setFilters} setSearchById={setSearchById} />

@@ -52,7 +52,7 @@ namespace R_E_Website.Server.Utils
             var firstImages = bs
             .GroupBy(blob => blob.Name.Split('/')[0])
             .Select(group => group.First())
-            .Select(x => x.Name.Split("/")[1])
+            .Select(x => x.Name)
             .ToList();
 
             return firstImages;
@@ -80,6 +80,35 @@ namespace R_E_Website.Server.Utils
                     message.Subject = $"Заявка на {requestAction} житла";
                     message.Body = $"Вітаємо, шановний ${request.ClientInfo.Name}!+" +
                         $"\nВи залишили заявку на ${requestAction} житла" +
+                        $"\nМи зв'яжемося з Вами найближчими днями." +
+                        $"Гарного дня та дякуємо, що обрали нас!";
+
+                    client.Send(message);
+                }
+            }
+        }
+
+        public static void SendOrderServiceRequest(OrderService request)
+        {
+            using (var client = new SmtpClient())
+            {
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential("zloikot.mya@gmail.com", "phoi lylc wals pwvd");
+
+                
+                using (var message = new MailMessage(
+                    from: new MailAddress("zloikot.mya@gmail.com", "Admin"),
+                    to: new MailAddress($"{request.Email}", $"{request.Name}")
+                    ))
+                {
+
+                    message.Subject = $"Заявка на придбання житла";
+                    message.Body = $"Вітаємо, шановний ${request.Name}!+" +
+                        $"\nВи залишили заявку на купівлю житла" +
                         $"\nМи зв'яжемося з Вами найближчими днями." +
                         $"Гарного дня та дякуємо, що обрали нас!";
 

@@ -8,8 +8,19 @@
     padding: 0px 30px;
 }
 
-.info {
+.request-grid > div > p{
+    color:black;
+    font-size:1.1em;
+    margin-top:20px;
+}
+
+.request-container .info {
     margin-top:50px;
+}
+
+.request-container .info:hover{
+    cursor:pointer;
+    background:#f1f1f0;
 }
 
 .info p{

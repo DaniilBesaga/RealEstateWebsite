@@ -11,6 +11,10 @@
     border-right: 1px solid #d5d5d5;
 }
 
+.short-search {
+    padding-right: 35px !important;
+}
+
 .search-item-header-s {
     display: flex;
     padding-bottom: 20px;
@@ -157,7 +161,7 @@
 }
 
 .active-svg {
-    background: #a52722;
+    background: #a52722 !important;
 }
 
 .active-svg svg{
