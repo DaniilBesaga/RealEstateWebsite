@@ -1,4 +1,5 @@
-﻿import '../style/SellAd.css';
+﻿import { Link } from 'react-router-dom';
+import '../style/SellAd.css';
 
 function SellAd() {
     return (
@@ -38,7 +39,7 @@ function SellAd() {
                 </div>
             </div>
             <div className="ad-container-footer">
-                <a href="#" className="button-action">РОЗМІСТИТИ СВОЄ ОГОЛОШЕННЯ</a>
+                <Link to="/request" className="button-action">РОЗМІСТИТИ СВОЄ ОГОЛОШЕННЯ</Link>
             </div>
         </div>
     )

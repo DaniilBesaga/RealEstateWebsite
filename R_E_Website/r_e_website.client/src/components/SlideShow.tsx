@@ -2,18 +2,19 @@
 import 'remixicon/fonts/remixicon.css';
 import QuickSearch from './QuickSearch';
 import { useState } from 'react';
+import Search from './Search';
 
 function SlideShow() {
 
-    let [slideImage, setSlideImage] = useState(0);
+    const [slideImage, setSlideImage] = useState(0);
 
     return (
         <div className="outer">
             <div className="prev-arrow" style={{ display: slideImage == 0 ? "none" : "initial" }}>
-                <i className="ri-arrow-left-s-line" onClick={() => setSlideImage(--slideImage)}></i>
+                <i className="ri-arrow-left-s-line" onClick={() => setSlideImage(slideImage - 1)}></i>
             </div>
             <div className="next-arrow" style={{ display: slideImage == 2 ? "none" : "initial" }}>
-                <i className="ri-arrow-right-s-line" onClick={() => setSlideImage(++slideImage)}></i>
+                <i className="ri-arrow-right-s-line" onClick={() => setSlideImage(slideImage + 1)}></i>
             </div>
             <div className="item" style={{
                 backgroundImage: `url(${imgArray[slideImage]})`,
@@ -28,7 +29,6 @@ function SlideShow() {
                     ))}
                 </div>
             </div>
-            <QuickSearch></QuickSearch>
         </div>
     )
 }

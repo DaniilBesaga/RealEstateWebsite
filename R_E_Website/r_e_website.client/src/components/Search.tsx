@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Search({ onFilters, setSearchById }) {
 
-    const [roomCount, setroomCount] = useState<number[]>([]);
+    const [roomCount, setroomCount] = useState<number[]>([0]);
 
     const [districtsList, setDisctrictsList] = useState(false);
 
@@ -17,6 +17,17 @@ function Search({ onFilters, setSearchById }) {
     const [selectedCur, setSelectedCur] = useState(false);
 
     const [selectedNumber, setSelectedNumber] = useState(0);
+
+    const [formData, setFormData] = useState({
+        estateType: selectedType,
+        estateLocation: 'Будь-який',
+        roomsCountFrom: 0,
+        roomsCountTo: 0,
+        totalSquareFrom: 0,
+        totalSquareTo: 0,
+        priceRangeFrom: 0,
+        priceRangeTo: 0
+    })
 
     useEffect(() => {
         switch (window.location.pathname) {
@@ -46,6 +57,7 @@ function Search({ onFilters, setSearchById }) {
 
     const handleNumberSelection = (value: number) => {
         setSelectedNumber(value);
+        console.log(value)
         if (roomCount.includes(value)) {
             setroomCount(prevArray => {
                 const newArray = [...prevArray];
@@ -57,38 +69,27 @@ function Search({ onFilters, setSearchById }) {
             });
         }
         else {
-            setroomCount(prevArray => [...prevArray, value]);
+            setroomCount(prevArray => [...prevArray, value]); 
             setFormData(data => ({ ...data, roomsCountFrom: Math.min(...roomCount) }))
             setFormData(data => ({ ...data, roomsCountTo: Math.max(...roomCount) }))
         }
     };
-
-    const [formData, setFormData] = useState({
-        estateType: selectedType,
-        estateLocation: 'Будь-який',
-        roomsCountFrom: 0,
-        roomsCountTo: 0,
-        totalSquareFrom: 0,
-        totalSquareTo: 0,
-        priceRangeFrom: 0,
-        priceRangeTo: 0
-    })
-
+   
     async function postRequest() {
 
-        if (formData.totalSquareFrom >= formData.totalSquareTo ||
-            formData.priceRangeFrom >= formData.priceRangeTo)
+        if (formData.totalSquareFrom > formData.totalSquareTo ||
+            formData.priceRangeFrom > formData.priceRangeTo)
             return
         
         const filterEstate: IEstateFilter = {
             estateType: selectedType,
             estateLocation: formData.estateLocation,
-            roomsCountFrom: formData.roomsCountFrom,
-            roomsCountTo: formData.roomsCountTo,
+            roomsCountFrom: Math.min(...roomCount),
+            roomsCountTo: Math.max(...roomCount) == 0 ? 100 : Math.max(...roomCount),
             totalSquareFrom: formData.totalSquareFrom,
-            totalSquareTo: formData.totalSquareTo,
+            totalSquareTo: formData.totalSquareTo == 0 ? 1000 : formData.totalSquareTo,
             priceRangeFrom: selectedCur ? formData.priceRangeFrom / 39 : formData.priceRangeFrom,
-            priceRangeTo: selectedCur ? formData.priceRangeTo / 39 : formData.priceRangeTo,
+            priceRangeTo: formData.priceRangeTo == 0 ? 1000000000 : selectedCur ? formData.priceRangeTo / 39 : formData.priceRangeTo,
         }
         
         const requestOptions = {
@@ -193,7 +194,7 @@ function Search({ onFilters, setSearchById }) {
                         <div onClick={() => handleNumberSelection(2)} style={{ backgroundColor: roomCount.findIndex(i => i === 2) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 2) != -1 ? 'white' : 'black' }}>2</div>
                         <div onClick={() => handleNumberSelection(3)} style={{ backgroundColor: roomCount.findIndex(i => i === 3) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 3) != -1 ? 'white' : 'black' }}>3</div>
                         <div onClick={() => handleNumberSelection(4)} style={{ backgroundColor: roomCount.findIndex(i => i === 4) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 4) != -1 ? 'white' : 'black' }}>4</div>
-                        <div onClick={() => handleNumberSelection(5)} style={{ backgroundColor: roomCount.findIndex(i => i === 5) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 5) != -1 ? 'white' : 'black' }}>5+</div>
+                        <div onClick={() => handleNumberSelection(100)} style={{ backgroundColor: roomCount.findIndex(i => i === 100) != -1 ? '#a52722' : 'white', color: roomCount.findIndex(i => i === 100) != -1 ? 'white' : 'black' }}>5+</div>
                     </div>
 
                 </div>

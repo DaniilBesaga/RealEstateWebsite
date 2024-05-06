@@ -92,7 +92,7 @@ namespace R_E_Website.Server.Repository
                     EstateFloorCount = estate.NumberOfFloors,
                     EstateSquare = estate.TotalSquare,
                     EstateRoomCount = estate.RoomCount,
-                    ImgUrl = estate.ImgsUrlFolder + $"/{firstImages[index]}",
+                    ImgUrl = estate.ImgsUrlFolder + $"/{firstImages[estate.Id - 1]}",
                     PriceUah = estate.PriceUah,
                     PriceUsd = estate.PriceUsd
                 }).ToList();

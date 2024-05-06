@@ -18,6 +18,9 @@
     padding:5px 20px;
     display:flex;
     align-items:center;
+    background:white;
+    cursor:pointer;
+    border-radius:10px;
 }
 
 .sort-menu span {

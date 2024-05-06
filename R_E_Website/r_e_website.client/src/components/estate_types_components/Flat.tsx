@@ -13,7 +13,7 @@ function Flat({ filters, searchById, display, sort }: EstateProps) {
     const [empty, setEmpty] = useState(false)
     useEffect(() => {
 
-        if (filters instanceof Promise && searchById == 'notid0') {
+        if (searchById == 'notid0') {
             setEmpty(true)
         } else if (searchById == 'id') {
             (async () => {
@@ -29,9 +29,10 @@ function Flat({ filters, searchById, display, sort }: EstateProps) {
         }
         else if (searchById == 'notid' || searchById == 'notidsort') {
             setFlats(filters);
+            setEmpty(false)
         }
         setReadyForRender(true);
-    }, [filters, searchById, sort]);
+    }, [filters, searchById, sort, readyForRender]);
 
     if (readyForRender) {
         return (
@@ -109,6 +110,11 @@ function Flat({ filters, searchById, display, sort }: EstateProps) {
                         <li><i className="ri-check-line"></i><p>Заповніть заявку або зв'яжіться з нами, і ми знайдемо для Вас цікаву пропозицію.</p></li>
                     </ul>
                 </div>}
+                {window.location.pathname == '/' &&
+                    <div className="more">
+                        <Link to="/catalog" className="search-b-s">Дивитися більше</Link>
+                    </div>
+                }
             </div>
         )
     }

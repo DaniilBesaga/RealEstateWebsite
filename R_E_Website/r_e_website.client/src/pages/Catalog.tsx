@@ -88,12 +88,7 @@ function Catalog({ catalogType }) {
     }
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(`/api/estatedto/catalogType/${catalogType}`);
-            const data = await response.json();
-            setObjectCount(data);
-        }
-        fetchData();
+        
     }, [catalogType])
     
     const searchField = () => {
@@ -120,7 +115,7 @@ function Catalog({ catalogType }) {
 
             <div className="list-container">
                 <Navigation url={"/, /services"} urlTitle={"Головна/Квартири"}
-                    objectCount={objectCount} header={"Знайди оселю своєї мрії"}
+                    header={"Знайди оселю своєї мрії"}
                     addParams={searchField} />
                 <Search onFilters={setFilters} setSearchById={setSearchById} />
             </div>
@@ -146,9 +141,7 @@ function Catalog({ catalogType }) {
                             ...prevState, grid: true, block: false
                         }))}></i>
                         <i className={display.block ? "ri-layout-top-fill active" : "ri-layout-top-fill"}
-                            onClick={() => setDisplay(prevState => ({
-                            ...prevState, block: true, grid: false
-                        }))}></i>
+                            onClick={() => alert("In the development stage...")}></i>
                     </div>
                 </div>
 

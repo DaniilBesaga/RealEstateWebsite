@@ -203,6 +203,15 @@
     margin-top: 50px;
 }
 
+.more {
+    text-align:center;
+}
+
+.more .search-b-s {
+    margin-top:0;
+    padding:15px;
+}
+
 .r-c-item-2 > div > div {
     opacity: 0;
     animation: appearing 1s forwards;
